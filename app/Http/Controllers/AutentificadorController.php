@@ -58,5 +58,11 @@ class AutentificadorController extends Controller
 
     public function logout(Request $request)
     {
+        //revogando token com o revoke
+        $request->user()->token()->revoke();
+
+        return response()->json([
+            'res' => 'Deslogado com sucesso'
+        ], 200);
     }
 }
