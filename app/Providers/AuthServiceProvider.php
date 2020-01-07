@@ -26,6 +26,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        //add rotas necessarias para autentificação
+        Passport::routes();
     }
 }
