@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,15 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::prefix('auth')->group(function () {
+    Route::post('registro', 'AutentificadorController@registro');
+    Route::post('login', 'AutentificadorController@login');
+
+    Route::middleware('auth:api')->group(function () {
+        Route::post('logout', 'AutentificadorController@logout');
+    });
+});
+
+Route::get('itens', 'EmularController@index')
+    ->middleware('auth:api');
