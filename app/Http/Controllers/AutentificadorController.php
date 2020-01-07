@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class AutentificadorController extends Controller
 {
@@ -25,13 +26,34 @@ class AutentificadorController extends Controller
         $user->save();
 
         return response()->json([
-            'res'=>'Usuario criado com sucesso'
-        ],201)
-
+            'res' => 'Usuario criado com sucesso'
+        ], 201);
     }
 
     public function login(Request $request)
     {
+        $request->validate([
+            'password' => 'required|string',
+            'email' => 'required|string|email'
+        ]);
+
+        $credencias = [
+            'password' => $request->password,
+            'email' => $request->email
+        ];
+        //retorna um true ou false
+        if (!Auth::attempt($credencias)) {
+            return response()->json([
+                'res' => 'Acesso negado'
+            ], 401);
+        }
+        //criando token de validação de usuario
+        $user = $request->user();
+        $token = $user->createToken('Token de acesso')->accessToken;
+        //retornando token de acesso com a devida confirmação
+        return response()->json([
+            'token' => $token
+        ], 200);
     }
 
     public function logout(Request $request)
