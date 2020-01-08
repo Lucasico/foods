@@ -63,6 +63,11 @@ class AutentificadorController extends Controller
                 'Acesso negado, senha ou E-mail invalido(s)',
                 401
             );
+            /* caso queira retorna um array
+             return response()->json([
+                'res' => 'Acesso negado'
+            ], 401);
+            */
         }
         //criando token de validação de usuario
         $user = $request->user();
