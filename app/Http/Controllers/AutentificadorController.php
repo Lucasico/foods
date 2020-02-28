@@ -21,17 +21,16 @@ class AutentificadorController extends Controller
         } else {
             //parte de validadação
             $request->validate([
-                'name' => 'required|string',
                 'password' => 'required|string|confirmed',
                 'email' => 'required|string|email|unique:users'
             ]);
-
             //criando o usuario
-
             $user = new User([
-                'name' => $request->name,
+                'name'=>$request->name,
                 'password' => bcrypt($request->password),
-                'email' => $request->email
+                'email' => $request->email,
+                'pessoas_id' => $request->pessoas_id,
+                'permissoes_id' => $request->permissoes_id
             ]);
             //salvando
             $user->save();
@@ -84,7 +83,8 @@ class AutentificadorController extends Controller
         $token = $user->createToken('Token de acesso')->accessToken;
         //retornando token de acesso com a devida confirmação
         return response()->json([
-            'token' => $token
+            'token' => $token,
+            'user'=> $user
         ], 200);
     }
 
@@ -92,9 +92,18 @@ class AutentificadorController extends Controller
     {
         //revogando token com o revoke
         $request->user()->token()->revoke();
-
         return response()->json([
             'res' => 'Deslogado com sucesso'
         ], 200);
     }
+    /**
+     * public function index(){
+     *$produto = Produtos::find('bfd9b59b-244c-4c0a-a293-0cbee647c11b');
+     *$produtoTipo = $produto->tipo;
+     *$produtoEmpresa = $produto->empresa;
+      *return response()->json($produto);
+    *}
+     * 
+     */
+    
 }

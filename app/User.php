@@ -1,7 +1,6 @@
 <?php
-
 namespace App;
-
+use App\Traits\Uuids;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -12,16 +11,21 @@ class User extends Authenticatable
 {
     //use HasApiTokens
     use Notifiable, HasApiTokens;
-
+    use Uuids;
+   
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
+    public $incrementing = false;
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'email',
+        'password',
+        'permissoes_id',
+        'pessoas_id'
     ];
-
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -30,13 +34,18 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-
     /**
-     * The attributes that should be cast to native types.
-     *
      * @var array
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    //um usuario tem uma permissão
+    public function permissao(){
+       return $this->belongsTo('App\Permissoes', 'permissoes_id', 'id');
+    }
+    // um usuario pertence a uma pessoa
+    public function pessoa(){
+        return $this->belongsTo('App\Pessoas','pessoas_id','id');
+    }
 }
