@@ -41,21 +41,20 @@ class AutentificadorController extends Controller
     }
     public function login(Request $request)
     {
-        //verificar campos vazios
-        if ($request->email == "" or $request->password == "") {
+    	 if ($request->email == "" or $request->password == "") {
             if ($request->email == "") {
-                return response()->json(
-                    'Acesso negado, email vazio',
-                    401
-                );
+                return response()->json([
+                    'email' => "Acesso negado Email vazio"
+                ], 401);
             }
             if ($request->password == "") {
-                return response()->json(
-                    'Acesso negado, senha vazia',
-                    401
-                );
+                return response()->json([
+                    'password' => "Acesso negado password vazio"
+                ], 401);
             }
+            
         }
+
         $request->validate([
             'password' => 'required|string',
             'email' => 'required|string|email'
@@ -68,15 +67,9 @@ class AutentificadorController extends Controller
 
         //retorna um true ou false
         if (!Auth::attempt($credencias)) {
-            return response()->json(
-                'Acesso negado, senha ou E-mail invalido(s)',
-                401
-            );
-            /* caso queira retorna um array
              return response()->json([
-                'res' => 'Acesso negado'
+                'res' => 'Acesso negado Email ou senha inválido'
             ], 401);
-            */
         }
         //criando token de validação de usuario
         $user = $request->user();

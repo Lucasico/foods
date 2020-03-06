@@ -3,19 +3,6 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-//use Illuminate\Routing\Route;
-
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
-
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -29,6 +16,7 @@ Route::prefix('auth')->group(function () {
         Route::post('logout', 'AutentificadorController@logout');
         //Group routes mastes
         Route::middleware('master')->group(function(){
+            
             //lista de empresas
             Route::prefix('empresas')->group(function(){
                 /**
@@ -60,6 +48,7 @@ Route::prefix('auth')->group(function () {
                 Route::get('totalEmpresas/inativas','modulos\master\empresas\BuscasEmpresaController@quantEmpresaInativas');
                
             });
+
             //lista referente a proprietarios
             Route::prefix('proprietario')->group(function(){
                 //criando PessoaProprietaria
@@ -87,11 +76,19 @@ Route::prefix('auth')->group(function () {
                 Route::delete('proprietario/{id}','modulos\master\proprietarios\ProprietariosCrudController@deleteProprietario');
                
             });
+
+            //lista referente a usuarios Master
+            Route::prefix('UsersMasters')->group(function(){
+                Route::post('/','modulos\master\profiles\ProfilesCrudMasters@storeUserMaster');
+                Route::post('/cadPessoMaster','modulos\master\profiles\ProfilesCrudMasters@storePessoaMaster');
+            });
+
         });
 
         //Group routes proprietario
         Route::middleware('proprietario')->group(function(){
            // Route::get('itens', 'EmularController@index');
+          
         });
 
         //Group routes "funcionario"
@@ -105,7 +102,10 @@ Route::prefix('auth')->group(function () {
            // Route::get('itens', 'EmularController@index');
         });
     });
+
 });
+
+
 
 
 
