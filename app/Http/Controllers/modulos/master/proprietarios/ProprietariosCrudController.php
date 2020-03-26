@@ -57,11 +57,29 @@ class ProprietariosCrudController extends Controller
             );
         } else {
             try{ 
+                if ($request->email == "" or $request->password == "") {
+                    if ($request->email == "") {
+                        return response()->json([
+                            'email' => "Campo Email vazio!"
+                        ], 401);
+                    }
+                    if ($request->password == "") {
+                        return response()->json([
+                            'password' => "Campo senha vazio!"
+                        ], 401);
+                    } 
+                }
+                if($request->password != $request->password_confirmation){
+                    return response()->json([
+                        'Error' => "A confirmação da senha não corresponde."
+                    ],401);
+                }
                 //parte de validadação
                 $request->validate([
                     'password' => 'required|string|confirmed',
                     'email' => 'required|string|email|unique:users'
                 ]);
+
                 //criando o usuario
                 $user = new User([
                     'name'=>$request->name,
