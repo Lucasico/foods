@@ -87,8 +87,8 @@ Route::prefix('auth')->group(function () {
 
         //Group routes proprietario
         Route::middleware('proprietario')->group(function(){
-           // Route::get('itens', 'EmularController@index');
-          
+            //route para teste de cadastro de produto
+            Route::get('/cadProdutoEmpresa','modulos\proprietario\ProdutoCrudController@storeProdutoEmpresa');
         });
 
         //Group routes "funcionario"
