@@ -15,7 +15,7 @@ class CreateTiposTable extends Migration
     {
         Schema::create('tipos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->char('tipo',6);
+            $table->char('tipo',8);
         });
     }
 
