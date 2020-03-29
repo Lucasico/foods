@@ -89,8 +89,10 @@ Route::prefix('auth')->group(function () {
         Route::middleware('proprietario')->group(function(){
             //route para cadastro de tipo
             Route::post('/cadTipoProduto','modulos\proprietario\produtos\ProdutoCrudController@storeTiposProduto');
-            //route para teste de cadastro de produto
+            //route para cadastro de produto por empresas
             Route::post('/cadProdutoEmpresa','modulos\proprietario\produtos\ProdutoCrudController@storeProdutoEmpresa');
+            //route para lista de produtos por empresas
+            Route::get('/listaProdutoEmpresa','modulos\proprietario\produtos\ProdutoCrudController@index');
         });
 
         //Group routes "funcionario"

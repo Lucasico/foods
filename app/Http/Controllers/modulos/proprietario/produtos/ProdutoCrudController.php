@@ -12,8 +12,48 @@ use Illuminate\Support\Facades\DB;
 
 class ProdutoCrudController extends Controller
 {
+    //metodo especial para me retornar o tipo de empresa
+    public function buscarEmpresa(Request $request){
+        try{
+            //user_id do usuario logado no sistema
+            $user_id = $request->user()->id;
+            //pessoa_id do usuario logado no sistema
+            $pessoa_id = User::find($user_id)->pessoa->id;
+            //empresa_id da pessoa logada no sistema
+            $empresa_id = Pessoas::find($pessoa_id)->empresa->id;
+            //buscando tipo valido no BD
+            return $empresa_id;
+        }catch(\Exception $e){
+             //para opção de debug
+             if(config('app.debug')){
+                return response()
+                ->json(ApiErros::erroMensageCadastroEmpresa($e->getMessage(),1026));
+            }
+                //para opção de produção
+                return response()->
+                json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao tentar realizar a busca da empresa por favor tente novamente!',1026));
+        }
+            
+    }
+    //listando produtos por empresa
+    public function index(Request $request){
+        try{
+            $empresa_id = self::buscarEmpresa($request);
+            return response()->json(Produtos::where('empresas_id',$empresa_id)->paginate(10),200);
+        }catch(\Exception $e){
+            //para opção de debug
+            if(config('app.debug')){
+                return response()
+                ->json(ApiErros::erroMensageCadastroEmpresa($e->getMessage(),1027));
+            }
+                //para opção de produção
+                return response()->
+                json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao tentar lista os produtos empresa por favor tente novamente!',1027));
+        }
+           
+    }
+    //cadastrando tipo de produto por empresa
     public function storeTiposProduto(Request $request){
-
        // cadastrando tipo de produto
        //SIMPLES ou COMPOSTO
         $validator = $request->validate([
@@ -29,14 +69,10 @@ class ProdutoCrudController extends Controller
        ], 200);
        
     }
-
+    //cadastrando produto por empresa
     public function storeProdutoEmpresa(Request $request){
-        //user_id do usuario logado no sistema
-        $user_id = $request->user()->id;
-        //pessoa_id do usuario logado no sistema
-        $pessoa_id = User::find($user_id)->pessoa->id;
-        //empresa_id da pessoa logada no sistema
-        $empresa_id = Pessoas::find($pessoa_id)->empresa->id;
+        $requisicao = $request;  
+        $empresa_id = self::buscarEmpresa($requisicao);
         //buscando tipo valido no BD
         $tipoProduto = DB::table('tipos')->where('tipo',$request->tipo)->value('id');
         if(!$tipoProduto){
