@@ -28,7 +28,6 @@ class CreateProdutosTable extends Migration
             $table->timestamps();
             $table->foreign('tipos_id')->references('id')->on('tipos');
             $table->foreign('empresas_id')->references('id')->on('empresas');
-            $table->softDeletes();
         });
     }
 

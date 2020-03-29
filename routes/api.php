@@ -90,7 +90,7 @@ Route::prefix('auth')->group(function () {
             //route para cadastro de tipo
             Route::post('/cadTipoProduto','modulos\proprietario\produtos\ProdutoCrudController@storeTiposProduto');
             //route para teste de cadastro de produto
-            Route::get('/cadProdutoEmpresa','modulos\proprietario\produtos\ProdutoCrudController@storeProdutoEmpresa');
+            Route::post('/cadProdutoEmpresa','modulos\proprietario\produtos\ProdutoCrudController@storeProdutoEmpresa');
         });
 
         //Group routes "funcionario"

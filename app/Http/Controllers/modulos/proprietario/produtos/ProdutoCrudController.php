@@ -3,18 +3,19 @@
 namespace App\Http\Controllers\modulos\proprietario\produtos;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
 use App\User;
 use App\Pessoas;
 use App\Produtos;
-use App\Empresas;
 use App\Tipos;
+use App\API\ApiErros;
+use Illuminate\Support\Facades\DB;
 
 class ProdutoCrudController extends Controller
 {
     public function storeTiposProduto(Request $request){
 
        // cadastrando tipo de produto
+       //SIMPLES ou COMPOSTO
         $validator = $request->validate([
             'tipo'=>'bail|required|string',
         ]);  
@@ -36,7 +37,53 @@ class ProdutoCrudController extends Controller
         $pessoa_id = User::find($user_id)->pessoa->id;
         //empresa_id da pessoa logada no sistema
         $empresa_id = Pessoas::find($pessoa_id)->empresa->id;
-
+        //buscando tipo valido no BD
+        $tipoProduto = DB::table('tipos')->where('tipo',$request->tipo)->value('id');
+        if(!$tipoProduto){
+            return response()->json(['Tipo_invalido' => "Tipo de produto invalido"],401);
+        }
+        //validando
+        $request->validate([
+            'tipos_id' => 'int',
+            'empresas_id' => 'string',
+            'nome' => 'required | string',
+            'unidade_compra' => 'required | string',
+            'descricao' => 'required | string',
+            'precoVenda' => 'required | numeric',
+            'precoCompra' => 'required | numeric',
+            'quantEstoque' => 'required | int',
+            'quantMinina' => 'required | int',
+        ]);
+        //criando
+        try{
+            $produto = new Produtos([
+                //lembrando para se cadastrar é necessario o request->tipo
+                'tipos_id'=> $tipoProduto,
+                'empresas_id' => $empresa_id,
+                'nome' => $request->nome,
+                'unidade_compra' => $request->unidade_compra,
+                'descricao' => $request->descricao,
+                'precoVenda' => $request->precoVenda,
+                'precoCompra' => $request->precoCompra,
+                'quantEstoque' => $request->quantEstoque,
+                'quantMinina' => $request->quantMinina
+            ]);
+            //salvando
+            $produto->save();
+            return response()->json([
+                'produto' => $request->nome . ' cadastrado com sucesso'
+            ],201);
+        }catch(\Exception $e){
+             //para opção de debug
+             if(config('app.debug')){
+                return response()
+                ->json(ApiErros::erroMensageCadastroEmpresa($e->getMessage(),1025));
+            }
+                //para opção de produção
+                return response()->
+                json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao realizar o cadastro do produto, por favor tente novamente',1025));
+        }
+            
             //crtl + k + crtl + c para comentar varias linhas
             //crtl + k + crtl + u para descomentar varias linhas
 
@@ -45,8 +92,6 @@ class ProdutoCrudController extends Controller
          * é simples ou composto, pois um composto é feito de um
          * conjunto de simples, ou seja, um combo
          */
-       
-   
     }
 }
 
