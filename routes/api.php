@@ -93,6 +93,8 @@ Route::prefix('auth')->group(function () {
             Route::post('/cadProdutoEmpresa','modulos\proprietario\produtos\ProdutoCrudController@storeProdutoEmpresa');
             //route para lista de produtos por empresas
             Route::get('/listaProdutoEmpresa','modulos\proprietario\produtos\ProdutoCrudController@index');
+            //route para atualizar um produto por empresa
+            Route::put('/atualizaProdutoEmpresa/{id}','modulos\proprietario\produtos\ProdutoCrudController@updateProduto');
         });
 
         //Group routes "funcionario"

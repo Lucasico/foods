@@ -12,6 +12,20 @@ use Illuminate\Support\Facades\DB;
 
 class ProdutoCrudController extends Controller
 {
+    public function validaEntradaProdutos(Request $request){
+        $request->validate([
+            'tipos_id' => 'int',
+            'empresas_id' => 'string',
+            'nome' => 'required | string',
+            'unidade_compra' => 'required | string',
+            'descricao' => 'required | string',
+            'precoVenda' => 'required | numeric',
+            'precoCompra' => 'required | numeric',
+            'quantEstoque' => 'required | int',
+            'quantMinina' => 'required | int',
+        ]);
+    }
+
     //metodo especial para me retornar o tipo de empresa
     public function buscarEmpresa(Request $request){
         try{
@@ -35,6 +49,7 @@ class ProdutoCrudController extends Controller
         }
             
     }
+
     //listando produtos por empresa
     public function index(Request $request){
         try{
@@ -52,6 +67,7 @@ class ProdutoCrudController extends Controller
         }
            
     }
+
     //cadastrando tipo de produto por empresa
     public function storeTiposProduto(Request $request){
        // cadastrando tipo de produto
@@ -69,6 +85,7 @@ class ProdutoCrudController extends Controller
        ], 200);
        
     }
+
     //cadastrando produto por empresa
     public function storeProdutoEmpresa(Request $request){
         $requisicao = $request;  
@@ -79,17 +96,7 @@ class ProdutoCrudController extends Controller
             return response()->json(['Tipo_invalido' => "Tipo de produto invalido"],401);
         }
         //validando
-        $request->validate([
-            'tipos_id' => 'int',
-            'empresas_id' => 'string',
-            'nome' => 'required | string',
-            'unidade_compra' => 'required | string',
-            'descricao' => 'required | string',
-            'precoVenda' => 'required | numeric',
-            'precoCompra' => 'required | numeric',
-            'quantEstoque' => 'required | int',
-            'quantMinina' => 'required | int',
-        ]);
+        self::validaEntradaProdutos($request);
         //criando
         try{
             $produto = new Produtos([
@@ -128,6 +135,41 @@ class ProdutoCrudController extends Controller
          * é simples ou composto, pois um composto é feito de um
          * conjunto de simples, ou seja, um combo
          */
+    }
+
+    //atualizar um produto
+    public function updateProduto(Request $request, $id){
+        try{
+            //valida entrada de dados
+            self::validaEntradaProdutos($request);
+            $empresa_id = self::buscarEmpresa($request);
+
+            $produto = Produtos::where('empresas_id',$empresa_id)
+            ->where('id',$id)
+                ->first()
+                    ->update($request->all());
+            //o first(): retorna o primeiro elemento da coleção que passa em um
+            //determinado teste de verdade 
+            if($produto){
+                return response()->json([
+                    'res' => 'Produto alterado com sucesso!',
+                ],200);
+            }
+        }catch(\Exception $e){
+             //para opção de debug
+            if(config('app.debug')){
+                return response()
+                ->json(ApiErros::erroMensageCadastroEmpresa($e->getMessage(),1028));
+            }
+                //para opção de produção
+                return response()->
+                json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao realizar o cadastro do produto, por favor tente novamente',1028));
+        }
+    }
+
+    //exibindo um produto
+    public function showProduto($id){
+        
     }
 }
 
