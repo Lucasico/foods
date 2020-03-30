@@ -54,7 +54,8 @@ class ProdutoCrudController extends Controller
     public function index(Request $request){
         try{
             $empresa_id = self::buscarEmpresa($request);
-            return response()->json(Produtos::where('empresas_id',$empresa_id)->paginate(10),200);
+            $produtos = Produtos::where('empresas_id',$empresa_id);
+            return response()->json($produtos->paginate(10),200);
         }catch(\Exception $e){
             //para opção de debug
             if(config('app.debug')){
@@ -168,8 +169,30 @@ class ProdutoCrudController extends Controller
     }
 
     //exibindo um produto
-    public function showProduto($id){
-        
+    public function showProduto(Request $request,$id){
+        try{
+            $empresa_id = self::buscarEmpresa($request);
+            $produto = Produtos::where('empresas_id',$empresa_id)
+                                ->where('id',$id)->get();
+            if(isset($produto) || isset($produto->$id)){
+                return response()->json([
+                    'vazio' => 'Produto não encontrado!',
+                ],200);
+            }
+            return response()->json([
+                'res' => $produto
+            ],200);
+        }catch(\Exception $e){
+            if(config('app.debug')){
+                return response()
+                ->json(ApiErros::erroMensageCadastroEmpresa($e->getMessage(),1029));
+            }
+                //para opção de produção
+                return response()->
+                json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao tentar exibir o produto, por favor tente novamente!',1029));
+        }
     }
+
+
 }
 

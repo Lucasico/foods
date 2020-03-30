@@ -95,6 +95,9 @@ Route::prefix('auth')->group(function () {
             Route::get('/listaProdutoEmpresa','modulos\proprietario\produtos\ProdutoCrudController@index');
             //route para atualizar um produto por empresa
             Route::put('/atualizaProdutoEmpresa/{id}','modulos\proprietario\produtos\ProdutoCrudController@updateProduto');
+            //route para exibir um produto
+            Route::get('/produtoEmpresa/{id}','modulos\proprietario\produtos\ProdutoCrudController@showProduto');
+
         });
 
         //Group routes "funcionario"
