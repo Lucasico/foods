@@ -97,7 +97,9 @@ Route::prefix('auth')->group(function () {
             Route::put('/atualizaProdutoEmpresa/{id}','modulos\proprietario\produtos\ProdutoCrudController@updateProduto');
             //route para exibir um produto
             Route::get('/produtoEmpresa/{id}','modulos\proprietario\produtos\ProdutoCrudController@showProduto');
-
+            //route para excluir um produto
+            Route::delete('/excluirProduto/{id}','modulos\proprietario\produtos\ProdutoCrudController@deleteProduto');
+            
         });
 
         //Group routes "funcionario"

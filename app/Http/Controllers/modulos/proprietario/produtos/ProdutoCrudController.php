@@ -193,6 +193,24 @@ class ProdutoCrudController extends Controller
         }
     }
 
-
+    //excluindo um produtp
+    public function deleteProduto($id){
+        try{
+            $produtoDelete = Produtos::find($id);
+            $produtoDelete->delete();
+            return response()->json([
+                'res' => 'produto: ' . $produtoDelete->nome . ' excluido com sucesso',
+            ],200);
+        }catch(\Exception $e){
+            if(config('app.debug')){
+                return response()
+                ->json(ApiErros::erroMensageCadastroEmpresa($e->getMessage(),1030));
+            }
+                //para opção de produção
+                return response()->
+                json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao tentar excluir o produto, por favor tente novamente!',1030));
+        }
+           
+    }
 }
 
