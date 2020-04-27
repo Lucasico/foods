@@ -3,8 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-//namespace  Illuminate\Database\Eloquent\SoftDeletes;
-//use SoftDeletes;
+
 class Combos extends Model
 {
     //

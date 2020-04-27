@@ -99,6 +99,8 @@ Route::prefix('auth')->group(function () {
             Route::get('/produtoEmpresa/{id}','modulos\proprietario\produtos\ProdutoCrudController@showProduto');
             //route para excluir um produto
             Route::delete('/excluirProduto/{id}','modulos\proprietario\produtos\ProdutoCrudController@deleteProduto');
+            //route para inserir produto no combo
+            Route::post('/comboProduto/{id}','modulos\proprietario\produtos\produtoCrudController@createComboProdutos');
             
         });
 

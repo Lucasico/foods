@@ -8,6 +8,7 @@ use App\Pessoas;
 use App\Produtos;
 use App\Tipos;
 use App\API\ApiErros;
+use App\Combos;
 use Illuminate\Support\Facades\DB;
 
 class ProdutoCrudController extends Controller
@@ -98,7 +99,7 @@ class ProdutoCrudController extends Controller
         }
         //validando
         self::validaEntradaProdutos($request);
-        //criando
+        //criando produto simples
         try{
             $produto = new Produtos([
                 //lembrando para se cadastrar é necessario o request->tipo
@@ -193,7 +194,7 @@ class ProdutoCrudController extends Controller
         }
     }
 
-    //excluindo um produtp
+    //excluindo um produto
     public function deleteProduto($id){
         try{
             $produtoDelete = Produtos::find($id);
@@ -211,6 +212,19 @@ class ProdutoCrudController extends Controller
                 json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao tentar excluir o produto, por favor tente novamente!',1030));
         }
            
+    }
+
+    //criando um combo de produtos
+    public function createComboProdutos(Request $request,$id){
+        $combo = new Combos([
+            'nome' => $request->nome,
+            'combo_id' => $id,
+            'produto_id' => $request->produtoCombo
+        ]);
+        $combo->save();
+        return response()->json([
+            'res' => 'produto inserido no combo com sucesso!'
+        ],200);
     }
 }
 

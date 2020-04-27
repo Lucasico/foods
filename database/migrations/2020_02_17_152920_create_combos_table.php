@@ -14,12 +14,11 @@ class CreateCombosTable extends Migration
     public function up()
     {
         Schema::create('combos', function (Blueprint $table) {
-            $table->string('nome',45);
             $table->uuid('combo_id');
             $table->foreign('combo_id')->references('id')->on('produtos');
             $table->uuid('produto_id');
             $table->foreign('produto_id')->references('id')->on('produtos');
-            $table->softDeletes();
+           
            
         });
     }
