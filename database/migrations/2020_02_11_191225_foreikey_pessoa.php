@@ -27,8 +27,8 @@ class ForeikeyPessoa extends Migration
     public function down()
     {
         Schema::table('pessoas',function(Blueprint $table){
-          //  Schema::dropIfExists('empresas_id');
-          //  Schema::dropIfExists('funcoes_id');
+            Schema::dropIfExists('empresas_id');
+            Schema::dropIfExists('funcoes_id');
 
         });
     }
