@@ -16,7 +16,16 @@ Route::prefix('auth')->group(function () {
         Route::post('logout', 'AutentificadorController@logout');
         //Group routes mastes
         Route::middleware('master')->group(function(){
-            
+           //dashboard
+            Route::prefix('dataDashboard')->group(function(){        
+                //quantidade de empresa
+                Route::get('/dashboard/quantidadeEmpresas','modulos\master\dashboard\DashboardMasterController@quantidadeEmpresas');
+                 //quantidade de cliente
+                Route::get('/dashboard/quantidadeClientes','modulos\master\dashboard\DashboardMasterController@quantidadeClientes');
+                 //quantidade de produtos
+                 Route::get('/dashboard/quantidadeProdutos','modulos\master\dashboard\DashboardMasterController@quantidadeProdutos');
+            });
+           
             //lista de empresas
             Route::prefix('empresas')->group(function(){
                 /**
@@ -36,16 +45,6 @@ Route::prefix('auth')->group(function () {
                 
                 //excluindo uma empresa
                 Route::delete('/{id}','modulos\master\empresas\EmpresasCrudController@delete');
-                /**
-                 * Parte complementar de empresa 
-                 * quantidade de empresa
-                 * quantidade de empresas ativas, nomes
-                 * quantidade de empresa inativas, nomes
-                 * 
-                 */
-                Route::get('totalEmpresas','modulos\master\empresas\BuscasEmpresaController@quantidadeEmpresas');
-                Route::get('totalEmpresas/ativas','modulos\master\empresas\BuscasEmpresaController@quantEmpresaAtiva');
-                Route::get('totalEmpresas/inativas','modulos\master\empresas\BuscasEmpresaController@quantEmpresaInativas');
                
             });
 
@@ -115,6 +114,7 @@ Route::prefix('auth')->group(function () {
            // Route::get('itens', 'EmularController@index');
         });
     });
+    
 
 });
 

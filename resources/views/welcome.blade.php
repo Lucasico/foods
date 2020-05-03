@@ -13,7 +13,7 @@
         <style>
             html, body {
                 background-color: #fff;
-                color: #636b6f;
+                color: rgb(20, 143, 151);
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
                 height: 100vh;
@@ -48,52 +48,49 @@
                 font-size: 84px;
             }
 
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            .footer {
+                position: fixed;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                background-color: rgb(20, 143, 151);
+                color: white;
+                text-align: center;
+                
+            }
+            .footer a{
+                color: white;
+                padding: 0 5px;
+                font-size: 15px;
+                font-weight: 600;
+                letter-spacing: .1rem;
+                text-decoration: none;
+                
+            }
+
         </style>
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
             <div class="content">
                 <div class="title m-b-md">
-                    marcio garganta profunda
+                    FamilyFoods-API
                 </div>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+                <div class="footer">
+                    <h4>
+                   <p>FamilyFoods © 2020 Todos os direitos reservados</p>   
+                        <p> Developed by : 
+                            <a href="https://github.com/Lucasico">Lucas Santos</a>  e
+                            <a href="https://github.com/marcio-ifce">Marcio Sousa</a>
+                        </p>
+                    <h4>
+
+                <div>
             </div>
         </div>
     </body>
