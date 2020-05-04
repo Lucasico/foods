@@ -15,7 +15,7 @@ class AddCamposTabelaEmpresas extends Migration
     {
         Schema::table('empresas', function (Blueprint $table) {
             $table->decimal('taxaEntrega',4,2)->nullable();
-            $table->decimal('tempoEntrega', 4,2)->nullable();
+            $table->string('tempoEntrega')->nullable();
             $table->string('categoria',30)->nullable(false);
             $table->string('telefone',9)->nullable(false);
             $table->string('celular',20)->nullable(false);
