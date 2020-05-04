@@ -47,6 +47,7 @@ class AddCamposTabelaEmpresas extends Migration
             $table->dropColumn('email');
             $table->dropColumn('instagram');
             $table->dropColumn('numero');
+            
             $table->string('nomeProprietario', 100)->nullable(false);
 
         });
