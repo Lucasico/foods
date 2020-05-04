@@ -4,10 +4,10 @@ namespace App\Http\Controllers\modulos\master\empresas;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Validation;
 use Illuminate\Support\Facades\DB;
 use App\Empresas;
 use App\API\ApiErros;
+use App\API\ValidaRequests;
 
 class EmpresasCrudController extends Controller
 {
@@ -29,21 +29,28 @@ class EmpresasCrudController extends Controller
         if($cnpjCadastrado != null){
             return response()->json(['Resposta' => "CNPJ já cadastrado!"],401);
         }else{
-            $request->validate([
-                'situacao' => 'required',
-                'razao_social' => 'required',
-                'cnpj' => 'required|cnpj'
-            ]);
+            $retorno = ValidaRequests::validaCadastroProduto($request);
+            if(!empty($retorno)){
+                $arrayErros = $retorno->original;
+                return response()->json(['ErrosValida' => $arrayErros],422);
+            }
             try{
                 $empresa = new Empresas([
                     'razao_social' => $request->razao_social,
-                    'nomeProprietario' => $request->nomeProprietario,
                     'cnpj' => $request->cnpj,
                     'situacao' => $request->situacao,
                     'cidade' => $request->cidade,
                     'bairro' => $request->bairro,
                     'rua' => $request->rua,
-                    'cep' => $request->cep
+                    'cep' => $request->cep,
+                    'categoria' => $request->categoria,
+                    'telefone' => $request->telefone,
+                    'celular' => $request->celular,
+                    'email' => $request->email,
+                    'instagram' => $request->instagram,
+                    'taxaEntrega' => $request->taxaEntrega,
+                    'tempoEntrega' => $request->tempoEntrega
+
                 ]);
                 $empresa->save();
                 return response()->json([
