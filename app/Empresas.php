@@ -26,7 +26,8 @@ class Empresas extends Model
         'telefone',
         'celular',
         'email',
-        'instagram'
+        'instagram',
+        'numero'
      ];
      //tem n pessoas
      public function pessoas(){

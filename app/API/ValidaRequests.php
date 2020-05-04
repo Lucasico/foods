@@ -17,7 +17,8 @@ class ValidaRequests{
             'situacao' => 'required',
             'razao_social' => 'required',
             'cnpj' => 'required|cnpj',
-            'email' => 'email'
+            'email' => 'email',
+            'numero' => 'required'
        ]);
        if($validacao->fails()){
          return response()->json($validacao->errors());

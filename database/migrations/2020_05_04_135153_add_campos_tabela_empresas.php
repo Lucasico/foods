@@ -21,6 +21,7 @@ class AddCamposTabelaEmpresas extends Migration
             $table->string('celular',20)->nullable(false);
             $table->string('email',100)->nullable();
             $table->string('instagram',45)->nullable();
+            $table->integer('numero')->nullable();
 
 
             //apagar nomeProprietario
@@ -45,7 +46,7 @@ class AddCamposTabelaEmpresas extends Migration
             $table->dropColumn('celular');
             $table->dropColumn('email');
             $table->dropColumn('instagram');
-
+            $table->dropColumn('numero');
             $table->string('nomeProprietario', 100)->nullable(false);
 
         });
