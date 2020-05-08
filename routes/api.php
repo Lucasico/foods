@@ -45,6 +45,9 @@ Route::prefix('auth')->group(function () {
                 
                 //excluindo uma empresa
                 Route::delete('/{id}','modulos\master\empresas\EmpresasCrudController@delete');
+
+                //filtrarEmpresa
+                Route::post('/filtrar','modulos\master\empresas\BuscarEmpresaController@filtraEmpresa');
                
             });
 
