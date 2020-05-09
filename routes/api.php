@@ -41,7 +41,7 @@ Route::prefix('auth')->group(function () {
                 Route::post('/','modulos\master\empresas\EmpresasCrudController@store');
                
                 //atualizando uma empresa
-                Route::put('/{id}','modulos\master\empresas\EmpresasCrudController@update');
+                Route::put('/{id}','modulos\master\empresas\EmpresasCrudController@update')->name('atualizar');
                 
                 //excluindo uma empresa
                 Route::delete('/{id}','modulos\master\empresas\EmpresasCrudController@delete');

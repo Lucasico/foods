@@ -50,8 +50,7 @@ class BuscarEmpresaController extends Controller
       return response()->json($query,200);
      
     }
-    
-    
+      
 }
 
 

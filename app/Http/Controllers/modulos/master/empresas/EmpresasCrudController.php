@@ -29,7 +29,7 @@ class EmpresasCrudController extends Controller
         if($cnpjCadastrado != null){
             return response()->json(['Resposta' => "CNPJ já cadastrado!"],401);
         }else{
-            $retorno = ValidaRequests::validaCadastroProduto($request);
+            $retorno = ValidaRequests::validaCadastroEmpresa($request);
             if(!empty($retorno)){
                 $arrayErros = $retorno->original;
                 return response()->json(['ErrosValida' => $arrayErros],422);
@@ -74,20 +74,14 @@ class EmpresasCrudController extends Controller
     //atualizando uma empresa
     public function update(Request $request, $id){
         $testeRetorno = " Empresa Atualizado com sucesso!";
-            $request->validate([
-                'situacao' => 'required',
-                'razao_social' => 'required',
-                'cnpj' => 'required|cnpj'
-            ]);
+        $retorno = ValidaRequests::validaAtualizaEmpresa($request);
+            if(!empty($retorno)){
+                $arrayErros = $retorno->original;
+                return response()->json(['ErrosValida' => $arrayErros],422);
+            }  
             try{  
-                // obtém todos os dados da empresa
-                $empresa = Empresas::find($id);
-                $empresaData = array_filter($request->all());
-                // atualiza essa empresa
-                //preenche os valores que vem do banco de dados
-                $empresa->fill($empresaData);
-                $empresa->save();
-                return response()->json($testeRetorno, 204);
+                Empresas::where('id', $id)->update($request->except('cnpj','id'));
+                return response()->json($testeRetorno,200);
             }catch(\Exception $e){
                 //para opção de debug
                 if(config('app.debug')){
