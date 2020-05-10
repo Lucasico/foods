@@ -12,8 +12,8 @@ class DashboardMasterController extends Controller
 {
     public function quantidadeEmpresas(){
         try{
-            $countEmpresa = count(Empresas::all());
-            return response()->json($countEmpresa,200);
+           $countEmpresa = count(Empresas::all());
+           return response()->json($countEmpresa,200);
         }catch(\Exception $e){
             if(config('app.debug')){
                 return response()->json(ApiErros::erroMensageCadastroEmpresa($e->getMessage(),1022));

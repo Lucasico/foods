@@ -34,7 +34,7 @@ class Produtos extends Model
     }
     
     public function composicao(){
-        return $this->belongsToMany('App\Composicoes');
+        return $this->belongsToMany('App\Composicoes','Composicao_produtos','produto_id','composicao_id');
     }
 
 }

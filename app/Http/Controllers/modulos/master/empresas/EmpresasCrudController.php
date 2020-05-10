@@ -19,8 +19,9 @@ class EmpresasCrudController extends Controller
     //buscar um registro
     public function show(Empresas $id){
         //dessa forma ele já me passa um objeto com este $id
-        $data = ['data' => $id];
-        return response()->json($data,200);
+        $data = $id;
+       // $id = $data->id;
+        return response()->json(['data' => $data],200);
     }
 
     //inserindo registro
@@ -80,7 +81,7 @@ class EmpresasCrudController extends Controller
                 return response()->json(['ErrosValida' => $arrayErros],422);
             }  
             try{  
-                Empresas::where('id', $id)->update($request->except('cnpj','id'));
+                Empresas::where('id', $id)->update($request->except('id'));
                 return response()->json($testeRetorno,200);
             }catch(\Exception $e){
                 //para opção de debug

@@ -17,7 +17,7 @@ class CreateComposicoesTable extends Migration
             $table->bigIncrements('id');
             $table->string('nome_ingridiente',45);
             $table->string('categoria_composicao',45);
-            $table->softDeletes();
+           
         });
     }
 
