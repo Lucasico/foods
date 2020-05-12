@@ -11,8 +11,22 @@ class BuscarEmpresaController extends Controller
 {
    
     public function filtraEmpresa(Request $request){
-      $query = DB::table('empresas')
+     
+      if(
+          is_null(Request()->input('razao_social')) &&
+          is_null(Request()->input('cnpj')) &&
+          is_null(Request()->input('cidade')) &&
+          is_null(Request()->input('rua')) &&
+          is_null(Request()->input('numero')) &&
+          is_null(Request()->input('bairro')) &&
+          is_null(Request()->input('numero')) &&
+          is_null(Request()->input('categoria')) 
+        ){
+        return response()->json(["Nenhum campo de busca preenchido, por favor tente novamente"],200);
+      }
 
+      $query = DB::table('empresas')
+      
       ->when(Request()->input('razao_social'), function($query){
         $query->where('razao_social', Request()->input('razao_social'));
       })
@@ -41,6 +55,7 @@ class BuscarEmpresaController extends Controller
         $query->where('categoria',Request()->input('categoria'));
       })
 
+      
       ->paginate(10);
       
       if($query->isEmpty()){
