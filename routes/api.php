@@ -26,7 +26,7 @@ Route::prefix('auth')->group(function () {
                  Route::get('/dashboard/quantidadeProdutos','modulos\master\dashboard\DashboardMasterController@quantidadeProdutos');
             });
            
-            //lista de empresas
+            //routes de empresas
             Route::prefix('empresas')->group(function(){
                 /**
                  * parte basica de empresa CRUD
@@ -51,27 +51,39 @@ Route::prefix('auth')->group(function () {
                
             });
 
-            //lista referente a proprietarios
+            //routes de proprietarios
             Route::prefix('proprietario')->group(function(){
                 //criando PessoaProprietaria
-                Route::post('/cadPessoProprietaria',
+                Route::post('/',
                 'modulos\master\proprietarios\ProprietariosCrudController@storePessoaProprietaria');
+                //listagem de pessoas para cadastro de usuario
+                Route::get('/pessoas',
+                'modulos\master\proprietarios\ProprietariosCrudController@retornaPessoaParaCadastroDeUsuario');
 
-                //criar proprietario 
+                //listagem de empresas aptas a receber cadastro de pessoas
+                Route::get('/empresas',
+                'modulos\master\proprietarios\ProprietariosCrudController@retornaEmpresasParaCadastroDePessoa');
+
+                //criar UsuarioProprietario 
                 Route::post('/cadUserProprietaria',
                 'modulos\master\proprietarios\ProprietariosCrudController@storeUserProprietario');
 
                 //buscar proprietario
-                Route::get('/proprietario/{id}',
+                Route::get('/{id}',
                 'modulos\master\proprietarios\ProprietariosCrudController@show');
                 
                 //lista proprietarios
                 Route::get('/proprietarios','modulos\master\proprietarios\ProprietariosCrudController@index');
                            
                 //atualizar proprietario
-                Route::put('/proprietario/{id}',
+                Route::put('/{id}',
                 'modulos\master\proprietarios\ProprietariosCrudController@updateProprietario');
-               
+                
+                //route para filtrar pessoas
+                Route::post('/filtro',
+                'modulos\master\proprietarios\BuscarProprietarioController@filtrarPessoaEmpresa')->name("filtro");
+
+
                 //excluir proprietario
                 //só vai funcionar quando atualizar as migrations, por conta da chave estrangeira
                 //vai marca a linha como apagada

@@ -55,15 +55,13 @@ class BuscarEmpresaController extends Controller
         $query->where('categoria',Request()->input('categoria'));
       })
 
-      
       ->paginate(10);
       
       if($query->isEmpty()){
         return response()->json("Nenhuma Empresa encontrada!",200);
       }
 
-      return response()->json($query,200);
-     
+      return response()->json($query,200); 
     }
       
 }

@@ -34,7 +34,8 @@ class EmpresasCrudController extends Controller
             if(!empty($retorno)){
                 $arrayErros = $retorno->original;
                 return response()->json(['ErrosValida' => $arrayErros],422);
-            }            try{
+            }           
+             try{
                 $empresa = new Empresas([
                     'razao_social' => $request->razao_social,
                     'cnpj' => $request->cnpj,

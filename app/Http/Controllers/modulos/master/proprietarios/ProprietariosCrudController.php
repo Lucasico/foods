@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\DB;
 use App\Pessoas;
 use App\User;
 use App\API\ApiErros;
+use App\API\ValidaRequests;
+
 
 class ProprietariosCrudController extends Controller
 {
@@ -46,6 +48,17 @@ class ProprietariosCrudController extends Controller
                 return response()->json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao listar os proprietarios',1016));
         }
     }
+
+    //retorna pessoas para cadastro de usuario
+    public function retornaPessoaParaCadastroDeUsuario(){
+        $pessoas = DB::table('pessoas')->select('id','nome')->where('funcoes_id',2)->get();
+        return response()->json(["data" => $pessoas],200);
+    }
+    //retorna empresas para o cadastro de Pessoa
+    public function retornaEmpresasParaCadastroDePessoa(){
+        $empresas = DB::table('empresas')->select('id','razao_social')->where('situacao',true)->get();
+        return response()->json(["data" => $empresas],200);
+    }
     //criando Usuario de acesso do tipo proprietario
     public function storeUserProprietario(Request $request){
         $emailCadastrado = DB::table('users')->where('email', $request->email)->value('email');
@@ -74,11 +87,11 @@ class ProprietariosCrudController extends Controller
                         'Error' => "A confirmação da senha não corresponde."
                     ],401);
                 }
-                //parte de validadação
-                $request->validate([
-                    'password' => 'required|string|confirmed',
-                    'email' => 'required|string|email|unique:users'
-                ]);
+                $retorno = ValidaRequests::validaCadastroDotipoProprietario($request);
+                if(!empty($retorno)){
+                    $arrayErros = $retorno->original;
+                    return response()->json(['ErrosValida' => $arrayErros],422);
+                }  
 
                 //criando o usuario
                 $user = new User([
@@ -112,18 +125,14 @@ class ProprietariosCrudController extends Controller
             return response()->json(['Resposta' => "CPF já cadastrado!"],401);
         }else{
             try{  
-                //validaçaõ de campos
-                $request->validate([
-                    'nome' => 'required|string',
-                    'cidade'=> 'required|string',
-                    'rua'=> 'required|string',
-                    'cep'=> 'required|string',
-                    'bairro'=> 'required|string',
-                    'cpf' => 'required|cpf'
-                ]);
+                $retorno = ValidaRequests::validaCadastroDePessoa($request);
+                if(!empty($retorno)){
+                    $arrayErros = $retorno->original;
+                    return response()->json(['ErrosValida' => $arrayErros],422);
+                } 
                 //criando pessoa
                 $pessoa = new Pessoas([
-                    'empresas_id' => $request->empresa,
+                    'empresas_id' => $request->empresas_id,
                     //setando o valor direto para funcoes de proprietario
                     'funcoes_id' => 2,
                     'nome' => $request->nome,
@@ -137,7 +146,7 @@ class ProprietariosCrudController extends Controller
                 ]);
                 $pessoa->save();
                  return response()->json([
-                     'res' => 'Pessoa: ' . $request->nome . ' criada com sucesso!'
+                     'res' => 'Cadastrado com sucesso!'
                  ], 201);
             }catch(\Exception $e){
                 if(config('app.debug')){

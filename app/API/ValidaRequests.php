@@ -44,5 +44,37 @@ class ValidaRequests{
          return response()->json($validacao->errors());
        }
     }
+
+    public static function validaCadastroDotipoProprietario(Request $request){
+      $data = $request->all();
+        $validacao = Validator::make($data,[
+          'name' => 'required|string',
+          'password' => 'required|string|confirmed',
+          'email' => 'required|string|email|unique:users',
+          'pessoas_id' => 'required|UUID|unique:users'
+       ]);
+       if($validacao->fails()){
+         return response()->json($validacao->errors());
+       }
+    }
+
+    public static function validaCadastroDePessoa(Request $request){
+      $data = $request->all();
+        $validacao = Validator::make($data,[
+          'nome' => 'required|string',
+          'sexo' => 'required|min:1|max:1',
+          'telefone' => 'required|string|min:9|max:16',
+          'cidade'=> 'required|string',
+          'rua'=> 'required|string',
+          'cep'=> 'required|string',
+          'bairro'=> 'required|string',
+          'cidade' => 'required|string',
+          'cpf' => 'required|cpf|min:14|max:14|unique:pessoas',
+          'empresas_id' => 'required|UUID'
+       ]);
+       if($validacao->fails()){
+         return response()->json($validacao->errors());
+       }
+    }
 }
 ?>
