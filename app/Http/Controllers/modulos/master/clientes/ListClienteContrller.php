@@ -3,13 +3,20 @@
 namespace App\Http\Controllers\modulos\master\clientes;
 
 use App\Http\Controllers\Controller;
+use App\Pessoas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 //empresa, nome, cidade, bairro, rua
 class ListClienteContrller extends Controller
 {
-    public function listaCliente(){
+    public function listagemClientes(){
+        $clientes = Pessoas::select('id','nome', 'sexo','pessoas.telefone',
+                                    'cpf','cidade','rua','cep','bairro'
+                             )->where('funcoes_id',4)->paginate(10);
+        return response()->json($clientes,200);
+    }
+    public function filtratListaCliente(){
         if(
             is_null(Request()->input('razao_social')) &&
             is_null(Request()->input('nome')) &&

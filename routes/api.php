@@ -91,8 +91,11 @@ Route::prefix('auth')->group(function () {
                 //route para excluir um proprietario
                 Route::delete('/{id}','modulos\master\proprietarios\ProprietariosCrudController@deleteProprietario');
 
-                //route para listagem de clientes
-                Route::post('/clientes','modulos\master\clientes\ListClienteContrller@listaCliente')->name("listagem de clientes");
+                //route para filtragem de clientes
+                Route::post('/clientes','modulos\master\clientes\ListClienteContrller@filtratListaCliente');
+
+                //route listagem de clientes
+                Route::get('/clientes/lista','modulos\master\clientes\ListClienteContrller@listagemClientes')->name('listage');
                
             });
 
