@@ -33,7 +33,7 @@ class EmpresasCrudController extends Controller
             $retorno = ValidaRequests::validaCadastroEmpresa($request);
             if(!empty($retorno)){
                 $arrayErros = $retorno->original;
-                return response()->json(['ErrosValida' => $arrayErros],422);
+                return response()->json(['ErrosValida' => $arrayErros],200);
             }           
              try{
                 $empresa = new Empresas([
@@ -79,7 +79,7 @@ class EmpresasCrudController extends Controller
         $retorno = ValidaRequests::validaAtualizaEmpresa($request);
             if(!empty($retorno)){
                 $arrayErros = $retorno->original;
-                return response()->json(['ErrosValida' => $arrayErros],422);
+                return response()->json(['ErrosValida' => $arrayErros],200);
             }  
             try{  
                 Empresas::where('id', $id)->update($request->except('id'));

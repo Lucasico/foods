@@ -50,6 +50,7 @@ class ListClienteContrller extends Controller
         //rua
         ->when(Request()->input('rua'), function($query){
             $query->where('pessoas.rua',Request()->input('rua'));
+            $casa = 0;
         })
 
         ->paginate(10);
@@ -58,6 +59,7 @@ class ListClienteContrller extends Controller
             return response()->json("Nenhum cliente encontrada!",200);
           }
             return response()->json($query,200); 
+            
     }
    
 

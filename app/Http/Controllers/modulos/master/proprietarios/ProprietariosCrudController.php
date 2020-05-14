@@ -107,7 +107,7 @@ class ProprietariosCrudController extends Controller
                 $retorno = ValidaRequests::validaCadastroDotipoProprietario($request);
                 if(!empty($retorno)){
                     $arrayErros = $retorno->original;
-                    return response()->json(['ErrosValida' => $arrayErros],422);
+                    return response()->json(['ErrosValida' => $arrayErros],200);
                 }  
 
                 //criando o usuario
@@ -145,7 +145,7 @@ class ProprietariosCrudController extends Controller
                 $retorno = ValidaRequests::validaCadastroDePessoa($request);
                 if(!empty($retorno)){
                     $arrayErros = $retorno->original;
-                    return response()->json(['ErrosValida' => $arrayErros],422);
+                    return response()->json(['ErrosValida' => $arrayErros],200);
                 } 
                 //criando pessoa
                 $pessoa = new Pessoas([
@@ -213,7 +213,7 @@ class ProprietariosCrudController extends Controller
             $retorno = ValidaRequests::validaAtualizacaoUserProprietario($request);
             if(!empty($retorno)){
                 $arrayErros = $retorno->original;
-                return response()->json(['ErrosValida' => $arrayErros],422);
+                return response()->json(['ErrosValida' => $arrayErros],200);
             } 
 
             $user->name = $request->name;
