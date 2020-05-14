@@ -75,6 +75,7 @@ class ProprietariosCrudController extends Controller
         $empresas = DB::table('empresas')->select('id','razao_social')->where('situacao',true)->get();
         return response()->json(["data" => $empresas],200);
     }
+
     //criando Usuario de acesso do tipo proprietario
     public function storeUserProprietario(Request $request){
         $emailCadastrado = DB::table('users')->where('email', $request->email)->value('email');
@@ -251,4 +252,5 @@ class ProprietariosCrudController extends Controller
                 return response()->json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao apagar',1019));
         }
     }
+    
 }
