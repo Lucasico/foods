@@ -29,6 +29,6 @@ class CreateComposicaoProdutosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('composicao_produtos');
+     //   Schema::dropIfExists('composicao_produtos');
     }
 }

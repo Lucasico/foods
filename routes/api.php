@@ -8,7 +8,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::prefix('auth')->group(function () {
-    Route::post('registro', 'AutentificadorController@registro');
+    Route::post('registro', 'AutentificadorController@registro')->name("registro");
     Route::get('index','AutentificadorController@index');
     Route::post('login', 'AutentificadorController@login');
 
@@ -56,6 +56,7 @@ Route::prefix('auth')->group(function () {
                 //criando PessoaProprietaria
                 Route::post('/',
                 'modulos\master\proprietarios\ProprietariosCrudController@storePessoaProprietaria');
+
                 //listagem de pessoas para cadastro de usuario
                 Route::get('/pessoas',
                 'modulos\master\proprietarios\ProprietariosCrudController@retornaPessoaParaCadastroDeUsuario');
@@ -68,26 +69,27 @@ Route::prefix('auth')->group(function () {
                 Route::post('/cadUserProprietaria',
                 'modulos\master\proprietarios\ProprietariosCrudController@storeUserProprietario');
 
+                Route::get('/proprietarios',
+                'modulos\master\proprietarios\ProprietariosCrudController@listagem');
+
                 //buscar proprietario
                 Route::get('/{id}',
                 'modulos\master\proprietarios\ProprietariosCrudController@show');
-                
-                //lista proprietarios
-                Route::get('/proprietarios','modulos\master\proprietarios\ProprietariosCrudController@index');
-                           
-                //atualizar proprietario
+                        
+                //atualizar pessoa proprietario
                 Route::put('/{id}',
                 'modulos\master\proprietarios\ProprietariosCrudController@updateProprietario');
+
+                //atualizar User proprietario
+                Route::put('/user/{id}',
+                'modulos\master\proprietarios\ProprietariosCrudController@updateUserProprietario')->name("Atualiza proprietario");
                 
                 //route para filtrar pessoas
                 Route::post('/filtro',
-                'modulos\master\proprietarios\BuscarProprietarioController@filtrarPessoaEmpresa')->name("filtro");
+                'modulos\master\proprietarios\BuscarProprietarioController@filtrarPessoaEmpresa');
 
-
-                //excluir proprietario
-                //só vai funcionar quando atualizar as migrations, por conta da chave estrangeira
-                //vai marca a linha como apagada
-                Route::delete('proprietario/{id}','modulos\master\proprietarios\ProprietariosCrudController@deleteProprietario');
+                //route para excluir um proprietario
+                Route::delete('/{id}','modulos\master\proprietarios\ProprietariosCrudController@deleteProprietario')->name("Excluir proprietario");
                
             });
 

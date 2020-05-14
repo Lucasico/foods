@@ -14,7 +14,7 @@ class ForeikeyPessoaInUser extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->foreign('pessoas_id')->references('id')->on('pessoas');
+            $table->foreign('pessoas_id')->references('id')->on('pessoas')->onDelete('cascade');
         });
     }
 

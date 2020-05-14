@@ -38,19 +38,19 @@ class AddCamposTabelaEmpresas extends Migration
      */
     public function down()
     {
-        Schema::table('empresas', function (Blueprint $table) {
-            $table->dropColumn('taxaEntrega');
-            $table->dropColumn('tempoEntrega');
-            $table->dropColumn('categoria');
-            $table->dropColumn('telefone');
-            $table->dropColumn('celular');
-            $table->dropColumn('email');
-            $table->dropColumn('instagram');
-            $table->dropColumn('numero');
+        // Schema::table('empresas', function (Blueprint $table) {
+        //     $table->dropColumn('taxaEntrega');
+        //     $table->dropColumn('tempoEntrega');
+        //     $table->dropColumn('categoria');
+        //     $table->dropColumn('telefone');
+        //     $table->dropColumn('celular');
+        //     $table->dropColumn('email');
+        //     $table->dropColumn('instagram');
+        //     $table->dropColumn('numero');
             
-            $table->string('nomeProprietario', 100)->nullable(false);
+        //     $table->string('nomeProprietario', 100)->nullable(false);
 
-        });
+        // });
 
     }
 }

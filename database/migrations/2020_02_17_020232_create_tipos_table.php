@@ -26,6 +26,6 @@ class CreateTiposTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipos');
+     //   Schema::dropIfExists('tipos');
     }
 }

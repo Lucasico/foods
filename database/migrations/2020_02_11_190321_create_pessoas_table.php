@@ -26,7 +26,7 @@ class CreatePessoasTable extends Migration
             $table->string('rua', 45)->nullable(false);
             $table->string('cep', 20)->nullable(false);
             $table->string('bairro', 45)->nullable(false);
-            $table->softDeletes();
+           
             
         });
     }
@@ -38,8 +38,8 @@ class CreatePessoasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pessoas');
-        Schema::dropIfExists('empresas');
-        Schema::dropIfExists('funcoes');
+    //    Schema::dropIfExists('pessoas');
+    //    Schema::dropIfExists('empresas');
+    //    Schema::dropIfExists('funcoes');
     }
 }

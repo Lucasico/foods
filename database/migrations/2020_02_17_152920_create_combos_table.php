@@ -30,6 +30,6 @@ class CreateCombosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('combos');
+    //    Schema::dropIfExists('combos');
     }
 }

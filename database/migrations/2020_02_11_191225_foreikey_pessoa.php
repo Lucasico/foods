@@ -14,7 +14,7 @@ class ForeikeyPessoa extends Migration
     public function up()
     {
         Schema::table('pessoas', function (Blueprint $table) {
-            $table->foreign('empresas_id')->references('id')->on('empresas');
+            $table->foreign('empresas_id')->references('id')->on('empresas')->onDelete('cascade');
             $table->foreign('funcoes_id')->references('id')->on('funcoes');
         });
     }
@@ -26,10 +26,10 @@ class ForeikeyPessoa extends Migration
      */
     public function down()
     {
-        Schema::table('pessoas',function(Blueprint $table){
-            Schema::dropIfExists('empresas_id');
-            Schema::dropIfExists('funcoes_id');
+        //Schema::table('pessoas',function(Blueprint $table){
+          // Schema::dropIfExists('empresas_id');
+           // Schema::dropIfExists('funcoes_id');
 
-        });
+        //});
     }
 }

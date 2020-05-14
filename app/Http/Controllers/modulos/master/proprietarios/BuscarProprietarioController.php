@@ -4,9 +4,6 @@ namespace App\Http\Controllers\modulos\master\proprietarios;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Empresas;
-use App\User;
-use App\Pessoas;
 use Illuminate\Support\Facades\DB;
 //empresa, cpf, nome, nome de usuario, cidade, rua, bairro
 class BuscarProprietarioController extends Controller

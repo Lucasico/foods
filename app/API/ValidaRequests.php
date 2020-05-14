@@ -76,5 +76,16 @@ class ValidaRequests{
          return response()->json($validacao->errors());
        }
     }
+
+    public static function validaAtualizacaoUserProprietario(Request $request){
+      $data = $request->all();
+        $validacao = Validator::make($data,[
+          'password' => 'string|confirmed',
+          'email' => 'string|email|unique:users'
+       ]);
+       if($validacao->fails()){
+         return response()->json($validacao->errors());
+       }
+    }
 }
 ?>

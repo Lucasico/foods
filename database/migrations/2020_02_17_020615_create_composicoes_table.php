@@ -28,6 +28,6 @@ class CreateComposicoesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('composicoes');
+      //  Schema::dropIfExists('composicoes');
     }
 }
