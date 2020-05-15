@@ -11,9 +11,7 @@ use Illuminate\Support\Facades\DB;
 class ListClienteContrller extends Controller
 {
     public function listagemClientes(){
-        $clientes = Pessoas::select('id','nome', 'sexo','pessoas.telefone',
-                                    'cpf','cidade','rua','cep','bairro','funcoes_id'
-                             )->where('funcoes_id',4)->get(10);
+        $clientes = Pessoas::where('funcoes_id',4)->paginate(10);
         return response()->json($clientes,200);
     }
     public function filtratListaCliente(){
