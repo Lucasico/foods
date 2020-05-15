@@ -92,12 +92,14 @@ Route::prefix('auth')->group(function () {
                 //route para excluir um proprietario
                 Route::delete('/{id}','modulos\master\proprietarios\ProprietariosCrudController@deleteProprietario');
 
-                //route para filtragem de clientes
-                Route::post('/clientes','modulos\master\clientes\ListClienteContrller@filtratListaCliente');
-
-                //route listagem de clientes
-                Route::get('/clientes/lista','modulos\master\clientes\ListClienteContrller@listagemClientes')->name("listaClientes");
+                
                
+            });
+            Route::prefix('clientes')->group(function(){
+                //route para filtragem de clientes
+                Route::post('/','modulos\master\clientes\ListClienteContrller@filtratListaCliente')->name("fitragem de clientes");
+                //route listagem de clientes
+                Route::get('/lista','modulos\master\clientes\ListClienteContrller@listagemClientes')->name("listaClientes");
             });
 
             //lista referente a usuarios Master
