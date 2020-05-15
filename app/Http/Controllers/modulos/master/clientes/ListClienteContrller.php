@@ -12,8 +12,15 @@ use Illuminate\Support\Facades\DB;
 class ListClienteContrller extends Controller
 {
     public function listagemClientes(){
-        $clientes = DB::table('pessoas')->where('funcoes_id',4)->paginate(10);
-        return response()->json($clientes,200);
+        $query = DB::table('pessoas')->join('empresas','pessoas.empresas_id','=','empresas.id')
+                ->select('pessoas.id','empresas.razao_social','pessoas.nome', 'pessoas.sexo','pessoas.telefone',
+                        'pessoas.cpf','pessoas.cidade','pessoas.rua','pessoas.cep',
+                        'pessoas.bairro'
+                        )
+                ->where('pessoas.funcoes_id',2)
+                ->paginate(10);
+
+        return response()->json($query,200);
     }
     public function filtratListaCliente(){
         if(
@@ -31,7 +38,7 @@ class ListClienteContrller extends Controller
                                                 'pessoas.cpf','pessoas.cidade','pessoas.rua','pessoas.cep',
                                                 'pessoas.bairro'
                                             )
-                                     ->where('pessoas.funcoes_id',4)
+                                     ->where('pessoas.funcoes_id',2)
 
         //nome da empresa
         ->when(Request()->input('razao_social'), function($query){

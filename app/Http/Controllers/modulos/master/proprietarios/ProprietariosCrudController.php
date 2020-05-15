@@ -20,10 +20,12 @@ class ProprietariosCrudController extends Controller
             $pessoasProprietariasEmpresas = DB::table('pessoas')
             ->join('empresas','pessoas.empresas_id','=','empresas.id')
             ->join('users','pessoas.id','=','users.pessoas_id')
-            ->select('pessoas_id',"users.id",'pessoas.nome', 'pessoas.sexo','pessoas.telefone',
+            ->select('pessoas_id',"users.id",'pessoas.funcoes_id','pessoas.nome', 'pessoas.sexo','pessoas.telefone',
                      'pessoas.cpf','pessoas.cidade','pessoas.rua','pessoas.cep',
                      'pessoas.bairro','users.name','users.email','empresas.razao_social'
-                     )->paginate(10);
+                     )
+            ->where('pessoas.funcoes_id',2)
+            ->paginate(10);
             return response()->json($pessoasProprietariasEmpresas,200);
           
         }catch(\Exception $e){

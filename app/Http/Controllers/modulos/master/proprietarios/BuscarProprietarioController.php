@@ -5,7 +5,7 @@ namespace App\Http\Controllers\modulos\master\proprietarios;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-//empresa, cpf, nome, nome de usuario, cidade, rua, bairro
+//razao_social, cpf, nome, nome de usuario, cidade, rua, bairro
 class BuscarProprietarioController extends Controller
 {
     public function filtrarPessoaEmpresa(){
@@ -22,10 +22,11 @@ class BuscarProprietarioController extends Controller
       }
         $query = DB::table('pessoas')->join('empresas','pessoas.empresas_id','=','empresas.id')
                                      ->join('users','pessoas.id','=','users.pessoas_id')
-                                     ->select('pessoas_id','pessoas.nome', 'pessoas.sexo','pessoas.telefone',
+                                     ->select('pessoas_id','users.id','pessoas.nome', 'pessoas.sexo','pessoas.telefone',
                                               'pessoas.cpf','pessoas.cidade','pessoas.rua','pessoas.cep',
                                               'pessoas.bairro','users.name','users.email','empresas.razao_social'
                                              )
+                                     ->where('pessoas.funcoes_id',2)
 
         //nome da empresa
         ->when(Request()->input('razao_social'), function($query){

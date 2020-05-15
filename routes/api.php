@@ -87,7 +87,7 @@ Route::prefix('auth')->group(function () {
                 
                 //route para filtrar pessoas
                 Route::post('/filtro',
-                'modulos\master\proprietarios\BuscarProprietarioController@filtrarPessoaEmpresa');
+                'modulos\master\proprietarios\BuscarProprietarioController@filtrarPessoaEmpresa')->name('filtra proprietario');
 
                 //route para excluir um proprietario
                 Route::delete('/{id}','modulos\master\proprietarios\ProprietariosCrudController@deleteProprietario');
