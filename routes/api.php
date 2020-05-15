@@ -69,8 +69,7 @@ Route::prefix('auth')->group(function () {
                 Route::post('/cadUserProprietaria',
                 'modulos\master\proprietarios\ProprietariosCrudController@storeUserProprietario');
 
-                Route::get('/proprietariossss',
-                'modulos\master\proprietarios\ProprietariosCrudController@listagem')->name("listagem");
+                
 
                 //buscar proprietario
                 Route::get('/{id}',
@@ -95,7 +94,7 @@ Route::prefix('auth')->group(function () {
                 Route::post('/clientes','modulos\master\clientes\ListClienteContrller@filtratListaCliente');
 
                 //route listagem de clientes
-                Route::get('/clientes/lista','modulos\master\clientes\ListClienteContrller@listagemClientes');
+                Route::get('/clientes/lista','modulos\master\clientes\ListClienteContrller@listagemClientes')->name("listaClientes");
                
             });
 

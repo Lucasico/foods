@@ -7,6 +7,7 @@ use App\Pessoas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+
 //empresa, nome, cidade, bairro, rua
 class ListClienteContrller extends Controller
 {
