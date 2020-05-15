@@ -74,8 +74,8 @@ Route::prefix('auth')->group(function () {
                 'modulos\master\proprietarios\ProprietariosCrudController@listagem')->name("listagem");
 
                 // // //buscar proprietario
-                //  Route::get('/buscar/{id}',
-                //  'modulos\master\proprietarios\ProprietariosCrudController@buscarUmProprietario');
+                  Route::get('/buscar/{id}',
+                  'modulos\master\proprietarios\ProprietariosCrudController@buscarUmProprietario')->name("buscar um proprietario");
                         
                 //atualizar pessoa proprietario
                 Route::put('/{id}',

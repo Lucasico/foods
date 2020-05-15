@@ -37,34 +37,34 @@ class ProprietariosCrudController extends Controller
         }
     }
     //lista dados do proprietario
-    // public function buscarUmProprietario($id){
-    //     try{
-    //         $acao = Pessoas::where('id',$id)->value('id');
-    //        // dd($acao);
-    //         if(!is_null($acao)){
-    //             $pessoa = DB::table('pessoas')->join('empresas','pessoas.empresas_id','=','empresas.id')
-    //             ->join('users','pessoas.id','=','users.pessoas_id')
-    //             ->select('pessoas_id','users.id','pessoas.nome', 'pessoas.sexo','pessoas.telefone',
-    //                      'pessoas.cpf','pessoas.cidade','pessoas.rua','pessoas.cep',
-    //                      'pessoas.bairro','users.name','users.email','empresas.razao_social'
-    //                     )
-    //             //id pessoa
-    //             ->when($id, function($pessoa,$id){
-    //                 $pessoa->where('pessoas.id',$id);
-    //             })
-    //             ->get();
-    //             return response()->json($pessoa,200);
-    //         }else{
-    //             return response()->json("Parametro invalidado",200);
-    //         }
-    //     }catch(\Exception $e){
-    //         if(config('app.debug')){
-    //             return response()->json(ApiErros::erroMensageCadastroEmpresa($e->getMessage(),1017));
-    //         }
-    //              //para opção de produção
-    //             return response()->json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao exibir o proprietario',1017));
-    //     }
-    // }
+     public function buscarUmProprietario($id){
+         try{
+             $acao = Pessoas::where('id',$id)->value('id');
+            // dd($acao);
+             if(!is_null($acao)){
+                 $pessoa = DB::table('pessoas')->join('empresas','pessoas.empresas_id','=','empresas.id')
+                ->join('users','pessoas.id','=','users.pessoas_id')
+                ->select('pessoas_id','users.id','pessoas.nome', 'pessoas.sexo','pessoas.telefone',
+                          'pessoas.cpf','pessoas.cidade','pessoas.rua','pessoas.cep',
+                          'pessoas.bairro','users.name','users.email','empresas.razao_social'
+                         )
+                 //id pessoa
+                 ->when($id, function($pessoa,$id){
+                     $pessoa->where('pessoas.id',$id);
+                })
+                 ->get();
+                 return response()->json($pessoa,200);
+             }else{
+                 return response()->json("Parametro invalidado",200);
+             }
+         }catch(\Exception $e){
+          if(config('app.debug')){
+                return response()->json(ApiErros::erroMensageCadastroEmpresa($e->getMessage(),1017));
+             }
+                 //para opção de produção
+                return response()->json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao exibir o proprietario',1017));
+        }
+     }
 
     //retorna pessoas para cadastro de usuario
     public function retornaPessoaParaCadastroDeUsuario(){
