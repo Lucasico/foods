@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 class ListClienteContrller extends Controller
 {
     public function listagemClientes(){
-        $clientes = Pessoas::where('funcoes_id',4)->paginate(10);
+        $clientes = DB::table('pessoas')->where('funcoes_id',2)->paginate(10);
         return response()->json($clientes,200);
     }
     public function filtratListaCliente(){
