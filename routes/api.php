@@ -69,11 +69,13 @@ Route::prefix('auth')->group(function () {
                 Route::post('/cadUserProprietaria',
                 'modulos\master\proprietarios\ProprietariosCrudController@storeUserProprietario');
 
-                
+                //
+                Route::get('/listagem',
+                'modulos\master\proprietarios\ProprietariosCrudController@listagem')->name("listagem");
 
-                //buscar proprietario
-                Route::get('/{id}',
-                'modulos\master\proprietarios\ProprietariosCrudController@show');
+                // // //buscar proprietario
+                //  Route::get('/buscar/{id}',
+                //  'modulos\master\proprietarios\ProprietariosCrudController@buscarUmProprietario');
                         
                 //atualizar pessoa proprietario
                 Route::put('/{id}',
@@ -139,9 +141,3 @@ Route::prefix('auth')->group(function () {
     
 
 });
-
-
-
-
-
-
