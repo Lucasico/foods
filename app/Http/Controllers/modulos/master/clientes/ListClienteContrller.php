@@ -13,7 +13,7 @@ class ListClienteContrller extends Controller
 {
     public function listagemClientes(){
         $clientes = DB::table('pessoas')->where('funcoes_id',4)->paginate(10);
-        return response()->json($clientes,200);
+        return response()->json("testando rota",200);
     }
     public function filtratListaCliente(){
         if(
