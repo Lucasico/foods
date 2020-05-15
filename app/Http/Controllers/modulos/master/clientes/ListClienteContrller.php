@@ -31,7 +31,7 @@ class ListClienteContrller extends Controller
                                                 'pessoas.cpf','pessoas.cidade','pessoas.rua','pessoas.cep',
                                                 'pessoas.bairro'
                                             )
-                                     ->where('pessoas.funcoes_id',2)
+                                     ->where('pessoas.funcoes_id',4)
 
         //nome da empresa
         ->when(Request()->input('razao_social'), function($query){
