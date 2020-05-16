@@ -68,7 +68,6 @@ class ValidaRequests{
           'rua'=> 'required|string',
           'cep'=> 'required|string',
           'bairro'=> 'required|string',
-          'cidade' => 'required|string',
           'cpf' => 'required|cpf|min:14|max:14|unique:pessoas',
           'empresas_id' => 'required|UUID'
        ]);

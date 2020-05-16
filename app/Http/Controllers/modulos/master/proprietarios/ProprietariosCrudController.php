@@ -70,25 +70,25 @@ class ProprietariosCrudController extends Controller
 
         if ($emailCadastrado != null) {
             return response()->json(
-               [ "Data" => $erroCadastroEmail ]
+               [ "error" => $erroCadastroEmail ]
             );
         } else {
             try{ 
                 if ($request->email == "" or $request->password == "") {
                     if ($request->email == "") {
                         return response()->json([
-                            'email' => "Campo Email vazio!"
+                            'error' => "Campo Email vazio!"
                         ], 401);
                     }
                     if ($request->password == "") {
                         return response()->json([
-                            'password' => "Campo senha vazio!"
+                            'error' => "Campo senha vazio!"
                         ], 401);
                     } 
                 }
                 if($request->password != $request->password_confirmation){
                     return response()->json([
-                        'Error' => "A confirmação da senha não corresponde."
+                        'error' => "Confirmação da senha não corresponde."
                     ],401);
                 }
                 $retorno = ValidaRequests::validaCadastroDotipoProprietario($request);
@@ -176,7 +176,7 @@ class ProprietariosCrudController extends Controller
             // atualiza esse proprietario
             $pessoa->fill($pessoaData);
             $pessoa->save();
-            return response()->json(['Proprietario atualizado com sucesso!'], 200);
+            return response()->json(['res'=>'Proprietario atualizado com sucesso!'], 200);
         }catch(\Exception $e){
             if(config('app.debug')){
                 return response()->json(ApiErros::erroMensageCadastroEmpresa($e->getMessage(),1018));

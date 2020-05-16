@@ -22,7 +22,7 @@ class BuscarEmpresaController extends Controller
           is_null(Request()->input('numero')) &&
           is_null(Request()->input('categoria')) 
         ){
-        return response()->json(["Nenhum campo de busca preenchido, por favor tente novamente"],200);
+        return response()->json(["ErrosValida" => "Nenhum campo de busca preenchido, por favor tente novamente"],200);
       }
 
       $query = DB::table('empresas')
@@ -58,7 +58,7 @@ class BuscarEmpresaController extends Controller
       ->paginate(10);
       
       if($query->isEmpty()){
-        return response()->json("Nenhuma Empresa encontrada!",200);
+        return response()->json(["ErrosValida" => "Nenhuma Empresa encontrada!"],200);
       }
 
       return response()->json($query,200); 

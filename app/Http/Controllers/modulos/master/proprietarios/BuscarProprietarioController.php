@@ -18,7 +18,7 @@ class BuscarProprietarioController extends Controller
         is_null(Request()->input('rua')) &&
         is_null(Request()->input('bairro'))
       ){
-         return response()->json(["Nenhum campo de busca preenchido, por favor tente novamente"],200);
+         return response()->json(["ErrosValida" => "Nenhum campo de busca preenchido, por favor tente novamente"],200);
       }
         $query = DB::table('pessoas')->join('empresas','pessoas.empresas_id','=','empresas.id')
                                      ->join('users','pessoas.id','=','users.pessoas_id')
@@ -66,7 +66,7 @@ class BuscarProprietarioController extends Controller
         ->paginate(10);
 
         if($query->isEmpty()){
-          return response()->json("Nenhuma pessoa encontrada!",200);
+          return response()->json(["ErrosValida" =>"Nenhuma pessoa encontrada!"],200);
         }
           return response()->json($query,200); 
     }
