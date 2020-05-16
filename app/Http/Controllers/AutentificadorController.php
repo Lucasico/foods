@@ -44,12 +44,12 @@ class AutentificadorController extends Controller
     	 if ($request->email == "" or $request->password == "") {
             if ($request->email == "") {
                 return response()->json([
-                    'email' => "Acesso negado Email vazio"
+                    'email' => "Email Invalido"
                 ], 401);
             }
             if ($request->password == "") {
                 return response()->json([
-                    'password' => "Acesso negado password vazio"
+                    'password' => "Senha invalida"
                 ], 401);
             }
             
@@ -68,7 +68,7 @@ class AutentificadorController extends Controller
         //retorna um true ou false
         if (!Auth::attempt($credencias)) {
              return response()->json([
-                'res' => 'Acesso negado Email ou senha inválido'
+                'res' => 'Email ou senha inválido(s)'
             ], 401);
         }
         //criando token de validação de usuario
