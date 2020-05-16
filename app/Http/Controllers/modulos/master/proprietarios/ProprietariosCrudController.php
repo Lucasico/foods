@@ -22,7 +22,7 @@ class ProprietariosCrudController extends Controller
             ->join('users','pessoas.id','=','users.pessoas_id')
             ->select('pessoas_id',"users.id",'pessoas.funcoes_id','pessoas.nome', 'pessoas.sexo','pessoas.telefone',
                      'pessoas.cpf','pessoas.cidade','pessoas.rua','pessoas.cep',
-                     'pessoas.bairro','users.name','users.email','empresas.razao_social'
+                     'pessoas.bairro','users.name','users.email'
                      )
             ->where('pessoas.funcoes_id',2)
             ->paginate(10);
@@ -223,12 +223,6 @@ class ProprietariosCrudController extends Controller
     public function deleteProprietario($id){
         try{
             $pessoa = Pessoas::find($id);
-            if($pessoa->funcoes_id != 2){
-                return response()->json([
-                    'Data_pessoa'=>'O usuario '. $pessoa->nome . ' não é Proprietario',
-                    'Funcao_pessoa'=>$pessoa->funcao->nome
-                ]);
-            }
             $pessoa->delete();
             return response()->json(['Data'=>'Proprietario excluido com sucesso'], 200);
         }catch(\Exception $e){

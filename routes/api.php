@@ -32,7 +32,7 @@ Route::prefix('auth')->group(function () {
                  * parte basica de empresa CRUD
                  */
                 //lista
-                Route::get('/','modulos\master\empresas\EmpresasCrudController@index');
+                Route::get('/','modulos\master\empresas\EmpresasCrudController@index')->name("listagem de empresas");
                 
                 //buscar um registro
                 Route::get('/{id}','modulos\master\empresas\EmpresasCrudController@show');
@@ -71,7 +71,7 @@ Route::prefix('auth')->group(function () {
 
                 //
                 Route::get('/listagem',
-                'modulos\master\proprietarios\ProprietariosCrudController@listagem')->name("listagem");
+                'modulos\master\proprietarios\ProprietariosCrudController@listagem')->name("listagem proprietarios");
 
                 // // //buscar proprietario
                   Route::get('/buscar/{id}',

@@ -23,6 +23,7 @@ class EmpresasCrudController extends Controller
        // $id = $data->id;
         return response()->json(['data' => $data],200);
     }
+    
 
     //inserindo registro
     public function store(Request $request){
