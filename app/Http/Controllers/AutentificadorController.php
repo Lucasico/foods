@@ -44,12 +44,12 @@ class AutentificadorController extends Controller
     	 if ($request->email == "" or $request->password == "") {
             if ($request->email == "") {
                 return response()->json([
-                    'email' => "Email Inválido"
+                    'email' => "Campo Email vazio"
                 ], 401);
             }
             if ($request->password == "") {
                 return response()->json([
-                    'password' => "Senha inválida"
+                    'password' => "campo Senha vazio"
                 ], 401);
             }
             

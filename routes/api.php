@@ -83,7 +83,7 @@ Route::prefix('auth')->group(function () {
 
                 //atualizar User proprietario
                 Route::put('/user/{id}',
-                'modulos\master\proprietarios\ProprietariosCrudController@updateUserProprietario');
+                'modulos\master\proprietarios\ProprietariosCrudController@updateUserProprietario')->name("atualizar user proprietario");
                 
                 //route para filtrar pessoas
                 Route::post('/filtro',
