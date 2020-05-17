@@ -172,6 +172,11 @@ class ProprietariosCrudController extends Controller
                     'Funcao_pessoa'=>$pessoa->funcao->nome
                 ]);
             }
+            $retorno = ValidaRequests::validaAtualizaPessoa($request);
+             if(!empty($retorno)){
+                    $arrayErros = $retorno->original;
+                    return response()->json(['ErrosValida' => $arrayErros],200);
+            } 
             $pessoaData = array_filter($request->all());
             // atualiza esse proprietario
             $pessoa->fill($pessoaData);

@@ -76,6 +76,24 @@ class ValidaRequests{
        }
     }
 
+    public static function validaAtualizaPessoa(Request $request){
+      $data = $request->all();
+        $validacao = Validator::make($data,[
+          'nome' => 'string',
+          'sexo' => 'min:1|max:1',
+          'telefone' => 'string|min:9|max:16',
+          'cidade'=> 'string',
+          'rua'=> 'string',
+          'cep'=> 'string',
+          'bairro'=> 'string',
+          'cpf' => 'cpf|min:14|max:14|unique:pessoas',
+          'empresas_id' => 'required|UUID'
+       ]);
+       if($validacao->fails()){
+         return response()->json($validacao->errors());
+       }
+    }
+
     public static function validaAtualizacaoUserProprietario(Request $request){
       $data = $request->all();
         $validacao = Validator::make($data,[
