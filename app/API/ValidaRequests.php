@@ -86,7 +86,7 @@ class ValidaRequests{
           'rua'=> 'string',
           'cep'=> 'string',
           'bairro'=> 'string',
-          'cpf' => 'cpf|min:14|max:14|unique:pessoas',
+          'cpf' => 'cpf|min:14|max:14',
           'empresas_id' => 'required|UUID'
        ]);
        if($validacao->fails()){
