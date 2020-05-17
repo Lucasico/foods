@@ -102,8 +102,7 @@ class EmpresasCrudController extends Controller
         try{
             $retornoSucesso = " foi removida com sucesso";
             $id->delete();
-            return response()->json(['data'=>'Empresa de nome: '
-             . $id->razao_social . ' e com CNPJ: ' . $id->cnpj. $retornoSucesso],200);
+            return response()->json(['data'=>'Empresa removida com sucesso.'],200);
         }catch(\Exception $e){
             if(config('app.debug')){
                 return response()
