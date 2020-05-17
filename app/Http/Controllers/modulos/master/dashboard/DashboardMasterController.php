@@ -7,6 +7,7 @@ use App\Empresas;
 use App\User;
 use App\Produtos;
 use App\API\ApiErros;
+use App\Pessoas;
 
 class DashboardMasterController extends Controller
 {
@@ -25,7 +26,7 @@ class DashboardMasterController extends Controller
 
     public function quantidadeClientes(){
         try{
-            $quantCliente = User::where('permissoes_id',4)->count();
+            $quantCliente = Pessoas::where('funcoes_id',4)->count();
             return response()->json($quantCliente,200);
         }catch(\Exception $e){
             if(config('app.debug')){
