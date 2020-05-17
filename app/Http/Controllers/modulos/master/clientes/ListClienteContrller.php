@@ -31,7 +31,7 @@ class ListClienteContrller extends Controller
             is_null(Request()->input('rua')) &&
             is_null(Request()->input('bairro'))
           ){
-             return response()->json(["Nenhum campo de busca preenchido, por favor tente novamente"],200);
+             return response()->json(["ErrosValida"=>"Nenhum campo de busca preenchido, por favor tente novamente"],200);
         }
         $query = DB::table('pessoas')->join('empresas','pessoas.empresas_id','=','empresas.id')
                                      ->select('pessoas.id','empresas.razao_social','pessoas.nome', 'pessoas.sexo','pessoas.telefone',
@@ -69,7 +69,7 @@ class ListClienteContrller extends Controller
         ->paginate(10);
 
         if($query->isEmpty()){
-            return response()->json("Nenhum cliente encontrada!",200);
+            return response()->json(["ErrosValida"=>"Nenhum cliente encontrada!"],200);
           }
             return response()->json($query,200); 
             
