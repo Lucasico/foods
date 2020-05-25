@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4b7acae8-a989-4a59-bb97-aaba28b82aca" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Empresas.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Empresas.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AutentificadorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AutentificadorController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Pessoas.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Pessoas.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_10_133011_create_permissoes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_10_133011_create_permissoes_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_11_181529_create_empresas_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_11_181529_create_empresas_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+    <list default="true" id="4b7acae8-a989-4a59-bb97-aaba28b82aca" name="Default Changelist" comment="&quot;inserir tabelas com seus respectivos relacionamentos na modelagem: UF, CIDADE&quot;">
+      <change afterPath="$PROJECT_DIR$/.idea/foods.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/phpunit.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Cidades.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Estados.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_05_25_184054_create_estados_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_05_25_184153_create_cidades_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_05_25_221845_add_cidade_empresas_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_05_25_222444_add_cidade_pessoa_table.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,14 +176,30 @@
       <workItem from="1590375436185" duration="255000" />
       <workItem from="1590410000797" duration="128000" />
       <workItem from="1590431009037" duration="2961000" />
-      <workItem from="1590437844344" duration="11957000" />
+      <workItem from="1590437844344" duration="12292000" />
     </task>
+    <task id="LOCAL-00001" summary="&quot;inserir tabelas com seus respectivos relacionamentos na modelagem: UF, CIDADE&quot;">
+      <created>1590450545567</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1590450545567</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="&quot;inserir tabelas com seus respectivos relacionamentos na modelagem: UF, CIDADE&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;inserir tabelas com seus respectivos relacionamentos na modelagem: UF, CIDADE&quot;" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1590450592185">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1590450592185" />
     <state x="462" y="126" key="FileChooserDialogImpl" timestamp="1590410123765">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
