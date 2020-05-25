@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Auth;
@@ -52,7 +53,7 @@ class AutentificadorController extends Controller
                     'password' => "campo Senha vazio"
                 ], 401);
             }
-            
+
         }
 
         $request->validate([
@@ -89,14 +90,5 @@ class AutentificadorController extends Controller
             'res' => 'Deslogado com sucesso'
         ], 200);
     }
-    /**
-     * public function index(){
-     *$produto = Produtos::find('bfd9b59b-244c-4c0a-a293-0cbee647c11b');
-     *$produtoTipo = $produto->tipo;
-     *$produtoEmpresa = $produto->empresa;
-      *return response()->json($produto);
-    *}
-     * 
-     */
-    
+
 }

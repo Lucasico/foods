@@ -17,7 +17,7 @@ Route::prefix('auth')->group(function () {
         //Group routes mastes
         Route::middleware('master')->group(function(){
            //dashboard
-            Route::prefix('dataDashboard')->group(function(){        
+            Route::prefix('dataDashboard')->group(function(){
                 //quantidade de empresa
                 Route::get('/dashboard/quantidadeEmpresas','modulos\master\dashboard\DashboardMasterController@quantidadeEmpresas');
                  //quantidade de cliente
@@ -25,7 +25,7 @@ Route::prefix('auth')->group(function () {
                  //quantidade de produtos
                  Route::get('/dashboard/quantidadeProdutos','modulos\master\dashboard\DashboardMasterController@quantidadeProdutos');
             });
-           
+
             //routes de empresas
             Route::prefix('empresas')->group(function(){
                 /**
@@ -33,22 +33,22 @@ Route::prefix('auth')->group(function () {
                  */
                 //lista
                 Route::get('/','modulos\master\empresas\EmpresasCrudController@index')->name("listagem de empresas");
-                
+
                 //buscar um registro
                 Route::get('/{id}','modulos\master\empresas\EmpresasCrudController@show');
-                
+
                 //criando empresa
                 Route::post('/','modulos\master\empresas\EmpresasCrudController@store');
-               
+
                 //atualizando uma empresa
                 Route::put('/{id}','modulos\master\empresas\EmpresasCrudController@update');
-                
+
                 //excluindo uma empresa
                 Route::delete('/{id}','modulos\master\empresas\EmpresasCrudController@delete');
 
                 //filtrarEmpresa
                 Route::post('/filtrar','modulos\master\empresas\BuscarEmpresaController@filtraEmpresa');
-               
+
             });
 
             //routes de proprietarios
@@ -65,7 +65,7 @@ Route::prefix('auth')->group(function () {
                 Route::get('/empresas',
                 'modulos\master\proprietarios\ProprietariosCrudController@retornaEmpresasParaCadastroDePessoa');
 
-                //criar UsuarioProprietario 
+                //criar UsuarioProprietario
                 Route::post('/cadUserProprietaria',
                 'modulos\master\proprietarios\ProprietariosCrudController@storeUserProprietario');
 
@@ -76,7 +76,7 @@ Route::prefix('auth')->group(function () {
                 // // //buscar proprietario
                   Route::get('/buscar/{id}',
                   'modulos\master\proprietarios\ProprietariosCrudController@buscarUmProprietario')->name("buscar um proprietario");
-                        
+
                 //atualizar pessoa proprietario
                 Route::put('/{id}',
                 'modulos\master\proprietarios\ProprietariosCrudController@updateProprietario');
@@ -84,7 +84,7 @@ Route::prefix('auth')->group(function () {
                 //atualizar User proprietario
                 Route::put('/user/{id}',
                 'modulos\master\proprietarios\ProprietariosCrudController@updateUserProprietario')->name("atualizar user proprietario");
-                
+
                 //route para filtrar pessoas
                 Route::post('/filtro',
                 'modulos\master\proprietarios\BuscarProprietarioController@filtrarPessoaEmpresa')->name('filtra proprietario');
@@ -92,8 +92,8 @@ Route::prefix('auth')->group(function () {
                 //route para excluir um proprietario
                 Route::delete('/{id}','modulos\master\proprietarios\ProprietariosCrudController@deleteProprietario');
 
-                
-               
+
+
             });
             Route::prefix('clientes')->group(function(){
                 //route para filtragem de clientes
@@ -126,7 +126,7 @@ Route::prefix('auth')->group(function () {
             Route::delete('/excluirProduto/{id}','modulos\proprietario\produtos\ProdutoCrudController@deleteProduto');
             //route para inserir produto no combo
             Route::post('/comboProduto/{id}','modulos\proprietario\produtos\produtoCrudController@createComboProdutos');
-            
+
         });
 
         //Group routes "funcionario"
@@ -140,6 +140,6 @@ Route::prefix('auth')->group(function () {
            // Route::get('itens', 'EmularController@index');
         });
     });
-    
+
 //comentariiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
 });

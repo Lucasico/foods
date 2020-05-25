@@ -16,7 +16,6 @@ class Empresas extends Model
         'razao_social',
         'cnpj',
         'situacao',
-        'cidade',
         'bairro',
         'rua',
         'cep',
@@ -27,14 +26,20 @@ class Empresas extends Model
         'celular',
         'email',
         'instagram',
-        'numero'
+        'numero',
+        'cidade_id'
      ];
      //tem n pessoas
      public function pessoas(){
          return $this->hasMany('App\Pessoas');
      }
      //uma empresa tem muitos produtos
-     public function produtos(){ 
+     public function produtos(){
         return $this->hasMany('App\Produtos');
     }
+
+    public function cidade(){
+         return $this->belongsTo(Cidades::class);
+    }
+
 }

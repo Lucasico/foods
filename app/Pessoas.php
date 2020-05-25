@@ -21,10 +21,10 @@ class Pessoas extends Model
         'sexo',
         'telefone',
         'cpf',
-        'cidade',
         'rua',
         'cep',
-        'bairro'
+        'bairro',
+        'cidade_id'
     ];
 
     //1 para 1
@@ -43,6 +43,10 @@ class Pessoas extends Model
      public function empresa(){
          //1 pessoa esta numa empresa
          return $this->belongsTo('App\Empresas','empresas_id','id');
+     }
+    //1 para n
+     public function cidade(){
+        return $this->belongsTo(Cidades::class);
      }
 
 }

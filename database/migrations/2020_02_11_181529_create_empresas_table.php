@@ -24,7 +24,6 @@ class CreateEmpresasTable extends Migration
             $table->string('bairro', 45)->nullable(false);
             $table->string('rua', 45)->nullable(false);
             $table->string('cep', 20)->nullable(false);
-            $table->softDeletes();
 
         });
     }
