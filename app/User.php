@@ -11,7 +11,7 @@ class User extends Authenticatable
     //use HasApiTokens
     use Notifiable, HasApiTokens;
     use Uuids;
-   
+
     /**
      * The attributes that are mass assignable.
      *
@@ -19,7 +19,6 @@ class User extends Authenticatable
      */
     public $incrementing = false;
     protected $fillable = [
-        'name',
         'email',
         'password',
         'permissoes_id',

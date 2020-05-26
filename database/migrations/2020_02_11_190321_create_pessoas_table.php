@@ -19,15 +19,8 @@ class CreatePessoasTable extends Migration
             $table->uuid('empresas_id');
             $table->unsignedBigInteger('funcoes_id')->unsigned()->nullable();
             $table->string('nome', 120)->nullable(false);
-            $table->char('sexo', 1)->nullable(false);
-            $table->string('telefone', 45);
-            $table->string('cpf', 18)->nullable(false);
-            $table->string('cidade', 45)->nullable(false);
-            $table->string('rua', 45)->nullable(false);
-            $table->string('cep', 20)->nullable(false);
-            $table->string('bairro', 45)->nullable(false);
-           
-            
+            $table->string('telefone', 45)->nullable(false);
+
         });
     }
 

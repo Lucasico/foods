@@ -17,13 +17,7 @@ class Pessoas extends Model
         'nome',
         'empresas_id',
         'funcoes_id',
-        'nome',
-        'sexo',
         'telefone',
-        'cpf',
-        'rua',
-        'cep',
-        'bairro',
         'cidade_id'
     ];
 

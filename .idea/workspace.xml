@@ -2,19 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4b7acae8-a989-4a59-bb97-aaba28b82aca" name="Default Changelist" comment="&quot;inserir tabelas com seus respectivos relacionamentos na modelagem: UF, CIDADE&quot;">
-      <change afterPath="$PROJECT_DIR$/.idea/foods.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/phpunit.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Cidades.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Estados.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_05_25_184054_create_estados_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_05_25_184153_create_cidades_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_05_25_221845_add_cidade_empresas_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_05_25_222444_add_cidade_pessoa_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Pessoas.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Pessoas.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create__users__table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create__users__table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_11_190321_create_pessoas_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_11_190321_create_pessoas_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_05_25_221845_add_cidade_empresas_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_05_25_221845_add_cidade_empresas_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_05_25_222444_add_cidade_pessoa_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_05_25_222444_add_cidade_pessoa_table.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,7 +170,7 @@
       <workItem from="1590375436185" duration="255000" />
       <workItem from="1590410000797" duration="128000" />
       <workItem from="1590431009037" duration="2961000" />
-      <workItem from="1590437844344" duration="12292000" />
+      <workItem from="1590437844344" duration="13441000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;inserir tabelas com seus respectivos relacionamentos na modelagem: UF, CIDADE&quot;">
       <created>1590450545567</created>

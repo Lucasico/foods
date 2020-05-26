@@ -14,7 +14,6 @@ class AddCidadeEmpresasTable extends Migration
     public function up()
     {
         Schema::table('empresas',function (Blueprint $table){
-            $table->dropColumn('cidade');
             $table->unsignedBigInteger('cidade_id')->unsigned()->nullable();
             $table->foreign('cidade_id')->references('id')->on('cidades');
         });
