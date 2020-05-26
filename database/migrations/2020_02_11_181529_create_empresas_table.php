@@ -20,7 +20,6 @@ class CreateEmpresasTable extends Migration
             $table->string('nomeProprietario', 100)->nullable(false);
             $table->string('cnpj', 18)->nullable(false);
             $table->boolean('situacao')->nullable(false);
-            $table->string('cidade', 45)->nullable(false);
             $table->string('bairro', 45)->nullable(false);
             $table->string('rua', 45)->nullable(false);
             $table->string('cep', 20)->nullable(false);

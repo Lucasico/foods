@@ -27,7 +27,6 @@ class AutentificadorController extends Controller
             ]);
             //criando o usuario
             $user = new User([
-                'name'=>$request->name,
                 'password' => bcrypt($request->password),
                 'email' => $request->email,
                 'pessoas_id' => $request->pessoas_id,
