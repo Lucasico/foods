@@ -8,9 +8,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::prefix('auth')->group(function () {
+    Route::get('invalido','AutentificadorController@invalido')->name("invalido");
     Route::post('registro', 'AutentificadorController@registro')->name("registro");
     Route::get('index','AutentificadorController@index');
     Route::post('login', 'AutentificadorController@login');
+
 
     Route::middleware('auth:api')->group(function () {
         Route::post('logout', 'AutentificadorController@logout');
@@ -141,5 +143,4 @@ Route::prefix('auth')->group(function () {
         });
     });
 
-//comentariiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
 });

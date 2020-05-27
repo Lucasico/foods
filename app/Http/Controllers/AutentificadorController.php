@@ -90,4 +90,8 @@ class AutentificadorController extends Controller
         ], 200);
     }
 
+    public function invalido(Request $request){
+        return response()->json("Usuario Não Autenticado",400);
+    }
+
 }
