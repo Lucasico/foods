@@ -23,7 +23,6 @@ class EmpresasCrudController extends Controller
        // $id = $data->id;
         return response()->json(['data' => $data],200);
     }
-    
 
     //inserindo registro
     public function store(Request $request){
@@ -35,13 +34,13 @@ class EmpresasCrudController extends Controller
             if(!empty($retorno)){
                 $arrayErros = $retorno->original;
                 return response()->json(['ErrosValida' => $arrayErros],200);
-            }           
+            }
              try{
                 $empresa = new Empresas([
                     'razao_social' => $request->razao_social,
                     'cnpj' => $request->cnpj,
                     'situacao' => $request->situacao,
-                    'cidade' => $request->cidade,
+                    'cidade_id' => $request->cidade_id,
                     'bairro' => $request->bairro,
                     'rua' => $request->rua,
                     'cep' => $request->cep,
@@ -69,9 +68,9 @@ class EmpresasCrudController extends Controller
                     return response()->
                     json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao realizar o cadastro da empresa, por favor tente novamente',1010));
             }
-            
+
         }
-        
+
     }
 
     //atualizando uma empresa
@@ -81,8 +80,8 @@ class EmpresasCrudController extends Controller
             if(!empty($retorno)){
                 $arrayErros = $retorno->original;
                 return response()->json(['ErrosValida' => $arrayErros],200);
-            }  
-            try{  
+            }
+            try{
                 Empresas::where('id', $id)->update($request->except('id'));
                 return response()->json($testeRetorno,200);
             }catch(\Exception $e){
@@ -94,7 +93,7 @@ class EmpresasCrudController extends Controller
                     //para opção de produção
                     return response()->
                     json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao realizar a atualização neste empresa',1011));
-            } 
+            }
     }
 
     //apagando empresa

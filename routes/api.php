@@ -9,7 +9,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::prefix('auth')->group(function () {
     Route::get('invalido','AutentificadorController@invalido')->name("invalido");
-    Route::post('registro', 'AutentificadorController@registro')->name("registro");
+    Route::post('registro', 'AutentificadorController@registro');
     Route::get('index','AutentificadorController@index');
     Route::post('login', 'AutentificadorController@login');
 
@@ -26,6 +26,10 @@ Route::prefix('auth')->group(function () {
                 Route::get('/dashboard/quantidadeClientes','modulos\master\dashboard\DashboardMasterController@quantidadeClientes');
                  //quantidade de produtos
                  Route::get('/dashboard/quantidadeProdutos','modulos\master\dashboard\DashboardMasterController@quantidadeProdutos');
+                //listagem de estados
+                Route::get('/estados','modulos\master\util\ControllerUfCidade@listEstados')->name('estados');
+                //listagem de cidades
+                Route::get('/{estado}/cidades','modulos\master\util\ControllerUfCidade@cidadesDoEstado')->name('cidades');
             });
 
             //routes de empresas
@@ -34,7 +38,7 @@ Route::prefix('auth')->group(function () {
                  * parte basica de empresa CRUD
                  */
                 //lista
-                Route::get('/','modulos\master\empresas\EmpresasCrudController@index')->name("listagem de empresas");
+                Route::get('/','modulos\master\empresas\EmpresasCrudController@index');
 
                 //buscar um registro
                 Route::get('/{id}','modulos\master\empresas\EmpresasCrudController@show');
@@ -73,11 +77,11 @@ Route::prefix('auth')->group(function () {
 
                 //
                 Route::get('/listagem',
-                'modulos\master\proprietarios\ProprietariosCrudController@listagem')->name("listagem proprietarios");
+                'modulos\master\proprietarios\ProprietariosCrudController@listagem');
 
                 // // //buscar proprietario
                   Route::get('/buscar/{id}',
-                  'modulos\master\proprietarios\ProprietariosCrudController@buscarUmProprietario')->name("buscar um proprietario");
+                  'modulos\master\proprietarios\ProprietariosCrudController@buscarUmProprietario');
 
                 //atualizar pessoa proprietario
                 Route::put('/{id}',
@@ -85,11 +89,11 @@ Route::prefix('auth')->group(function () {
 
                 //atualizar User proprietario
                 Route::put('/user/{id}',
-                'modulos\master\proprietarios\ProprietariosCrudController@updateUserProprietario')->name("atualizar user proprietario");
+                'modulos\master\proprietarios\ProprietariosCrudController@updateUserProprietario');
 
                 //route para filtrar pessoas
                 Route::post('/filtro',
-                'modulos\master\proprietarios\BuscarProprietarioController@filtrarPessoaEmpresa')->name('filtra proprietario');
+                'modulos\master\proprietarios\BuscarProprietarioController@filtrarPessoaEmpresa');
 
                 //route para excluir um proprietario
                 Route::delete('/{id}','modulos\master\proprietarios\ProprietariosCrudController@deleteProprietario');
