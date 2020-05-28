@@ -7,7 +7,6 @@ class ValidaRequests{
     public static function validaCadastroEmpresa(Request $request){
         $data = $request->all();
         $validacao = Validator::make($data,[
-            'cidade' => 'required',
             'bairro' => 'required',
             'rua' => 'required',
             'cep' => 'required',
@@ -18,6 +17,7 @@ class ValidaRequests{
             'razao_social' => 'required',
             'cnpj' => 'required|cnpj',
             'email' => 'email',
+            'cidade_id'=>'required',
             'numero' => 'required'
        ]);
        if($validacao->fails()){
