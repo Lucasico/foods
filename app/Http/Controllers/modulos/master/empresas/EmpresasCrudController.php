@@ -13,14 +13,14 @@ class EmpresasCrudController extends Controller
 {
     //lista todos
     public function index(){
+
         $query = DB::table('empresas')->join('cidades','empresas.cidade_id','=','cidades.id')
             ->select('empresas.razao_social','empresas.cnpj','empresas.situacao','empresas.bairro','empresas.rua',
                 'empresas.cep','empresas.taxaEntrega','empresas.tempoEntrega','empresas.categoria','empresas.telefone',
                 'empresas.celular','empresas.email','empresas.instagram','empresas.numero','cidades.nome')
             ->orderBy('empresas.razao_social','asc')
             ->paginate(10);
-            return response()->json(['data' => $query],200);
-
+        return response()->json( $query,200);
     }
 
     //buscar um registro
