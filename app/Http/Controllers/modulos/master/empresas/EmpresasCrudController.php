@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\DB;
 use App\Empresas;
 use App\API\ApiErros;
 use App\API\ValidaRequests;
+use App\Support\Email\Email;
+
 
 class EmpresasCrudController extends Controller
 {
@@ -62,6 +64,27 @@ class EmpresasCrudController extends Controller
 
                 ]);
                 $empresa->save();
+                if ( !empty($empresa->email) ){
+                    //mensagem com anexo
+                    $email = new Email();
+                    $email->add(
+                        "Cadastro realizado",
+                        "<h1>A empresa $empresa->razao_social</h1>" .
+                        "<b>Foi cadastrada com sucesso!!</b> <p> A empresa $empresa->razao_social,
+                        acaba de ser cadastrada com sucesso na plataforma familyFoods. Agora seu negocío é integrante de uma
+                        das mais novas e avançadas soluções para o ramo de delivery da sua região. Desde já
+                        desejamos sucesso no seu negócio.
+                        Para maiores informações, entre em contato pelos seguintes meios:
+                        <ul>
+                            <li><b>Email</b>: FamilyFoods@gmail.com</li>
+                            <li><b>Fone</b>: (88) 9.9615-7492</li>
+                            <li><b>Instagram</b>: @familyFoods</li>
+                        </ul>",
+                        "$empresa->razao_social",
+                        "$empresa->email"
+                    );
+                    $email->send();
+                }
                 return response()->json([
                     'resposta' => "Empresa cadastrada com sucesso!"
                 ],201);
