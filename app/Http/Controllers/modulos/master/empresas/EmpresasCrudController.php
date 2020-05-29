@@ -76,7 +76,7 @@ class EmpresasCrudController extends Controller
                         desejamos sucesso no seu negócio.
                         Para maiores informações, entre em contato pelos seguintes meios:
                         <ul>
-                            <li><b>Email</b>: FamilyFoods@gmail.com</li>
+                            <li><b>Email</b>: PlataformaFamilyFoods@gmail.com</li>
                             <li><b>Fone</b>: (88) 9.9615-7492</li>
                             <li><b>Instagram</b>: @familyFoods</li>
                         </ul>",

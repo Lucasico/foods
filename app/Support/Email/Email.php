@@ -29,8 +29,8 @@ class Email
 
         $this->mail->Host = "smtp.gmail.com";
         $this->mail->Port = 587;
-        $this->mail->Username = "lucassantoscrfbezerra@gmail.com";
-        $this->mail->Password = "kimurabjj28031998";
+        $this->mail->Username = "PlataformaFamilyFoods@gmail.com";
+        $this->mail->Password = "family145/*";
 
     }
 
@@ -43,7 +43,7 @@ class Email
         return $this;
     }
 
-    public function send(string $from_name = "FamilyFoods", string $fro_email = "lucassantoscrfbezerra@gmail.com"){
+    public function send(string $from_name = "FamilyFoods", string $fro_email = "PlataformaFamilyFoods@gmail.com"){
         try {
             $this->mail->Subject = $this->data->subject;
             $this->mail->msgHTML( $this->data->body);
