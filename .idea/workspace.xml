@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4b7acae8-a989-4a59-bb97-aaba28b82aca" name="Default Changelist" comment="&quot;inserir tabelas com seus respectivos relacionamentos na modelagem: UF, CIDADE&quot;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AutentificadorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AutentificadorController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/modulos/master/empresas/EmpresasCrudController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/modulos/master/empresas/EmpresasCrudController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,6 +176,9 @@
       <workItem from="1590629139799" duration="10593000" />
       <workItem from="1590684196448" duration="112000" />
       <workItem from="1590686139791" duration="9120000" />
+      <workItem from="1590713005751" duration="468000" />
+      <workItem from="1590716247313" duration="109000" />
+      <workItem from="1590785460992" duration="1744000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;inserir tabelas com seus respectivos relacionamentos na modelagem: UF, CIDADE&quot;">
       <created>1590450545567</created>
@@ -201,14 +202,18 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="390" y="27" key="#PHP/0.0.1366.768@0.0.1366.768" timestamp="1590695390240" />
+    <state x="413" y="139" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1590786633764">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="413" y="139" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.768@0.0.1366.768" timestamp="1590786633764" />
     <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1590450592185">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1590450592185" />
-    <state x="462" y="126" key="FileChooserDialogImpl" timestamp="1590687742218">
+    <state x="462" y="126" key="FileChooserDialogImpl" timestamp="1590716350768">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="462" y="126" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1590687742218" />
+    <state x="462" y="126" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1590716350768" />
     <state x="184" y="29" key="SettingsEditor" timestamp="1590687781068">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
