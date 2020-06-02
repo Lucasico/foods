@@ -24,7 +24,7 @@ class Pessoas extends Model
     //1 para 1
     public function users(){
         //uma pessoa tem um usuario
-        return $this->hasOne('App\users');
+        return $this->hasOne(User::class,'pessoas_id','id');
     }
 
     //1 para n
@@ -36,8 +36,9 @@ class Pessoas extends Model
      //1 para n
      public function empresa(){
          //1 pessoa esta numa empresa
-         return $this->belongsTo('App\Empresas','empresas_id','id');
+         return $this->belongsTo(Empresas::class,'empresas_id','id');
      }
+
     //1 para n
      public function cidade(){
         return $this->belongsTo(Cidades::class);

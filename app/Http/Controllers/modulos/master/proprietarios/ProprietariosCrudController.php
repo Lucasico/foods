@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\modulos\master\proprietarios;
 
+use App\Empresas;
 use App\Http\Controllers\Controller;
+use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Validation;
 use Illuminate\Support\Facades\DB;
@@ -10,6 +12,7 @@ use App\Pessoas;
 use App\User;
 use App\API\ApiErros;
 use App\API\ValidaRequests;
+use Mockery\Exception;
 
 
 class ProprietariosCrudController extends Controller
@@ -27,7 +30,7 @@ class ProprietariosCrudController extends Controller
             ->where('pessoas.funcoes_id',2)
             ->paginate(10);
             return response()->json($pessoasProprietariasEmpresas,200);
-          
+
         }catch(\Exception $e){
             if(config('app.debug')){
                 return response()->json(ApiErros::erroMensageCadastroEmpresa($e->getMessage(),1016));
@@ -36,192 +39,67 @@ class ProprietariosCrudController extends Controller
                 return response()->json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao listar os proprietarios',1016));
         }
     }
-    //lista dados do proprietario
+
+    //exibir dados do proprietario
      public function buscarUmProprietario(Pessoas $id){
-         try{
-            //dessa forma ele já me passa um objeto com este $id
-             $data = $id;
-             // $id = $data->id;
-            return response()->json(['data' => $data],200);
-         }catch(\Exception $e){
-          if(config('app.debug')){
-                return response()->json(ApiErros::erroMensageCadastroEmpresa($e->getMessage(),1017));
+         try {
+             $pessoa_id = $id->id;
+             $query = DB::table('users')
+                 ->select('pessoas.id','pessoas.nome','pessoas.telefone',
+                     'users.email AS email','permissoes.nome AS permissao','funcoes.nome AS funcao',
+                     'cidades.nome AS cidade','users.situacao')
+                 ->join('pessoas','users.pessoas_id','=','pessoas.id')
+                 ->join('permissoes','users.permissoes_id','=','permissoes.id')
+                 ->join('cidades','cidades.id','=','pessoas.cidade_id')
+                 ->join('funcoes','funcoes.id','=','pessoas.funcoes_id')
+                 ->where('pessoas.id',$pessoa_id)
+                 ->where('users.permissoes_id','!=',1)
+                 ->first();
+             return response()->json($query,200);
+         }catch (\Exception $e){
+             if(config('app.debug')){
+                 return response()
+                     ->json(ApiErros::erroMensageCadastroEmpresa($e->getMessage(),1028));
              }
-                 //para opção de produção
-                return response()->json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao exibir o proprietario',1017));
-        }
+             //para opção de produção
+             return response()->
+             json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao exibir os dados',1028));
+         }
      }
 
-    //retorna pessoas para cadastro de usuario
-    public function retornaPessoaParaCadastroDeUsuario(){
-        $pessoas = DB::table('pessoas')->select('id','nome')->where('funcoes_id',2)->get();
-        return response()->json(["data" => $pessoas],200);
-    }
-    //retorna empresas para o cadastro de Pessoa
-    public function retornaEmpresasParaCadastroDePessoa(){
-        $empresas = DB::table('empresas')->select('id','razao_social')->where('situacao',true)->get();
-        return response()->json(["data" => $empresas],200);
-    }
-
-    //criando Usuario de acesso do tipo proprietario
-    public function storeUserProprietario(Request $request){
-        $emailCadastrado = DB::table('users')->where('email', $request->email)->value('email');
-        $erroCadastroEmail = "E-mail ja cadastrado";
-
-        if ($emailCadastrado != null) {
-            return response()->json(
-               [ "error" => $erroCadastroEmail ]
-            );
-        } else {
-            try{ 
-                if ($request->email == "" or $request->password == "") {
-                    if ($request->email == "") {
-                        return response()->json([
-                            'error' => "Campo Email vazio!"
-                        ], 401);
-                    }
-                    if ($request->password == "") {
-                        return response()->json([
-                            'error' => "Campo senha vazio!"
-                        ], 401);
-                    } 
-                }
-                if($request->password != $request->password_confirmation){
-                    return response()->json([
-                        'error' => "Confirmação da senha não corresponde."
-                    ],401);
-                }
-                $retorno = ValidaRequests::validaCadastroDotipoProprietario($request);
-                if(!empty($retorno)){
-                    $arrayErros = $retorno->original;
-                    return response()->json(['ErrosValida' => $arrayErros],200);
-                }  
-
-                //criando o usuario
-                $user = new User([
-                    'name'=>$request->name,
-                    'password' => bcrypt($request->password),
-                    'email' => $request->email,
-                    'pessoas_id' => $request->pessoas_id,
-                    //setando o valor direto para tipo proprietario
-                    'permissoes_id' => 2
-                ]);
-                //salvando
-                $user->save();
-                return response()->json([
-                    'res' => 'Usuario criado com sucesso'
-                ], 201);
-            }catch(\Exception $e){
-                if(config('app.debug')){
-                    return response()->json(ApiErros::erroMensageCadastroEmpresa($e->getMessage(),1013));
-                }
-                    //para opção de produção
-                    $retorno = 'houve um erro ao cadastra o usuario: ' . $request->name;
-                    return response()->json(ApiErros::erroMensageCadastroEmpresa($retorno,1013));
+    //criar pessoa proprietaria
+    public function storePessoaProprietaria(Empresas $empresas,Request $request){
+        try{
+            $retorno = ValidaRequests::validaCadastroDePessoa($request);
+            if(!empty($retorno)){
+                $arrayErros = $retorno->original;
+                return response()->json(['ErrosValida' => $arrayErros],200);
             }
-        }
-    }
+            $pessoa = $empresas->pessoas()->create([
+                'empresas_id' => $empresas,
+                'funcoes_id' => $request->input('funcoes_id'),
+                'nome'=>$request->input('nome'),
+                'telefone'=>$request->input('telefone'),
+                'cidade_id'=>$request->input('cidade_id')
+            ]);
+            $user = $pessoa->users()->create([
+                'pessoa_id' => $pessoa,
+                'permissoes_id' => 2,
+                'email' =>$request->input('email'),
+                'password' =>bcrypt($request->input('password')),
+                'password_confirmation' =>$request->input('password_confirmation')
+            ]);
+            return response()->json([
+                'data' => 'Cadastrado com sucesso!'
+            ], 201);
 
-    //criar pessoa proprietaria 
-    public function storePessoaProprietaria(Request $request){
-        $cpfJaCadastrado = DB::table('pessoas')->where('cpf', $request->cpf)->value('cpf');
-        if($cpfJaCadastrado != null){
-            return response()->json(['Resposta' => "CPF já cadastrado!"],401);
-        }else{
-            try{  
-                $retorno = ValidaRequests::validaCadastroDePessoa($request);
-                if(!empty($retorno)){
-                    $arrayErros = $retorno->original;
-                    return response()->json(['ErrosValida' => $arrayErros],200);
-                } 
-                //criando pessoa
-                $pessoa = new Pessoas([
-                    'empresas_id' => $request->empresas_id,
-                    //setando o valor direto para funcoes de proprietario
-                    'funcoes_id' => 2,
-                    'nome' => $request->nome,
-                    'sexo' => $request->sexo,
-                    'telefone' => $request->telefone,
-                    'cpf' => $request->cpf,
-                    'cidade' => $request->cidade,
-                    'rua' => $request->rua,
-                    'cep' => $request->cep,
-                    'bairro' => $request->bairro
-                ]);
-                $pessoa->save();
-                 return response()->json([
-                     'res' => 'Cadastrado com sucesso!'
-                 ], 201);
             }catch(\Exception $e){
                 if(config('app.debug')){
                     return response()->json(ApiErros::erroMensageCadastroEmpresa($e->getMessage(),1014));
                 }
-                    //para opção de produção
-                    return response()->json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao cadastrar a pessoa',1014));
-            } 
-         }
-    }
-
-    //atualizar Pessoa cadastrada
-    public function updateProprietario(Request $request, $id){
-        try{
-            $pessoa = Pessoas::find($id);
-            if($pessoa->funcoes_id != 2){
-                return response()->json([
-                    'Data_pessoa'=>'O usuario '. $pessoa->nome . ' não é Proprietario',
-                    'Funcao_pessoa'=>$pessoa->funcao->nome
-                ]);
+                //para opção de produção
+                return response()->json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao atualizar',1014));
             }
-            $retorno = ValidaRequests::validaAtualizaPessoa($request);
-             if(!empty($retorno)){
-                    $arrayErros = $retorno->original;
-                    return response()->json(['ErrosValida' => $arrayErros],200);
-            } 
-            $pessoaData = array_filter($request->all());
-            // atualiza esse proprietario
-            $pessoa->fill($pessoaData);
-            $pessoa->save();
-            return response()->json(['res'=>'Proprietario atualizado com sucesso!'], 200);
-        }catch(\Exception $e){
-            if(config('app.debug')){
-                return response()->json(ApiErros::erroMensageCadastroEmpresa($e->getMessage(),1018));
-            }
-                 //para opção de produção
-                return response()->json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao atualizar',1018));
-
-        }
-    }
-
-    //atualizar User proprietario
-    public function updateUserProprietario(Request $request, $id){
-        try{
-            $user = User::find($id);
-            if($user->permissoes_id != 2){
-                return response()->json([
-                    'Data_pessoa'=>'O usuario '. $user->name . ' não é Proprietario'
-                ]);
-            }
-            //parte de validadação
-            $retorno = ValidaRequests::validaAtualizacaoUserProprietario($request);
-            if(!empty($retorno)){
-                $arrayErros = $retorno->original;
-                return response()->json(['ErrosValida' => $arrayErros],200);
-            } 
-
-            $user->name = $request->name;
-            $user->email = $request->email;
-            $user->password = bcrypt($request->password);
-            $user->pessoas_id = $request->pessoas_id;
-            $user->save();
-            return response()->json("Atualizado com sucesso",200);
-
-        }catch(\Exception $e){
-            if(config('app.debug')){
-                return response()->json(ApiErros::erroMensageCadastroEmpresa($e->getMessage(),1031));
-            }
-                 //para opção de produção
-                return response()->json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao atualizar',1031));
-        }    
     }
 
     //excluir proprietario
@@ -238,5 +116,55 @@ class ProprietariosCrudController extends Controller
                 return response()->json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao apagar',1019));
         }
     }
-    
+
+    //alterar situacao de proprietario
+    public function alterSituacaoProprietario(Pessoas $pessoas){
+        try {
+            $pessoas->users()->update([
+                'situacao'=>'Inativo'
+            ]);
+            return response()->json(['data' => 'Proprietario posto como Inativo!'],200);
+        }catch (\Exception $e){
+            if(config('app.debug')){
+                return response()
+                    ->json(ApiErros::erroMensageCadastroEmpresa($e->getMessage(),1029));
+            }
+            //para opção de produção
+            return response()->
+            json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao alterar a situacao',1029));
+        }
+    }
+
+    //atualizar proprietario e usuario
+    public function alterarProprietarioUsuario(Pessoas $pessoas, Request $request){
+        try {
+            $retorno = ValidaRequests::validaAtualizaPessoa($request);
+            if(!empty($retorno)){
+                $arrayErros = $retorno->original;
+                return response()->json(['ErrosValida' => $arrayErros],200);
+            }
+            $pessoa = $pessoas->update([
+                'nome' => $request->input('nome'),
+                'telefone' => $request->input('telefone'),
+                'cidade_id' => $request->input('cidade')
+            ]);
+            $user = $pessoas->users()->update([
+                'email' => $request->input('email'),
+                'password' => bcrypt($request->input('password')),
+                'situacao' => $request->input('situacao')
+            ]);
+            if ($pessoa && $user){
+                return response()->json(['data' => 'Atualização realizada com sucesso'],200);
+            }
+        }catch (Exception $e){
+            if(config('app.debug')){
+                return response()
+                    ->json(ApiErros::erroMensageCadastroEmpresa($e->getMessage(),1030));
+            }
+            //para opção de produção
+            return response()->
+            json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao alterar a situacao',1030));
+        }
+
+    }
 }

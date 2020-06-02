@@ -27,6 +27,7 @@ class Email
         $this->mail->SMTPSecure = 'tls';
         $this->mail->CharSet = "utf-8";
 
+        //setting host
         $this->mail->Host = "smtp.gmail.com";
         $this->mail->Port = 587;
         $this->mail->Username = "PlataformaFamilyFoods@gmail.com";

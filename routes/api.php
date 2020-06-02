@@ -37,20 +37,26 @@ Route::prefix('auth')->group(function () {
                 /**
                  * parte basica de empresa CRUD
                  */
-                //lista
-                Route::get('/','modulos\master\empresas\EmpresasCrudController@index');
-
-                //buscar um registro
-                Route::get('/{id}','modulos\master\empresas\EmpresasCrudController@show');
-
-                //criando empresa
-                Route::post('/','modulos\master\empresas\EmpresasCrudController@store');
-
                 //atualizando uma empresa
                 Route::put('/{id}','modulos\master\empresas\EmpresasCrudController@update');
 
+                //atualizar situacao
+                Route::get('/{empresas}','modulos\master\empresas\EmpresasCrudController@updateSituacao')
+                           ->name('atualizarSituacao');
+
                 //excluindo uma empresa
-                Route::delete('/{id}','modulos\master\empresas\EmpresasCrudController@delete');
+                Route::delete('/{id}','modulos\master\empresas\EmpresasCrudController@delete')
+                             ->name('excluirEmpresa');
+
+                //buscar um registro
+                Route::get('/buscar/{id}','modulos\master\empresas\EmpresasCrudController@show')
+                          ->name('exibirUmaEmpresa');
+
+                //lista
+                Route::get('/','modulos\master\empresas\EmpresasCrudController@index');
+
+                //criando empresa
+                Route::post('/','modulos\master\empresas\EmpresasCrudController@store');
 
                 //filtrarEmpresa
                 Route::post('/filtrar','modulos\master\empresas\BuscarEmpresaController@filtraEmpresa');
@@ -59,48 +65,37 @@ Route::prefix('auth')->group(function () {
 
             //routes de proprietarios
             Route::prefix('proprietario')->group(function(){
-                //criando PessoaProprietaria
-                Route::post('/',
-                'modulos\master\proprietarios\ProprietariosCrudController@storePessoaProprietaria');
 
-                //listagem de pessoas para cadastro de usuario
-                Route::get('/pessoas',
-                'modulos\master\proprietarios\ProprietariosCrudController@retornaPessoaParaCadastroDeUsuario');
+                //atualizar proprietario e usuario
+                Route::put('/atualizar/{pessoas}','modulos\master\proprietarios\ProprietariosCrudController@alterarProprietarioUsuario')
+                        ->name('atualizarPessoaUsuario');
 
-                //listagem de empresas aptas a receber cadastro de pessoas
-                Route::get('/empresas',
-                'modulos\master\proprietarios\ProprietariosCrudController@retornaEmpresasParaCadastroDePessoa');
-
-                //criar UsuarioProprietario
-                Route::post('/cadUserProprietaria',
-                'modulos\master\proprietarios\ProprietariosCrudController@storeUserProprietario');
-
-                //
-                Route::get('/listagem',
-                'modulos\master\proprietarios\ProprietariosCrudController@listagem');
-
-                // // //buscar proprietario
-                  Route::get('/buscar/{id}',
-                  'modulos\master\proprietarios\ProprietariosCrudController@buscarUmProprietario');
-
-                //atualizar pessoa proprietario
-                Route::put('/{id}',
-                'modulos\master\proprietarios\ProprietariosCrudController@updateProprietario');
-
-                //atualizar User proprietario
-                Route::put('/user/{id}',
-                'modulos\master\proprietarios\ProprietariosCrudController@updateUserProprietario');
-
-                //route para filtrar pessoas
-                Route::post('/filtro',
-                'modulos\master\proprietarios\BuscarProprietarioController@filtrarPessoaEmpresa');
+                //alterar Situação de proprietario
+                Route::put('/situacao/{pessoas}','modulos\master\proprietarios\ProprietariosCrudController@alterSituacaoProprietario')
+                    ->name('alterarSituacaoProprietario');
 
                 //route para excluir um proprietario
                 Route::delete('/{id}','modulos\master\proprietarios\ProprietariosCrudController@deleteProprietario');
 
+                //route para filtrar pessoas
+                Route::get('/filtro/{empresa}',
+                    'modulos\master\proprietarios\BuscarProprietarioController@filtrarPessoaEmpresa')
+                    ->name('listagemDePessoasEmpresa');
 
+                //buscar proprietario
+                Route::get('/buscar/{id}',
+                    'modulos\master\proprietarios\ProprietariosCrudController@buscarUmProprietario')
+                            ->name('ExibirUmProprietario');
 
+                //criando PessoaProprietaria
+                Route::post('/{empresas}',
+                'modulos\master\proprietarios\ProprietariosCrudController@storePessoaProprietaria')->name('pessoa');
+
+                //listagem proprietarios
+                Route::get('/listagem',
+                'modulos\master\proprietarios\ProprietariosCrudController@listagem');
             });
+
             Route::prefix('clientes')->group(function(){
                 //route para filtragem de clientes
                 Route::post('/','modulos\master\clientes\ListClienteContrller@filtratListaCliente')->name("fitragem de clientes");

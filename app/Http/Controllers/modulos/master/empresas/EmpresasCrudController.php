@@ -15,7 +15,6 @@ class EmpresasCrudController extends Controller
 {
     //lista todos
     public function index(){
-
         $query = DB::table('empresas')->join('cidades','empresas.cidade_id','=','cidades.id')
             ->select('empresas.razao_social','empresas.cnpj','empresas.situacao','empresas.bairro','empresas.rua',
                 'empresas.cep','empresas.taxaEntrega','empresas.tempoEntrega','empresas.categoria','empresas.telefone',
@@ -27,10 +26,22 @@ class EmpresasCrudController extends Controller
 
     //buscar um registro
     public function show(Empresas $id){
-        //dessa forma ele já me passa um objeto com este $id
-        $data = $id;
-       // $id = $data->id;
-        return response()->json(['data' => $data],200);
+        try {
+            $empresa_id = $id->id;
+            $query = DB::table('empresas')->join('cidades','empresas.cidade_id','=','cidades.id')
+                ->select('empresas.razao_social','empresas.cnpj','empresas.situacao','empresas.categoria','cidades.nome')
+                ->where('empresas.id',$empresa_id)
+                ->first();
+            return response()->json( $query,200);
+        }catch (\Exception $e){
+            if(config('app.debug')){
+                return response()
+                    ->json(ApiErros::erroMensageCadastroEmpresa($e->getMessage(),1026));
+            }
+            //para opção de produção
+            return response()->
+            json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao exibir os dados da empresa',1026));
+        }
     }
 
     //inserindo registro
@@ -83,6 +94,7 @@ class EmpresasCrudController extends Controller
                         "$empresa->razao_social",
                         "$empresa->email"
                     );
+
                     $email->send();
                 }
                 return response()->json([
@@ -124,6 +136,26 @@ class EmpresasCrudController extends Controller
                     return response()->
                     json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao realizar a atualização neste empresa',1011));
             }
+    }
+
+    //Torna Inativa uma empresa
+    public function updateSituacao(Empresas $empresas){
+        try {
+            $id = $empresas->id;
+            $empresa = Empresas::find($id);
+            $empresa->situacao = 'Inativa';
+            $empresa->save();
+            return response()->json(['data' => 'Empresa atualizada como Inativa'],200);
+        }catch (\Exception $e){
+            //para opção de debug
+            if(config('app.debug')){
+                return response()
+                    ->json(ApiErros::erroMensageCadastroEmpresa($e->getMessage(),1025));
+            }
+            //para opção de produção
+            return response()->
+            json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao realizar a atualização neste empresa',1025));
+        }
     }
 
     //apagando empresa

@@ -44,6 +44,6 @@ class User extends Authenticatable
     }
     // um usuario pertence a uma pessoa
     public function pessoa(){
-        return $this->belongsTo('App\Pessoas','pessoas_id','id');
+        return $this->belongsTo(Pessoas::class,'pessoas_id','id');
     }
 }

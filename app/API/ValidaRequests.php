@@ -61,15 +61,12 @@ class ValidaRequests{
     public static function validaCadastroDePessoa(Request $request){
       $data = $request->all();
         $validacao = Validator::make($data,[
-          'nome' => 'required|string',
-          'sexo' => 'required|min:1|max:1',
-          'telefone' => 'required|string|min:9|max:16',
-          'cidade'=> 'required|string',
-          'rua'=> 'required|string',
-          'cep'=> 'required|string',
-          'bairro'=> 'required|string',
-          'cpf' => 'required|cpf|min:14|max:14|unique:pessoas',
-          'empresas_id' => 'required|UUID'
+            'nome' => 'required|string',
+            'telefone' => 'required|string|min:9|max:16',
+            'cidade_id'=> 'required|numeric',
+            'funcoes_id'=>'required|numeric',
+            'password' => 'required|string|confirmed|min:6|max:10',
+            'email' => 'required|string|email|unique:users',
        ]);
        if($validacao->fails()){
          return response()->json($validacao->errors());
@@ -79,15 +76,13 @@ class ValidaRequests{
     public static function validaAtualizaPessoa(Request $request){
       $data = $request->all();
         $validacao = Validator::make($data,[
-          'nome' => 'string',
-          'sexo' => 'min:1|max:1',
-          'telefone' => 'string|min:9|max:16',
-          'cidade'=> 'string',
-          'rua'=> 'string',
-          'cep'=> 'string',
-          'bairro'=> 'string',
-          'cpf' => 'cpf|min:14|max:14',
-          'empresas_id' => 'required|UUID'
+            'nome' => 'string',
+            'telefone' => 'required|string|min:9|max:16',
+            'password' => 'required|string|confirmed|min:6|max:10',
+            'situacao' => 'required|string',
+            'email' => 'required|email',
+            'cidade' => 'required'
+
        ]);
        if($validacao->fails()){
          return response()->json($validacao->errors());

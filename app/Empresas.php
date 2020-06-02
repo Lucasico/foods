@@ -31,8 +31,9 @@ class Empresas extends Model
      ];
      //tem n pessoas
      public function pessoas(){
-         return $this->hasMany('App\Pessoas');
+         return $this->hasMany(Pessoas::class,'empresas_id','id');
      }
+
      //uma empresa tem muitos produtos
      public function produtos(){
         return $this->hasMany('App\Produtos');
