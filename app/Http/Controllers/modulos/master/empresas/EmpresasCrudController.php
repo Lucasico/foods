@@ -176,7 +176,7 @@ class EmpresasCrudController extends Controller
     }
 
     public function extraParaExibirDadosCompletos(Empresas $empresa){
-        foreach ($empresa->cidade() as $cidades)
+      //  foreach ($empresa->cidade() as $cidades)
         $cidade = $empresa->cidade->nome;
         $estado = $empresa->cidade->estado->nome;
         return response()->json( ['data' => $empresa]);
