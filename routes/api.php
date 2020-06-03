@@ -53,7 +53,8 @@ Route::prefix('auth')->group(function () {
                           ->name('exibirUmaEmpresa');
 
                 //lista
-                Route::get('/','modulos\master\empresas\EmpresasCrudController@index');
+                Route::get('/','modulos\master\empresas\EmpresasCrudController@index')
+                    ->name('listarTodasEmpresas');
 
                 //criando empresa
                 Route::post('/','modulos\master\empresas\EmpresasCrudController@store');
