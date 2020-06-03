@@ -125,8 +125,12 @@ class EmpresasCrudController extends Controller
                 return response()->json(['ErrosValida' => $arrayErros],200);
             }
             try{
-                Empresas::where('id', $id)->update($request->except('id'));
-                return response()->json($testeRetorno,200);
+              $atualiza =  Empresas::where('id', $id)->update($request->except('id'));
+                if($atualiza){
+                    return response()->json($testeRetorno,200);
+                }else{
+                    return response()->json("Empresa não encontrada",200);
+                }
             }catch(\Exception $e){
                 //para opção de debug
                 if(config('app.debug')){
