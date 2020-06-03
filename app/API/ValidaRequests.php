@@ -28,7 +28,6 @@ class ValidaRequests{
     public static function validaAtualizaEmpresa(Request $request){
       $data = $request->all();
         $validacao = Validator::make($data,[
-            'cidade' => 'string',
             'bairro' => 'string',
             'rua' => 'string',
             'cep' => 'string',

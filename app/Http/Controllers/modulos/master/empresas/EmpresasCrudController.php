@@ -9,6 +9,7 @@ use App\Empresas;
 use App\API\ApiErros;
 use App\API\ValidaRequests;
 use App\Support\Email\Email;
+use Mockery\Exception;
 
 
 class EmpresasCrudController extends Controller
@@ -176,10 +177,18 @@ class EmpresasCrudController extends Controller
     }
 
     public function extraParaExibirDadosCompletos(Empresas $empresa){
-      //  foreach ($empresa->cidade() as $cidades)
-        $cidade = $empresa->cidade->nome;
-        $estado = $empresa->cidade->estado->nome;
-        return response()->json( ['data' => $empresa]);
-
+        try{
+            $cidade = $empresa->cidade->nome;
+            $estado = $empresa->cidade->estado->nome;
+            return response()->json( ['data' => $empresa]);
+        }catch (Exception $e){
+            if(config('app.debug')){
+                return response()
+                    ->json(ApiErros::erroMensageCadastroEmpresa($e->getMessage(),1031));
+            }
+            //para opção de produção
+            return response()->
+            json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao exibir dados da empresa',1031));
+        }
     }
 }
