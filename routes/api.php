@@ -39,6 +39,8 @@ Route::prefix('auth')->group(function () {
                  */
                 //atualizando uma empresa
                 Route::put('/{id}','modulos\master\empresas\EmpresasCrudController@update');
+                Route::get('/mostrar/{empresa}','modulos\master\empresas\EmpresasCrudController@extraParaExibirDadosCompletos')
+                        ->name('mostrarDadosDeUmaEmpresa');
 
                 //atualizar situacao
                 Route::get('/{empresas}','modulos\master\empresas\EmpresasCrudController@updateSituacao')

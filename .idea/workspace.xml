@@ -140,7 +140,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../laravel_diversos/envio-de-emails" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -201,6 +201,9 @@
       <workItem from="1591107571499" duration="10146000" />
       <workItem from="1591137810277" duration="291000" />
       <workItem from="1591144099474" duration="459000" />
+      <workItem from="1591146661405" duration="41000" />
+      <workItem from="1591192681898" duration="1191000" />
+      <workItem from="1591218100506" duration="369000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;inserir tabelas com seus respectivos relacionamentos na modelagem: UF, CIDADE&quot;">
       <created>1590450545567</created>
@@ -240,10 +243,10 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1590450592185" />
-    <state x="462" y="126" key="FileChooserDialogImpl" timestamp="1590945994683">
+    <state x="462" y="126" key="FileChooserDialogImpl" timestamp="1591146698231">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="462" y="126" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1590945994683" />
+    <state x="462" y="126" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1591146698231" />
     <state x="465" y="107" key="NewPhpClassDialog" timestamp="1590790739832">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -256,10 +259,10 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="184" y="29" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1590687781068" />
-    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1590629223528">
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1591218434193">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.0.1366.768@0.0.1366.768" timestamp="1590629223528" />
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.0.1366.768@0.0.1366.768" timestamp="1591218434193" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -295,6 +298,15 @@
             <option name="methodName" value="storePessoaProprietaria" />
           </properties>
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php-line-method">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/modulos/master/empresas/EmpresasCrudController.php</url>
+          <line>27</line>
+          <properties>
+            <option name="className" value="\App\Http\Controllers\modulos\master\empresas\EmpresasCrudController" />
+            <option name="methodName" value="show" />
+          </properties>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

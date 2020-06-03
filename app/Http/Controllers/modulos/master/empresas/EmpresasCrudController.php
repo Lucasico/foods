@@ -174,4 +174,8 @@ class EmpresasCrudController extends Controller
                 json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao apagar empresa',1012));
         }
     }
+
+    public function extraParaExibirDadosCompletos(Empresas $empresa){
+        return response()->json(['data' => $empresa],200);
+    }
 }
