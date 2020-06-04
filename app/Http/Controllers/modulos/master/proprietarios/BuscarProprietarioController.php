@@ -16,7 +16,8 @@ class BuscarProprietarioController extends Controller
             $empresa_id = $empresa->id;
             $query = DB::table('users')
                         ->select('pessoas.id','pessoas.nome','pessoas.telefone',
-                                 'users.email AS email','permissoes.nome AS funcao','cidades.nome AS cidade')
+                                 'users.email AS email','permissoes.nome AS funcao','cidades.nome AS cidade',
+                                 'users.situacao AS situacao')
                         ->join('pessoas','users.pessoas_id','=','pessoas.id')
                         ->join('permissoes','users.permissoes_id','=','permissoes.id')
                         ->join('cidades','cidades.id','=','pessoas.cidade_id')
