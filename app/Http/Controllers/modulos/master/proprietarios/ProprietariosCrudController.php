@@ -17,28 +17,6 @@ use Mockery\Exception;
 
 class ProprietariosCrudController extends Controller
 {
-    //lista de dados proprietarios
-    public function listagem(){
-        try{
-            $pessoasProprietariasEmpresas = DB::table('pessoas')
-            ->join('empresas','pessoas.empresas_id','=','empresas.id')
-            ->join('users','pessoas.id','=','users.pessoas_id')
-            ->select('pessoas_id',"users.id",'pessoas.funcoes_id','pessoas.nome', 'pessoas.sexo','pessoas.telefone',
-                     'pessoas.cpf','pessoas.cidade','pessoas.rua','pessoas.cep',
-                     'pessoas.bairro','users.name','users.email'
-                     )
-            ->where('pessoas.funcoes_id',2)
-            ->paginate(10);
-            return response()->json($pessoasProprietariasEmpresas,200);
-
-        }catch(\Exception $e){
-            if(config('app.debug')){
-                return response()->json(ApiErros::erroMensageCadastroEmpresa($e->getMessage(),1016));
-            }
-                 //para opção de produção
-                return response()->json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao listar os proprietarios',1016));
-        }
-    }
 
     //exibir dados do proprietario
      public function buscarUmProprietario(Pessoas $id){
@@ -146,7 +124,7 @@ class ProprietariosCrudController extends Controller
             $pessoa = $pessoas->update([
                 'nome' => $request->input('nome'),
                 'telefone' => $request->input('telefone'),
-                'cidade_id' => $request->input('cidade')
+                //'cidade_id' => $request->input('cidade')
             ]);
             $user = $pessoas->users()->update([
                 'email' => $request->input('email'),

@@ -24,7 +24,6 @@ class EmpresasCrudController extends Controller
             ->paginate(10);
         return response()->json( $query,200);
     }
-
     //buscar um registro
     public function show(Empresas $id){
         try {
@@ -44,7 +43,6 @@ class EmpresasCrudController extends Controller
             json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao exibir os dados da empresa',1026));
         }
     }
-
     //inserindo registro
     public function store(Request $request){
         $cnpjCadastrado = DB::table('empresas')->where('cnpj', $request->cnpj)->value('cnpj');
@@ -115,7 +113,6 @@ class EmpresasCrudController extends Controller
         }
 
     }
-
     //atualizando uma empresa
     public function update(Request $request, $id){
         $testeRetorno = " Empresa Atualizado com sucesso!";
@@ -142,7 +139,6 @@ class EmpresasCrudController extends Controller
                     json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao realizar a atualização neste empresa',1011));
             }
     }
-
     //Torna Inativa uma empresa
     public function updateSituacao(Empresas $empresas){
         try {
@@ -162,7 +158,6 @@ class EmpresasCrudController extends Controller
             json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao realizar a atualização neste empresa',1025));
         }
     }
-
     //apagando empresa
     public function delete(Empresas $id){
         try{
@@ -179,7 +174,7 @@ class EmpresasCrudController extends Controller
                 json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao apagar empresa',1012));
         }
     }
-
+    //extraParaExibirDadosCompletos
     public function extraParaExibirDadosCompletos(Empresas $empresa){
         try{
             $query = DB::table('empresas')

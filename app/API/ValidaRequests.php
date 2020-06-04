@@ -76,12 +76,10 @@ class ValidaRequests{
       $data = $request->all();
         $validacao = Validator::make($data,[
             'nome' => 'string',
-            'telefone' => 'required|string|min:9|max:16',
+            'telefone' => 'string|min:9|max:16',
             'password' => 'required|string|confirmed|min:6|max:10',
-            'situacao' => 'required|string',
-            'email' => 'required|email',
-            'cidade' => 'required'
-
+            'situacao' => 'string',
+            'email' => 'email',
        ]);
        if($validacao->fails()){
          return response()->json($validacao->errors());

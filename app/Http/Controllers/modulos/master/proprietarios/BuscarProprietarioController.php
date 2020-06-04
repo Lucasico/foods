@@ -4,7 +4,6 @@ namespace App\Http\Controllers\modulos\master\proprietarios;
 
 use App\Empresas;
 use App\Http\Controllers\Controller;
-use http\Env\Response;
 use Illuminate\Support\Facades\DB;
 use App\API\ApiErros;
 

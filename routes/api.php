@@ -96,7 +96,8 @@ Route::prefix('auth')->group(function () {
 
                 //listagem proprietarios
                 Route::get('/listagem',
-                'modulos\master\proprietarios\ProprietariosCrudController@listagem');
+                'modulos\master\proprietarios\ProprietariosCrudController@listagem')
+                ->name('listaTodosUfiltrarPessoaEmpresasuarios');
             });
 
             Route::prefix('clientes')->group(function(){
