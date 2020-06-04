@@ -14,7 +14,6 @@ use Mockery\Exception;
 
 class ProprietariosCrudController extends Controller
 {
-
     //exibir todos dados do proprietario
     public function exibirDadosProprietario(Pessoas $id){
         try {

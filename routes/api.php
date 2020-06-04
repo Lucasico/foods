@@ -102,7 +102,7 @@ Route::prefix('auth')->group(function () {
 
             Route::prefix('clientes')->group(function(){
                 //route para filtragem de clientes
-                Route::post('/','modulos\master\clientes\ListClienteContrller@filtratListaCliente')->name("fitragem de clientes");
+                Route::post('/filtrar','modulos\master\clientes\ListClienteContrller@filtratListaCliente')->name("fitragem de clientes");
                 //route listagem de clientes
                 Route::get('/lista','modulos\master\clientes\ListClienteContrller@listagemClientes')->name("listaClientes");
             });
