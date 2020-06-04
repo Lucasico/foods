@@ -5,6 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/modulos/master/clientes/ListClienteContrller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/modulos/master/clientes/ListClienteContrller.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/modulos/master/proprietarios/BuscarProprietarioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/modulos/master/proprietarios/BuscarProprietarioController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/modulos/master/proprietarios/ProprietariosCrudController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/modulos/master/proprietarios/ProprietariosCrudController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,7 +207,7 @@
       <workItem from="1591218100506" duration="6200000" />
       <workItem from="1591225766629" duration="6209000" />
       <workItem from="1591236558529" duration="9555000" />
-      <workItem from="1591283975726" duration="5397000" />
+      <workItem from="1591283975726" duration="8937000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;inserir tabelas com seus respectivos relacionamentos na modelagem: UF, CIDADE&quot;">
       <created>1590450545567</created>
@@ -295,7 +296,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/modulos/master/proprietarios/ProprietariosCrudController.php</url>
-          <line>73</line>
+          <line>72</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\modulos\master\proprietarios\ProprietariosCrudController" />
             <option name="methodName" value="storePessoaProprietaria" />

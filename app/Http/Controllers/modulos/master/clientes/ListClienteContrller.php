@@ -12,12 +12,18 @@ use Illuminate\Support\Facades\DB;
 class ListClienteContrller extends Controller
 {
     public function listagemClientes(){
-        $query = DB::table('pessoas')->join('empresas','pessoas.empresas_id','=','empresas.id')
-                ->select('pessoas.id','empresas.razao_social','pessoas.nome','pessoas.telefone'
-                        )
-                ->where('pessoas.funcoes_id',4)
-                ->paginate(10);
-
+        $query = DB::table('pessoas')
+            ->select('empresas.razao_social','pessoas.nome','pessoas.telefone','pessoas.nome','pessoas.telefone',
+                'users.email AS email','users.situacao'
+            )
+            ->join('empresas','pessoas.empresas_id','=','empresas.id')
+            ->join('users','users.pessoas_id','=','pessoas.id')
+            ->join('permissoes','users.permissoes_id','=','permissoes.id')
+            ->join('cidades','cidades.id','=','pessoas.cidade_id')
+            ->join('funcoes','funcoes.id','=','pessoas.funcoes_id')
+            ->where('pessoas.funcoes_id',4)
+            ->orderBy('pessoas.nome','ASC')
+            ->paginate(10);
         return response()->json($query,200);
     }
     public function filtratListaCliente(){

@@ -4,12 +4,9 @@ namespace App\Http\Controllers\modulos\master\proprietarios;
 
 use App\Empresas;
 use App\Http\Controllers\Controller;
-use http\Env\Response;
 use Illuminate\Http\Request;
-use Illuminate\Validation;
 use Illuminate\Support\Facades\DB;
 use App\Pessoas;
-use App\User;
 use App\API\ApiErros;
 use App\API\ValidaRequests;
 use Mockery\Exception;
@@ -69,7 +66,6 @@ class ProprietariosCrudController extends Controller
              json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao exibir os dados',1031));
          }
      }
-
     //criar pessoa proprietaria
     public function storePessoaProprietaria(Empresas $empresas,Request $request){
         try{
@@ -104,7 +100,6 @@ class ProprietariosCrudController extends Controller
                 return response()->json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao atualizar',1014));
             }
     }
-
     //excluir proprietario
     public function deleteProprietario($id){
         try{
@@ -122,7 +117,6 @@ class ProprietariosCrudController extends Controller
                 return response()->json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao apagar',1019));
         }
     }
-
     //alterar situacao de proprietario
     public function alterSituacaoProprietario(Pessoas $pessoas){
         try {
@@ -140,7 +134,6 @@ class ProprietariosCrudController extends Controller
             json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao alterar a situacao',1029));
         }
     }
-
     //atualizar proprietario e usuario
     public function alterarProprietarioUsuario(Pessoas $pessoas, Request $request){
         try {

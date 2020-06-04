@@ -22,6 +22,8 @@ class BuscarProprietarioController extends Controller
                         ->join('permissoes','users.permissoes_id','=','permissoes.id')
                         ->join('cidades','cidades.id','=','pessoas.cidade_id')
                         ->where('pessoas.empresas_id',$empresa_id)
+                        ->where('pessoas.funcoes_id','!=',4)
+
                         ->paginate(10);
             return response()->json($query,200);
         }catch (\Exception $e){
