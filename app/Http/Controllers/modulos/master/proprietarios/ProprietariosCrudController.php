@@ -20,8 +20,8 @@ class ProprietariosCrudController extends Controller
         try {
             $pessoa_id = $id->id;
             $query = DB::table('users')
-                ->select('pessoas.nome','pessoas.telefone','cidades.nome AS cidade',
-                    'funcoes.nome AS funcao','permissoes.nome AS permissao',
+                ->select('pessoas.nome','pessoas.telefone','cidades.nome AS cidade','pessoas.bairro',
+                    'pessoas.rua','pessoas.numero','funcoes.nome AS funcao','permissoes.nome AS permissao',
                     'users.email AS email','users.situacao')
                 ->join('pessoas','users.pessoas_id','=','pessoas.id')
                 ->join('permissoes','users.permissoes_id','=','permissoes.id')
@@ -47,7 +47,7 @@ class ProprietariosCrudController extends Controller
              $pessoa_id = $id->id;
              $query = DB::table('users')
                  ->select('pessoas.nome','pessoas.telefone',
-                     'users.email AS email','users.situacao')
+                     'users.email AS email','users.situacao','pessoas.bairro','pessoas.rua','pessoas.numero')
                  ->join('pessoas','users.pessoas_id','=','pessoas.id')
                  ->join('permissoes','users.permissoes_id','=','permissoes.id')
                  ->join('cidades','cidades.id','=','pessoas.cidade_id')
