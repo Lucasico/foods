@@ -97,6 +97,7 @@ class EmpresasCrudController extends Controller
                     $email->send();
                 }
                 return response()->json([
+                    'empresa_id' =>$empresa->id,
                     'resposta' => "Empresa cadastrada com sucesso!"
                 ],201);
             }catch(\Exception $e){

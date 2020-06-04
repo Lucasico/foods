@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4b7acae8-a989-4a59-bb97-aaba28b82aca" name="Default Changelist" comment="&quot;inserir tabelas com seus respectivos relacionamentos na modelagem: UF, CIDADE&quot;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/modulos/master/clientes/ListClienteContrller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/modulos/master/clientes/ListClienteContrller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/modulos/master/proprietarios/ProprietariosCrudController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/modulos/master/proprietarios/ProprietariosCrudController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/modulos/master/empresas/EmpresasCrudController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/modulos/master/empresas/EmpresasCrudController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -207,7 +205,8 @@
       <workItem from="1591218100506" duration="6200000" />
       <workItem from="1591225766629" duration="6209000" />
       <workItem from="1591236558529" duration="9555000" />
-      <workItem from="1591283975726" duration="13736000" />
+      <workItem from="1591283975726" duration="14479000" />
+      <workItem from="1591310261161" duration="128000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;inserir tabelas com seus respectivos relacionamentos na modelagem: UF, CIDADE&quot;">
       <created>1590450545567</created>
@@ -287,7 +286,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/modulos/master/empresas/EmpresasCrudController.php</url>
-          <line>161</line>
+          <line>162</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\modulos\master\empresas\EmpresasCrudController" />
             <option name="methodName" value="delete" />
