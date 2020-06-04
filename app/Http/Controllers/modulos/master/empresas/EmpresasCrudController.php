@@ -182,9 +182,13 @@ class EmpresasCrudController extends Controller
 
     public function extraParaExibirDadosCompletos(Empresas $empresa){
         try{
-            $cidade = $empresa->cidade->nome;
-            $estado = $empresa->cidade->estado->nome;
-            return response()->json( ['data' => $empresa]);
+            $query = DB::table('empresas')
+                ->select('razao_social','cnpj','situacao','bairro','rua',
+                    'cep','taxaEntrega','tempoEntrega','categoria','telefone',
+                    'celular','email','instagram','numero')
+                ->where('id',$empresa->id)
+                ->first();
+            return response()->json( ['data' => $query]);
         }catch (Exception $e){
             if(config('app.debug')){
                 return response()
