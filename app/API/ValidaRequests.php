@@ -64,6 +64,7 @@ class ValidaRequests{
             'telefone' => 'required|string|min:9|max:16',
             'cidade_id'=> 'required|numeric',
             'funcoes_id'=>'required|numeric',
+            'permissao_id'=>'required|numeric',
             'password' => 'required|string|confirmed|min:6|max:10',
             'email' => 'required|string|email|unique:users',
        ]);

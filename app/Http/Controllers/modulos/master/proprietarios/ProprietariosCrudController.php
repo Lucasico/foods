@@ -87,7 +87,7 @@ class ProprietariosCrudController extends Controller
             ]);
             $user = $pessoa->users()->create([
                 'pessoa_id' => $pessoa,
-                'permissoes_id' => 2,
+                'permissoes_id' => $request->input('permissao_id'),
                 'email' =>$request->input('email'),
                 'password' =>bcrypt($request->input('password')),
                 'password_confirmation' =>$request->input('password_confirmation')
