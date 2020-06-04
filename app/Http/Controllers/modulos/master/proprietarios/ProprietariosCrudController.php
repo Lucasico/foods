@@ -18,7 +18,33 @@ use Mockery\Exception;
 class ProprietariosCrudController extends Controller
 {
 
-    //exibir dados do proprietario
+    //exibir todos dados do proprietario
+    public function exibirDadosProprietario(Pessoas $id){
+        try {
+            $pessoa_id = $id->id;
+            $query = DB::table('users')
+                ->select('pessoas.nome','pessoas.telefone','cidades.nome AS cidade',
+                    'funcoes.nome AS funcao','permissoes.nome AS permissao',
+                    'users.email AS email','users.situacao')
+                ->join('pessoas','users.pessoas_id','=','pessoas.id')
+                ->join('permissoes','users.permissoes_id','=','permissoes.id')
+                ->join('cidades','cidades.id','=','pessoas.cidade_id')
+                ->join('funcoes','funcoes.id','=','pessoas.funcoes_id')
+                ->where('pessoas.id',$pessoa_id)
+                ->where('users.permissoes_id','!=',1)
+                ->first();
+            return response()->json($query,200);
+        }catch (\Exception $e){
+            if(config('app.debug')){
+                return response()
+                    ->json(ApiErros::erroMensageCadastroEmpresa($e->getMessage(),1028));
+            }
+            //para opção de produção
+            return response()->
+            json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao exibir os dados',1028));
+        }
+    }
+    //buscar dados do proprietario
      public function buscarUmProprietario(Pessoas $id){
          try {
              $pessoa_id = $id->id;
@@ -36,11 +62,11 @@ class ProprietariosCrudController extends Controller
          }catch (\Exception $e){
              if(config('app.debug')){
                  return response()
-                     ->json(ApiErros::erroMensageCadastroEmpresa($e->getMessage(),1028));
+                     ->json(ApiErros::erroMensageCadastroEmpresa($e->getMessage(),1031));
              }
              //para opção de produção
              return response()->
-             json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao exibir os dados',1028));
+             json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao exibir os dados',1031));
          }
      }
 

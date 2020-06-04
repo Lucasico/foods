@@ -94,10 +94,10 @@ Route::prefix('auth')->group(function () {
                 Route::post('/{empresas}',
                 'modulos\master\proprietarios\ProprietariosCrudController@storePessoaProprietaria')->name('pessoa');
 
-                //listagem proprietarios
-                Route::get('/listagem',
-                'modulos\master\proprietarios\ProprietariosCrudController@listagem')
-                ->name('listaTodosUfiltrarPessoaEmpresasuarios');
+                //exibirDadosProprietario
+                Route::get('/exibir/{id}','modulos\master\proprietarios\ProprietariosCrudController@exibirDadosProprietario')
+                    ->name('exibirDadosProprietario');
+
             });
 
             Route::prefix('clientes')->group(function(){
