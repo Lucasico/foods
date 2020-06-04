@@ -18,7 +18,10 @@ class Pessoas extends Model
         'empresas_id',
         'funcoes_id',
         'telefone',
-        'cidade_id'
+        'cidade_id',
+        'rua',
+        'bairro',
+        'numero'
     ];
 
     //1 para 1

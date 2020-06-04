@@ -79,7 +79,10 @@ class ProprietariosCrudController extends Controller
                 'funcoes_id' => $request->input('funcoes_id'),
                 'nome'=>$request->input('nome'),
                 'telefone'=>$request->input('telefone'),
-                'cidade_id'=>$request->input('cidade_id')
+                'cidade_id'=>$request->input('cidade_id'),
+                'rua'=>$request->input('rua'),
+                'bairro'=>$request->input('bairro'),
+                'numero'=>$request->input('numero')
             ]);
             $user = $pessoa->users()->create([
                 'pessoa_id' => $pessoa,
@@ -145,6 +148,9 @@ class ProprietariosCrudController extends Controller
             $pessoa = $pessoas->update([
                 'nome' => $request->input('nome'),
                 'telefone' => $request->input('telefone'),
+                'rua' => $request->input('rua'),
+                'bairro' => $request->input('bairro'),
+                'numero' => $request->input('numero')
                 //'cidade_id' => $request->input('cidade')
             ]);
             $user = $pessoas->users()->update([

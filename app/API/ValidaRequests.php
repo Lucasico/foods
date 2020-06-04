@@ -67,6 +67,9 @@ class ValidaRequests{
             'permissao_id'=>'required|numeric',
             'password' => 'required|string|confirmed|min:6|max:10',
             'email' => 'required|string|email|unique:users',
+            'rua'=>'required|string',
+            'bairro'=>'required|string',
+            'numero'=>'required|string'
        ]);
        if($validacao->fails()){
          return response()->json($validacao->errors());

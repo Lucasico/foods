@@ -13,8 +13,8 @@ class ListClienteContrller extends Controller
 {
     public function listagemClientes(){
         $query = DB::table('pessoas')
-            ->select('empresas.razao_social','pessoas.nome','pessoas.telefone','pessoas.nome','pessoas.telefone',
-                'users.email AS email','users.situacao'
+            ->select('empresas.razao_social','pessoas.nome','pessoas.telefone',
+                'users.email AS email','cidades.nome AS cidade'
             )
             ->join('empresas','pessoas.empresas_id','=','empresas.id')
             ->join('users','users.pessoas_id','=','pessoas.id')
