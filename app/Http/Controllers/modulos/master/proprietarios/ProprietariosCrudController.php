@@ -109,8 +109,10 @@ class ProprietariosCrudController extends Controller
     public function deleteProprietario($id){
         try{
             $pessoa = Pessoas::find($id);
-            $pessoa->delete();
-            return response()->json(['Data'=>'Proprietario excluido com sucesso'], 200);
+            $excluir = $pessoa->delete();
+            if($excluir){
+                return response()->json(['Data'=>'Proprietario excluido com sucesso'], 200);
+            }
         }catch(\Exception $e){
             if(config('app.debug')){
                 return response()->json(ApiErros::erroMensageCadastroEmpresa($e->getMessage(),1019));
