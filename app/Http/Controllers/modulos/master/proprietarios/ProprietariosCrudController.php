@@ -140,11 +140,11 @@ class ProprietariosCrudController extends Controller
     public function alterarProprietarioUsuario(Pessoas $pessoas, Request $request){
         try {
             $retorno = ValidaRequests::validaAtualizaPessoa($request);
-            if(!empty($retorno)){
+            if ( !empty($retorno) ) {
                 $arrayErros = $retorno->original;
-                return response()->json(['ErrosValida' => $arrayErros],200);
+                return response()->json(['ErrosValida' => $arrayErros], 200);
             }
-              $pessoa = $pessoas->update([
+            $pessoa = $pessoas->update([
                 'nome' => $request->input('nome'),
                 'telefone' => $request->input('telefone'),
                 'rua' => $request->input('rua'),
@@ -152,22 +152,22 @@ class ProprietariosCrudController extends Controller
                 'numero' => $request->input('numero')
                 //'cidade_id' => $request->input('cidade')
             ]);
-              $user = $pessoas->users()->update([
+            $user = $pessoas->users()->update([
                 'email' => $request->input('email'),
                 'situacao' => $request->input('situacao')
             ]);
-            if($request->input('restaurarSenhaPadrao') === 'sim'){
+            if ( $request->input('restaurarSenhaPadrao') === 'sim' ) {
                 $user = $pessoas->users()->update([
                     'password' => bcrypt('familyFoods')
                 ]);
-            }else{
+            } else {
                 $senha = $pessoas->users->password;
                 $manterPassword = $pessoas->users()->update([
-                    'password' =>  $senha
+                    'password' => $senha
                 ]);
             }
-            if ($pessoa && $user){
-                return response()->json(['data' => 'Atualização realizada com sucesso'],200);
+            if ( $pessoa && $user ) {
+                return response()->json(['data' => 'Atualização realizada com sucesso'], 200);
             }
         }catch (Exception $e){
             if(config('app.debug')){
