@@ -144,7 +144,7 @@ class ProprietariosCrudController extends Controller
                 $arrayErros = $retorno->original;
                 return response()->json(['ErrosValida' => $arrayErros],200);
             }
-            $pessoa = $pessoas->update([
+              $pessoa = $pessoas->update([
                 'nome' => $request->input('nome'),
                 'telefone' => $request->input('telefone'),
                 'rua' => $request->input('rua'),
@@ -152,14 +152,18 @@ class ProprietariosCrudController extends Controller
                 'numero' => $request->input('numero')
                 //'cidade_id' => $request->input('cidade')
             ]);
-            $user = $pessoas->users()->update([
+              $user = $pessoas->users()->update([
                 'email' => $request->input('email'),
-                'password' => bcrypt($request->input('password')),
                 'situacao' => $request->input('situacao')
             ]);
             if($request->input('restaurarSenhaPadrao') === 'sim'){
                 $user = $pessoas->users()->update([
                     'password' => bcrypt('familyFoods')
+                ]);
+            }else{
+                $senha = $pessoas->users->password;
+                $userNew = $pessoas->users()->update([
+                    'password' =>  $senha
                 ]);
             }
             if ($pessoa && $user){

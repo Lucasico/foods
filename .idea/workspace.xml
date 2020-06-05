@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4b7acae8-a989-4a59-bb97-aaba28b82aca" name="Default Changelist" comment="&quot;inserir tabelas com seus respectivos relacionamentos na modelagem: UF, CIDADE&quot;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/API/ValidaRequests.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/API/ValidaRequests.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/modulos/master/empresas/EmpresasCrudController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/modulos/master/empresas/EmpresasCrudController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/modulos/master/proprietarios/ProprietariosCrudController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/modulos/master/proprietarios/ProprietariosCrudController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,7 +209,7 @@
       <workItem from="1591310261161" duration="670000" />
       <workItem from="1591314753192" duration="550000" />
       <workItem from="1591315799329" duration="95000" />
-      <workItem from="1591367762080" duration="3622000" />
+      <workItem from="1591367762080" duration="6218000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;inserir tabelas com seus respectivos relacionamentos na modelagem: UF, CIDADE&quot;">
       <created>1590450545567</created>
