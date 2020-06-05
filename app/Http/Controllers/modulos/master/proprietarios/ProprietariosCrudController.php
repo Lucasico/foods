@@ -162,7 +162,7 @@ class ProprietariosCrudController extends Controller
                 ]);
             }else{
                 $senha = $pessoas->users->password;
-                $userNew = $pessoas->users()->update([
+                $manterPassword = $pessoas->users()->update([
                     'password' =>  $senha
                 ]);
             }
