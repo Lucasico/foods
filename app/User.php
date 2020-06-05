@@ -1,15 +1,18 @@
 <?php
+
 namespace App;
+
 use App\Traits\Uuids;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+
 //user a biblioteca abaixo
 use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
     //use HasApiTokens
-    use Notifiable, HasApiTokens;
+    use Notifiable , HasApiTokens;
     use Uuids;
 
     /**
@@ -19,9 +22,9 @@ class User extends Authenticatable
      */
     public $incrementing = false;
     protected $fillable = [
-        'email',
-        'password',
-        'permissoes_id',
+        'email' ,
+        'password' ,
+        'permissoes_id' ,
         'pessoas_id'
     ];
     /**
@@ -30,20 +33,24 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password' , 'remember_token' ,
     ];
     /**
      * @var array
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'email_verified_at' => 'datetime' ,
     ];
+
     //um usuario tem uma permissão
-    public function permissao(){
-       return $this->belongsTo('App\Permissoes', 'permissoes_id', 'id');
+    public function permissao ()
+    {
+        return $this -> belongsTo ( 'App\Permissoes' , 'permissoes_id' , 'id' );
     }
+
     // um usuario pertence a uma pessoa
-    public function pessoa(){
-        return $this->belongsTo(Pessoas::class,'pessoas_id','id');
+    public function pessoa ()
+    {
+        return $this -> belongsTo ( Pessoas::class , 'pessoas_id' , 'id' );
     }
 }

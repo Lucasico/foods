@@ -1,15 +1,19 @@
 <?php
-  namespace App\API;
-  class ApiErros{
-    public static function erroMensageCadastroEmpresa($message, $code){
+namespace App\API;
 
-      return [
-        "data" => [
-          'mensagem' => $message,
-          'codigo' => $code
-        ]
-      ];
+class ApiErros
+{
+    public static function erroMensageCadastroEmpresa ( $message , $code )
+    {
 
-    } 
-  }
+        return [
+            "data" => [
+                'mensagem' => $message ,
+                'codigo' => $code
+            ]
+        ];
+
+    }
+}
+
 ?>

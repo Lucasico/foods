@@ -9,9 +9,11 @@ class Tipos extends Model
     protected $table = 'tipos';
     public $timestamps = false;
 
-    public $fillable = ['id','tipo'];
+    public $fillable = [ 'id' , 'tipo' ];
+
     //uma tipo tem muitos produto
-    public function produtos(){ 
-        return $this->hasMany('App\Produtos');
+    public function produtos ()
+    {
+        return $this -> hasMany ( 'App\Produtos' );
     }
 }

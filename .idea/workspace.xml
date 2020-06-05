@@ -2,7 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4b7acae8-a989-4a59-bb97-aaba28b82aca" name="Default Changelist" comment="&quot;inserir tabelas com seus respectivos relacionamentos na modelagem: UF, CIDADE&quot;">
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/modulos/master/proprietarios/ProprietariosCrudController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/modulos/master/proprietarios/ProprietariosCrudController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/API/ApiErros.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/API/ApiErros.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/API/ValidaRequests.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/API/ValidaRequests.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Cidades.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Cidades.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Combos.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Combos.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Composicao_produtos.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Composicao_produtos.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Composicoes.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Composicoes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Empresas.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Empresas.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Estados.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Estados.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Funcoes.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Funcoes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AutentificadorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AutentificadorController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/modulos/master/clientes/ListClienteContrller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/modulos/master/clientes/ListClienteContrller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/modulos/master/dashboard/DashboardMasterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/modulos/master/dashboard/DashboardMasterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/modulos/master/empresas/EmpresasCrudController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/modulos/master/empresas/EmpresasCrudController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/modulos/master/util/ControllerUfCidade.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/modulos/master/util/ControllerUfCidade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Permissoes.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Permissoes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Pessoas.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Pessoas.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Support/Email/Email.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Support/Email/Email.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Tipos.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Tipos.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Traits/Uuids.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Traits/Uuids.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -208,7 +229,7 @@
       <workItem from="1591310261161" duration="670000" />
       <workItem from="1591314753192" duration="550000" />
       <workItem from="1591315799329" duration="95000" />
-      <workItem from="1591367762080" duration="6743000" />
+      <workItem from="1591367762080" duration="7750000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;inserir tabelas com seus respectivos relacionamentos na modelagem: UF, CIDADE&quot;">
       <created>1590450545567</created>
@@ -264,6 +285,10 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="184" y="29" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1590687781068" />
+    <state x="452" y="192" key="com.jetbrains.php.test.PhpNewTestDialog" timestamp="1591378882540">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="452" y="192" key="com.jetbrains.php.test.PhpNewTestDialog/0.0.1366.768@0.0.1366.768" timestamp="1591378882540" />
     <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1591302525741">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -279,7 +304,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/modulos/master/empresas/EmpresasCrudController.php</url>
-          <line>50</line>
+          <line>54</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\modulos\master\empresas\EmpresasCrudController" />
             <option name="methodName" value="store" />
@@ -288,7 +313,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/modulos/master/empresas/EmpresasCrudController.php</url>
-          <line>166</line>
+          <line>176</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\modulos\master\empresas\EmpresasCrudController" />
             <option name="methodName" value="delete" />
@@ -297,7 +322,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/modulos/master/empresas/EmpresasCrudController.php</url>
-          <line>28</line>
+          <line>30</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\modulos\master\empresas\EmpresasCrudController" />
             <option name="methodName" value="show" />

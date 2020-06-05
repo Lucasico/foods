@@ -9,10 +9,11 @@ class Permissoes extends Model
     protected $table = 'permissoes';
     public $timestamps = false;
 
-    public $fillable = ['id', 'nome'];
+    public $fillable = [ 'id' , 'nome' ];
 
     //uma permissão tem muitos usuario
-    public function users(){ 
-        return $this->hasMany('App\User');
+    public function users ()
+    {
+        return $this -> hasMany ( 'App\User' );
     }
 }
