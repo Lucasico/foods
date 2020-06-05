@@ -81,9 +81,9 @@ class ValidaRequests{
         $validacao = Validator::make($data,[
             'nome' => 'string',
             'telefone' => 'string|min:9|max:16',
-            'password' => 'required|string|confirmed|min:6|max:10',
             'situacao' => 'string',
             'email' => 'email',
+            'restaurarSenhaPadrao' => 'required|string'
        ]);
        if($validacao->fails()){
          return response()->json($validacao->errors());

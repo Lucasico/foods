@@ -41,7 +41,7 @@ class ProprietariosCrudController extends Controller
         }
     }
     //buscar dados do proprietario
-     public function buscarUmProprietario(Pessoas $id){
+    public function buscarUmProprietario(Pessoas $id){
          try {
              $pessoa_id = $id->id;
              $query = DB::table('users')
@@ -157,6 +157,11 @@ class ProprietariosCrudController extends Controller
                 'password' => bcrypt($request->input('password')),
                 'situacao' => $request->input('situacao')
             ]);
+            if($request->input('restaurarSenhaPadrao') === 'sim'){
+                $user = $pessoas->users()->update([
+                    'password' => bcrypt('familyFoods')
+                ]);
+            }
             if ($pessoa && $user){
                 return response()->json(['data' => 'Atualização realizada com sucesso'],200);
             }

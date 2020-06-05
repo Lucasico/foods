@@ -16,7 +16,8 @@ class EmpresasCrudController extends Controller
 {
     //lista todos
     public function index(){
-        $query = DB::table('empresas')->join('cidades','empresas.cidade_id','=','cidades.id')
+        $query = DB::table('empresas')
+            ->join('cidades','empresas.cidade_id','=','cidades.id')
             ->select('empresas.id','empresas.razao_social','empresas.cnpj','empresas.situacao','empresas.bairro','empresas.rua',
                 'empresas.cep','empresas.taxaEntrega','empresas.tempoEntrega','empresas.categoria','empresas.telefone',
                 'empresas.celular','empresas.email','empresas.instagram','empresas.numero','cidades.nome')
@@ -28,8 +29,11 @@ class EmpresasCrudController extends Controller
     public function show(Empresas $id){
         try {
             $empresa_id = $id->id;
-            $query = DB::table('empresas')->join('cidades','empresas.cidade_id','=','cidades.id')
-                ->select('empresas.razao_social','empresas.cnpj','empresas.situacao','empresas.categoria','cidades.nome')
+            $query = DB::table('empresas')
+                ->join('cidades','empresas.cidade_id','=','cidades.id')
+                ->select('empresas.razao_social','empresas.cnpj','empresas.situacao','empresas.bairro','empresas.rua',
+                    'empresas.cep','empresas.taxaEntrega','empresas.tempoEntrega','empresas.categoria','empresas.telefone',
+                    'empresas.celular','empresas.email','empresas.instagram','empresas.numero','cidades.nome')
                 ->where('empresas.id',$empresa_id)
                 ->first();
             return response()->json( $query,200);
