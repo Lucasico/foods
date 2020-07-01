@@ -1,51 +1,58 @@
 <?php
 
 namespace App;
-//namespace  Illuminate\Database\Eloquent\SoftDeletes;
-//use SoftDeletes;
-use Illuminate\Database\Eloquent\Model;
 use App\Traits\Uuids;
+use Illuminate\Database\Eloquent\Model;
 
 class Empresas extends Model
 {
-    protected $table = 'empresas';
     use Uuids;
-
     public $incrementing = false;
     public $timestamps = false;
-    public $fillable = [
-        'razao_social' ,
-        'cnpj' ,
-        'situacao' ,
-        'bairro' ,
-        'rua' ,
-        'cep' ,
-        'taxaEntrega' ,
-        'tempoEntrega' ,
-        'categoria' ,
-        'telefone' ,
-        'celular' ,
-        'email' ,
-        'instagram' ,
-        'numero' ,
-        'cidade_id'
+    protected $table = 'empresas';
+    protected $fillable = [
+        'cidade_id',
+        'razao_social',
+        'cnpj',
+        'situacao',
+        'bairro',
+        'rua',
+        'cep',
+        'taxaEntrega',
+        'tempoEntrega',
+        'categoria',
+        'telefone',
+        'celular',
+        'telefone',
+        'email',
+        'instagram',
+        'numero'
     ];
 
-    //tem n pessoas
-    public function pessoas ()
+    public function cidade()
     {
-        return $this -> hasMany ( Pessoas::class , 'empresas_id' , 'id' );
+        return $this->belongsTo(Cidades::class);
     }
 
-    //uma empresa tem muitos produtos
-    public function produtos ()
+    public function produto ()
     {
-        return $this -> hasMany ( 'App\Produtos' );
+        return $this -> hasMany ( Produtos::class , 'empresa_id' , 'id' );
     }
 
-    public function cidade ()
+    public function avaliar_empresa()
     {
-        return $this -> belongsTo ( Cidades::class );
+        return $this->hasMany(Avaliar_empresas::class,'empresa_id','id');
     }
+
+    public function avaliar_cliente()
+    {
+        return $this->hasMany(Avaliar_clientes::class,'empresa_id','id');
+    }
+
+    public function funcionario()
+    {
+        return $this->hasMany(Funcionarios::class,'empresa_id','id');
+    }
+
 
 }

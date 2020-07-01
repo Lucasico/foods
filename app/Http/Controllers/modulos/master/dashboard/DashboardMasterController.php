@@ -28,7 +28,7 @@ class DashboardMasterController extends Controller
     public function quantidadeClientes()
     {
         try {
-            $quantCliente = Pessoas::where( 'funcoes_id' , 4 )->count();
+            $quantCliente = User::where( 'permissao_id' , 4 )->count();
             return response()->json( $quantCliente , 200 );
         } catch ( \Exception $e ) {
             if ( config( 'app.debug' ) ) {

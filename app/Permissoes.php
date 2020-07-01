@@ -7,13 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Permissoes extends Model
 {
     protected $table = 'permissoes';
-    public $timestamps = false;
 
-    public $fillable = [ 'id' , 'nome' ];
+    protected $fillable = [
+        'nome' ,
+    ];
 
-    //uma permissão tem muitos usuario
-    public function users ()
+    public function user()
     {
-        return $this -> hasMany ( 'App\User' );
+        return $this->hasMany(User::class,'permissao_id','id');
     }
 }

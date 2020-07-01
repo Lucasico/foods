@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\modulos\master\proprietarios;
 
 use App\Empresas;
+use App\Funcionarios;
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Pessoas;
@@ -15,19 +17,19 @@ use Mockery\Exception;
 class ProprietariosCrudController extends Controller
 {
     //exibir todos dados do proprietario
-    public function exibirDadosProprietario(Pessoas $id){
+    public function exibirDadosProprietario(User $id){
         try {
-            $pessoa_id = $id->id;
+            $user_id = $id->id;
             $query = DB::table('users')
-                ->select('pessoas.nome','pessoas.telefone','cidades.nome AS cidade','pessoas.bairro',
-                    'pessoas.rua','pessoas.numero','funcoes.nome AS funcao','permissoes.nome AS permissao',
-                    'users.email AS email','users.situacao')
-                ->join('pessoas','users.pessoas_id','=','pessoas.id')
-                ->join('permissoes','users.permissoes_id','=','permissoes.id')
-                ->join('cidades','cidades.id','=','pessoas.cidade_id')
-                ->join('funcoes','funcoes.id','=','pessoas.funcoes_id')
-                ->where('pessoas.id',$pessoa_id)
-                ->where('users.permissoes_id','!=',1)
+                ->select('users.nome','users.telefone','cidades.nome AS cidade','users.bairro',
+                    'users.rua','users.numero','permissoes.nome AS permissao',
+                    'users.email AS email','funcionarios.situacao')
+                ->join('funcionarios','users.id','=','funcionarios.user_id')
+                ->join('permissoes','users.permissao_id','=','permissoes.id')
+                ->join('cidades','cidades.id','=','users.cidade_id')
+                //->join('funcoes','funcoes.id','=','pessoas.funcoes_id')
+                ->where('users.id',$user_id)
+                ->where('users.permissao_id','=',2)
                 ->first();
             return response()->json($query,200);
         }catch (\Exception $e){
@@ -41,18 +43,17 @@ class ProprietariosCrudController extends Controller
         }
     }
     //buscar dados do proprietario
-    public function buscarUmProprietario(Pessoas $id){
+    public function buscarUmProprietario(User $id){
          try {
-             $pessoa_id = $id->id;
+             $user_id = $id->id;
              $query = DB::table('users')
-                 ->select('pessoas.nome','pessoas.telefone',
-                     'users.email AS email','users.situacao','pessoas.bairro','pessoas.rua','pessoas.numero')
-                 ->join('pessoas','users.pessoas_id','=','pessoas.id')
-                 ->join('permissoes','users.permissoes_id','=','permissoes.id')
-                 ->join('cidades','cidades.id','=','pessoas.cidade_id')
-                 ->join('funcoes','funcoes.id','=','pessoas.funcoes_id')
-                 ->where('pessoas.id',$pessoa_id)
-                 ->where('users.permissoes_id','!=',1)
+                 ->select('users.nome','users.telefone',
+                     'users.email AS email','funcionarios.situacao','users.bairro','users.rua','users.numero')
+                 ->join('permissoes','users.permissao_id','=','permissoes.id')
+                 ->join('cidades','cidades.id','=','users.cidade_id')
+                 ->join('funcionarios','users.id','=','funcionarios.user_id')
+                 ->where('users.id',$user_id)
+                 ->where('users.permissao_id','=',2)
                  ->first();
              return response()->json($query,200);
          }catch (\Exception $e){
@@ -68,28 +69,31 @@ class ProprietariosCrudController extends Controller
     //criar pessoa proprietaria
     public function storePessoaProprietaria(Empresas $empresas,Request $request){
         try{
+
             $retorno = ValidaRequests::validaCadastroDePessoa($request);
             if(!empty($retorno)){
                 $arrayErros = $retorno->original;
                 return response()->json(['ErrosValida' => $arrayErros],200);
             }
-            $pessoa = $empresas->pessoas()->create([
-                'empresas_id' => $empresas,
-                'funcoes_id' => $request->input('funcoes_id'),
-                'nome'=>$request->input('nome'),
-                'telefone'=>$request->input('telefone'),
+            $user = new User([
+                'permissao_id' => $request->input('permissao_id'),
                 'cidade_id'=>$request->input('cidade_id'),
-                'rua'=>$request->input('rua'),
-                'bairro'=>$request->input('bairro'),
-                'numero'=>$request->input('numero')
-            ]);
-            $user = $pessoa->users()->create([
-                'pessoa_id' => $pessoa,
-                'permissoes_id' => $request->input('permissao_id'),
                 'email' =>$request->input('email'),
                 'password' =>bcrypt($request->input('password')),
-                'password_confirmation' =>$request->input('password_confirmation')
+                'password_confirmation' =>$request->input('password_confirmation'),
+                'nome'=>$request->input('nome'),
+                'telefone'=>$request->input('telefone'),
+                'rua'=>$request->input('rua'),
+                'bairro'=>$request->input('bairro'),
+                'numero'=>$request->input('numero'),
             ]);
+            if($user->save()){
+                $funcionario = $user->funcionario()->create([
+                    'empresa_id' => $empresas->id,
+                    'funcao_id' => $request->input('funcoes_id'),
+                    'user_id' => $user->id,
+                ]);
+            }
             return response()->json([
                 'data' => 'Cadastrado com sucesso!'
             ], 201);
@@ -105,8 +109,8 @@ class ProprietariosCrudController extends Controller
     //excluir proprietario
     public function deleteProprietario($id){
         try{
-            $pessoa = Pessoas::find($id);
-            $excluir = $pessoa->delete();
+            $funcionario = User::find($id);
+            $excluir = $funcionario->delete();
             if($excluir){
                 return response()->json('Funcionario excluido com sucesso', 200);
             }
@@ -120,9 +124,9 @@ class ProprietariosCrudController extends Controller
         }
     }
     //alterar situacao de proprietario
-    public function alterSituacaoProprietario(Pessoas $pessoas){
+    public function alterSituacaoProprietario(User $user){
         try {
-            $pessoas->users()->update([
+            $user->funcionario()->update([
                 'situacao'=>'Inativo'
             ]);
             return response()->json(['data' => 'Proprietario posto como Inativo!'],200);
@@ -137,7 +141,7 @@ class ProprietariosCrudController extends Controller
         }
     }
     //atualizar proprietario e usuario
-    public function alterarProprietarioUsuario(Pessoas $pessoas, Request $request){
+    public function alterarProprietarioUsuario(User $pessoas, Request $request){
         try {
             $retorno = ValidaRequests::validaAtualizaPessoa($request);
             if ( !empty($retorno) ) {
@@ -147,22 +151,22 @@ class ProprietariosCrudController extends Controller
             $pessoa = $pessoas->update([
                 'nome' => $request->input('nome'),
                 'telefone' => $request->input('telefone'),
+                'email' => $request->input('email'),
                 'rua' => $request->input('rua'),
                 'bairro' => $request->input('bairro'),
                 'numero' => $request->input('numero')
                 //'cidade_id' => $request->input('cidade')
             ]);
-            $user = $pessoas->users()->update([
-                'email' => $request->input('email'),
+            $user  = $pessoas->funcionario()->update([
                 'situacao' => $request->input('situacao')
             ]);
             if ( $request->input('restaurarSenhaPadrao') === 'sim' ) {
-                $user = $pessoas->users()->update([
+                $user = $pessoas->update([
                     'password' => bcrypt('familyFoods')
                 ]);
             } else {
-                $senha = $pessoas->users->password;
-                $manterPassword = $pessoas->users()->update([
+                $senha = $pessoas->password;
+                $manterPassword = $pessoas->update([
                     'password' => $senha
                 ]);
             }

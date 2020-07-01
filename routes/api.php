@@ -1,5 +1,6 @@
 <?php
 
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -8,8 +9,9 @@ Route ::middleware ( 'auth:api' ) -> get ( '/user' , function ( Request $request
 } );
 
 Route ::prefix ( 'auth' ) -> group ( function () {
+
     Route ::get ( 'invalido' , 'AutentificadorController@invalido' ) -> name ( "invalido" );
-    Route ::post ( 'registro' , 'AutentificadorController@registro' );
+    Route ::post ( 'registro' , 'AutentificadorController@registro' ) -> name('registroAux');
     Route ::get ( 'index' , 'AutentificadorController@index' );
     Route ::post ( 'login' , 'AutentificadorController@login' );
 
@@ -21,11 +23,11 @@ Route ::prefix ( 'auth' ) -> group ( function () {
             //dashboard
             Route ::prefix ( 'dataDashboard' ) -> group ( function () {
                 //quantidade de empresa
-                Route ::get ( '/dashboard/quantidadeEmpresas' , 'modulos\master\dashboard\DashboardMasterController@quantidadeEmpresas' );
+                Route ::get ( '/dashboard/quantidadeEmpresas' , 'modulos\master\dashboard\DashboardMasterController@quantidadeEmpresas' )->name('quantEmpresas');
                 //quantidade de cliente
-                Route ::get ( '/dashboard/quantidadeClientes' , 'modulos\master\dashboard\DashboardMasterController@quantidadeClientes' );
+                Route ::get ( '/dashboard/quantidadeClientes' , 'modulos\master\dashboard\DashboardMasterController@quantidadeClientes' )->name('quantCliente');
                 //quantidade de produtos
-                Route ::get ( '/dashboard/quantidadeProdutos' , 'modulos\master\dashboard\DashboardMasterController@quantidadeProdutos' );
+                Route ::get ( '/dashboard/quantidadeProdutos' , 'modulos\master\dashboard\DashboardMasterController@quantidadeProdutos' )->name('quantProdutos');
                 //listagem de estados
                 Route ::get ( '/estados' , 'modulos\master\util\ControllerUfCidade@listEstados' ) -> name ( 'estados' );
                 //listagem de cidades
@@ -38,7 +40,7 @@ Route ::prefix ( 'auth' ) -> group ( function () {
                  * parte basica de empresa CRUD
                  */
                 //atualizando uma empresa
-                Route ::put ( '/{id}' , 'modulos\master\empresas\EmpresasCrudController@update' );
+                Route ::put ( '/{id}' , 'modulos\master\empresas\EmpresasCrudController@update' )->name('atualizarEmpresa');
 
                 Route ::get ( '/mostrar/{empresa}' , 'modulos\master\empresas\EmpresasCrudController@extraParaExibirDadosCompletos' )
                     -> name ( 'mostrarDadosDeUmaEmpresa' );
@@ -63,7 +65,7 @@ Route ::prefix ( 'auth' ) -> group ( function () {
                 Route ::post ( '/' , 'modulos\master\empresas\EmpresasCrudController@store' );
 
                 //filtrarEmpresa
-                Route ::post ( '/filtrar' , 'modulos\master\empresas\BuscarEmpresaController@filtraEmpresa' );
+                Route ::post ( '/filtrar' , 'modulos\master\empresas\BuscarEmpresaController@filtraEmpresa' )->name('filtrar_empresa');
 
             } );
 
@@ -75,7 +77,7 @@ Route ::prefix ( 'auth' ) -> group ( function () {
                     -> name ( 'atualizarPessoaUsuario' );
 
                 //alterar Situação de proprietario
-                Route ::put ( '/situacao/{pessoas}' , 'modulos\master\proprietarios\ProprietariosCrudController@alterSituacaoProprietario' )
+                Route ::put ( '/situacao/{user}' , 'modulos\master\proprietarios\ProprietariosCrudController@alterSituacaoProprietario' )
                     -> name ( 'alterarSituacaoProprietario' );
 
                 //route para excluir um proprietario

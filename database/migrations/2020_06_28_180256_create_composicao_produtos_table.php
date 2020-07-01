@@ -14,10 +14,11 @@ class CreateComposicaoProdutosTable extends Migration
     public function up()
     {
         Schema::create('composicao_produtos', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->uuid('produtos_id');
-            $table->unsignedBigInteger('composicao_id');
-            $table->foreign('produtos_id')->references('id')->on('produtos');
+           $table->uuid('produto_id');
+           $table->unsignedBigInteger('composicao_id')->unsigned()->nullable();
+           $table->double('valor')->nullable(true);
+
+           $table->foreign('produto_id')->references('id')->on('produtos');
             $table->foreign('composicao_id')->references('id')->on('composicoes');
         });
     }
@@ -29,6 +30,6 @@ class CreateComposicaoProdutosTable extends Migration
      */
     public function down()
     {
-     //   Schema::dropIfExists('composicao_produtos');
+        Schema::dropIfExists('composicao_produtos');
     }
 }

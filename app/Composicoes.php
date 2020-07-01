@@ -2,20 +2,17 @@
 
 namespace App;
 
-namespace Illuminate\Database\Eloquent\SoftDeletes;
-//use SoftDeletes;
-//use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model;
 
 class Composicoes extends Model
 {
     protected $table = 'composicoes';
-    public $timestamps = false;
-
-    public $fillable = [ 'id' , 'nome_ingridiente' , 'categoria_composicao' ];
-
-    public function produto ()
+    protected $fillable = [
+        'nome_ingredientes',
+        'categoria_composicao'
+    ];
+    public function produtos()
     {
-        return $this -> belongsToMany ( 'App\Produtos' , 'Composicao_produtos' , 'composicao_id' , 'produto_id' );
+        return $this->belongsToMany(Produtos::class, 'composicao_produtos','composicao_id','produto_id');
     }
-
 }

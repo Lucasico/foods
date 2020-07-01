@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateComposicoesTable extends Migration
+class CreateCombosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateComposicoesTable extends Migration
      */
     public function up()
     {
-        Schema::create('composicoes', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('nome_ingridiente',45);
-            $table->string('categoria_composicao',45);
-           
+        Schema::create('combos', function (Blueprint $table) {
+          $table->uuid('produto_id');
+          $table->uuid('combo_id');
+
+          $table->foreign('produto_id')->references('id')->on('produtos');
+          $table->foreign('combo_id')->references('id')->on('produtos');
         });
     }
 
@@ -28,6 +29,6 @@ class CreateComposicoesTable extends Migration
      */
     public function down()
     {
-      //  Schema::dropIfExists('composicoes');
+        Schema::dropIfExists('combos');
     }
 }

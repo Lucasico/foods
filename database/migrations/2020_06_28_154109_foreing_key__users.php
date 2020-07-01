@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddCidadeEmpresasTable extends Migration
+class ForeingKeyUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class AddCidadeEmpresasTable extends Migration
      */
     public function up()
     {
-        Schema::table('empresas',function (Blueprint $table){
-            $table->unsignedBigInteger('cidade_id')->unsigned()->nullable();
+        Schema::table('users', function (Blueprint $table) {
+            $table->foreign('permissao_id')->references('id')->on('permissoes');
             $table->foreign('cidade_id')->references('id')->on('cidades');
         });
+
     }
 
     /**
@@ -26,6 +27,6 @@ class AddCidadeEmpresasTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::disableForeignKeyConstraints();
     }
 }

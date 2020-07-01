@@ -15,9 +15,9 @@ class VerificaCliente
      */
     public function handle($request, Closure $next)
     {
-        $userPermissao = $request->user()->permissoes_id;
+        $userPermissao = $request->user()->permissao_id;
         $retornoPermissaoInvalida = "Usuario com acesso inválido";
-        
+
         if($userPermissao == 4){
             return $next($request);
         }

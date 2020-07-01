@@ -91,7 +91,7 @@ class EmpresasCrudController extends Controller
                         "<h1>A empresa $empresa->razao_social</h1>" .
                         "<b>Foi cadastrada com sucesso!!</b> <p> A empresa $empresa->razao_social,
                         acaba de ser cadastrada com sucesso na plataforma familyFoods. Agora seu negocío é integrante de uma
-                        das mais novas e avançadas soluções para o ramo de delivery da sua região. Desde já
+                        das mais novas e avançadas soluções para o ramo de delivery da sua região. Desde já,
                         desejamos sucesso no seu negócio.
                         Para maiores informações, entre em contato pelos seguintes meios:
                         <ul>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ForeikeyPermissaoInUser extends Migration
+class CreateSituacaoPedidosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class ForeikeyPermissaoInUser extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->foreign('permissoes_id')->references('id')->on('permissoes');
+        Schema::create('situacao_pedidos', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('nome',45)->nullable(false);
         });
     }
 
@@ -25,8 +26,6 @@ class ForeikeyPermissaoInUser extends Migration
      */
     public function down()
     {
-       // Schema::table('users', function (Blueprint $table) {
-          //  Schema::dropIfExists('permissoes_id');
-     //   });
+        Schema::dropIfExists('situacao_pedidos');
     }
 }

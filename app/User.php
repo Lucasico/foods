@@ -22,10 +22,16 @@ class User extends Authenticatable
      */
     public $incrementing = false;
     protected $fillable = [
-        'email' ,
-        'password' ,
-        'permissoes_id' ,
-        'pessoas_id'
+        'permissao_id',
+        'password',
+        'cidade_id',
+        'email',
+        'senha',
+        'nome',
+        'telefone',
+        'rua',
+        'bairro',
+        'numero'
     ];
     /**
      * The attributes that should be hidden for arrays.
@@ -42,15 +48,35 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime' ,
     ];
 
-    //um usuario tem uma permissão
-    public function permissao ()
+    public function permissao()
     {
-        return $this -> belongsTo ( 'App\Permissoes' , 'permissoes_id' , 'id' );
+        return $this->belongsTo(Permissoes::class);
     }
 
-    // um usuario pertence a uma pessoa
-    public function pessoa ()
+    public function cidade()
     {
-        return $this -> belongsTo ( Pessoas::class , 'pessoas_id' , 'id' );
+        return $this->belongsTo(Cidades::class);
     }
+
+    public function avaliar_empresa()
+    {
+        return $this->hasMany(Avaliar_empresas::class,'user_id','id');
+    }
+
+    public function avaliar_cliente()
+    {
+        return $this->hasMany(Avaliar_clientes::class,'users_id','id');
+    }
+
+    public function pedido()
+    {
+        return $this->hasMany(pedidos::class,'user_id','id');
+    }
+
+    public function funcionario()
+    {
+        return $this->hasOne(Funcionarios::class,'user_id','id');
+    }
+
+
 }

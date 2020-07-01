@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddSituacaoUsersTable extends Migration
+class SituacaoFuncionario extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class AddSituacaoUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('funcionarios', function (Blueprint $table) {
             $table->string('situacao', 10)->default('ativo');
         });
     }
@@ -25,6 +25,8 @@ class AddSituacaoUsersTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('funcionarios', function (Blueprint $table) {
+            $table->dropColumn('situacao');
+        });
     }
 }

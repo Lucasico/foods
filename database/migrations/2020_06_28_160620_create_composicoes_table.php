@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ModifielEmpresa extends Migration
+class CreateComposicoesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class ModifielEmpresa extends Migration
      */
     public function up()
     {
-        Schema::table('empresas', function (Blueprint $table) {
-            $table->string('situacao', 10)->change();
+        Schema::create('composicoes', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('nome_ingredientes',45)->nullable(false);
         });
     }
 
@@ -25,6 +26,6 @@ class ModifielEmpresa extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('composicoes');
     }
 }

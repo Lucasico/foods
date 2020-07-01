@@ -17,11 +17,17 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->uuid('id');
             $table->primary('id');
-            $table->uuid('pessoas_id');
-            $table->unsignedBigInteger('permissoes_id')->unsigned()->nullable();
+           // $table->uuid('pessoas_id');
+            $table->unsignedBigInteger('permissao_id')->unsigned()->nullable();
+            $table->unsignedBigInteger('cidade_id')->unsigned()->nullable();
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('nome',100)->nullable(false);
+            $table->string('telefone',45)->nullable(false);
+            $table->string('rua',100)->nullable(false);
+            $table->string('bairro',100)->nullable(false);
+            $table->string('numero',45)->nullable(false);
+            $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
@@ -34,8 +40,7 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        //Schema::dropIfExists('pessoas');
-       // Schema::dropIfExists('permissoes');
-       // Schema::dropIfExists('users');
+
+        Schema::dropIfExists('users');
     }
 }

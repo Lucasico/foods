@@ -13,17 +13,14 @@ class ListClienteContrller extends Controller
 {
     public function listagemClientes ()
     {
-        $query = DB ::table ( 'pessoas' )
-            -> select ( 'empresas.razao_social' , 'pessoas.nome' , 'pessoas.telefone' ,
+        $query = DB ::table ( 'users' )
+            -> select ( 'permissoes.nome AS funcao' , 'users.nome' , 'users.telefone' ,
                 'users.email AS email' , 'cidades.nome AS cidade'
             )
-            -> join ( 'empresas' , 'pessoas.empresas_id' , '=' , 'empresas.id' )
-            -> join ( 'users' , 'users.pessoas_id' , '=' , 'pessoas.id' )
-            -> join ( 'permissoes' , 'users.permissoes_id' , '=' , 'permissoes.id' )
-            -> join ( 'cidades' , 'cidades.id' , '=' , 'pessoas.cidade_id' )
-            -> join ( 'funcoes' , 'funcoes.id' , '=' , 'pessoas.funcoes_id' )
-            -> where ( 'pessoas.funcoes_id' , 4 )
-            -> orderBy ( 'pessoas.nome' , 'ASC' )
+            -> join ( 'permissoes' , 'users.permissao_id' , '=' , 'permissoes.id' )
+            -> join ( 'cidades' , 'cidades.id' , '=' , 'users.cidade_id' )
+            -> where ( 'users.permissao_id' ,'=', 4 )
+            -> orderBy ( 'users.nome' , 'ASC' )
             -> paginate ( 10 );
         return response () -> json ( $query , 200 );
     }
@@ -36,25 +33,26 @@ class ListClienteContrller extends Controller
         ) {
             return response () -> json ( [ "ErrosValida" => "Nenhum campo de busca preenchido, por favor tente novamente" ] , 200 );
         }
-        $query = DB ::table ( 'pessoas' )
-            -> join ( 'empresas' , 'pessoas.empresas_id' , '=' , 'empresas.id' )
-            -> join ( 'cidades' , 'pessoas.cidade_id' , '=' , 'cidades.id' )
-            -> join ( 'users' , 'pessoas.id' , '=' , 'users.pessoas_id' )
-            -> select ( 'empresas.razao_social' , 'pessoas.nome' , 'pessoas.telefone' ,
+        $query = DB ::table ( 'users' )
+            //-> join ( 'empresas' , 'pessoas.empresas_id' , '=' , 'empresas.id' )
+            -> join ( 'cidades' , 'users.cidade_id' , '=' , 'cidades.id' )
+            -> join ( 'permissoes' , 'users.permissao_id' , '=' , 'permissoes.id' )
+         //   -> join ( 'users' , 'pessoas.id' , '=' , 'users.pessoas_id' )
+            -> select ( 'permissoes.nome AS funcao' , 'users.nome' , 'users.telefone' ,
                 'users.email AS email' , 'cidades.nome AS cidade' )
-            -> where ( 'users.permissoes_id' , '=' , 4 )
+            -> where ( 'users.permissao_id' , '=' , 4 )
             //nome da empresa
             -> when ( Request () -> input ( 'buscar' ) , function ( $query ) {
-                $query -> where ( 'pessoas.funcoes_id' , '=' , 4 )
-                    -> where ( 'empresas.razao_social' , 'like' , '%' . Request () -> input ( 'buscar' ) . '%' )
-                    -> orWhere ( 'pessoas.nome' , 'like' , '%' . Request () -> input ( 'buscar' ) . '%' )
-                    -> orWhere ( 'cidades.nome' , 'like' , '%' . Request () -> input ( 'buscar' ) . '%' )
+                $query -> where ( 'users.permissao_id' , '=' , 4 )
+                  //  -> where ( 'empresas.razao_social' , 'like' , '%' . Request () -> input ( 'buscar' ) . '%' )
+                    -> orWhere ( 'users.nome' , 'like' , '%' . Request () -> input ( 'buscar' ) . '%' )
+                    -> orWhere ( 'users.telefone' , 'like' , '%' . Request () -> input ( 'buscar' ) . '%' )
                     -> orWhere ( 'users.email' , 'like' , '%' . Request () -> input ( 'buscar' ) . '%' )
-                    -> orWhere ( 'pessoas.rua' , 'like' , '%' . Request () -> input ( 'buscar' ) . '%' )
-                    -> orWhere ( 'pessoas.bairro' , 'like' , '%' . Request () -> input ( 'buscar' ) . '%' )
-                    -> orWhere ( 'pessoas.numero' , 'like' , '%' . Request () -> input ( 'buscar' ) . '%' );
+                    -> orWhere ( 'users.rua' , 'like' , '%' . Request () -> input ( 'buscar' ) . '%' )
+                    -> orWhere ( 'users.bairro' , 'like' , '%' . Request () -> input ( 'buscar' ) . '%' )
+                    -> orWhere ( 'users.numero' , 'like' , '%' . Request () -> input ( 'buscar' ) . '%' );
             } )
-            -> orderBy ( 'empresas.razao_social' , 'asc' )
+            -> orderBy ( 'users.nome' , 'asc' )
             -> paginate ( 10 );
         if ( $query -> isEmpty () ) {
             return response () -> json ( [ "ErrosValida" => "Nenhum cliente encontrada!" ] , 200 );

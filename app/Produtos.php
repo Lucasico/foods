@@ -1,40 +1,45 @@
 <?php
 
 namespace App;
-//namespace  Illuminate\Database\Eloquent\SoftDeletes;
-//use SoftDeletes;
-use Illuminate\Database\Eloquent\Model;
 use App\Traits\Uuids;
+use Illuminate\Database\Eloquent\Model;
 
 class Produtos extends Model
 {
     use Uuids;
-    protected $table = 'produtos';
     public $incrementing = false;
-    public $fillable = [
-        'tipos_id',
-        'empresas_id',
-        'nome',
+    protected $table = 'produtos';
+    protected $fillable = [
+        'empresa_id',
+        'sub_categoria_id',
+        'preco',
+        'situacao',
+        'tipo',
+        'pertence_estoque',
+        'tamanho',
         'unidade_compra',
         'descricao',
-        'precoVenda',
-        'precoCompra',
+        'quantMinima',
         'quantEstoque',
-        'quantMinina',
-        'created_at',
-        'updated_at'
     ];
-    // um produto tem um tipo
-    public function tipo(){
-        return $this->belongsTo('App\Tipos','tipos_id','id');
-    }
-    //um produto pertence a uma empresa
-    public function empresa(){
-        return $this->belongsTo('App\Empresas','empresas_id','id');
-    }
-    
-    public function composicao(){
-        return $this->belongsToMany('App\Composicoes','Composicao_produtos','produto_id','composicao_id');
+    //
+    public function sub_categoria()
+    {
+        return $this->belongsTo(Sub_categorias::class);
     }
 
+    public function empresa()
+    {
+        return $this->belongsTo(Empresas::class);
+    }
+
+    public function item_pedido()
+    {
+        return $this -> hasMany ( Item_pedidos::class , 'produto_id' , 'id' );
+    }
+    //Muito pra Muito
+    public function composicao()
+    {
+        return $this->belongsToMany(Composicoes::class, 'composicao_produtos','produto_id','composicao_id');
+    }
 }

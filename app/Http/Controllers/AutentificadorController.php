@@ -27,10 +27,15 @@ class AutentificadorController extends Controller
             ] );
             //criando o usuario
             $user = new User( [
+                'permissao_id' => $request -> permissao_id,
+                'cidade_id' => $request -> cidade_id,
+                'email' => $request -> email,
                 'password' => bcrypt ( $request -> password ) ,
-                'email' => $request -> email ,
-                'pessoas_id' => $request -> pessoas_id ,
-                'permissoes_id' => $request -> permissoes_id
+                'nome' => $request ->nome,
+                'telefone' => $request -> telefone,
+                'rua' => $request -> rua,
+                'bairro' => $request -> bairro,
+                'numero' => $request -> numero
             ] );
             //salvando
             $user -> save ();

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdatePessoasTable extends Migration
+class ForeingKeyProdutos extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class UpdatePessoasTable extends Migration
      */
     public function up()
     {
-        Schema::table('pessoas', function (Blueprint $table) {
-            $table->string('rua', 100);
-            $table->string('bairro', 100);
-            $table->string('numero', 100);
+        Schema::table('produtos', function (Blueprint $table) {
+            $table->foreign('sub_categoria_id')->references('id')->on('sub_categorias');
+
         });
     }
 
@@ -27,6 +26,6 @@ class UpdatePessoasTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::disableForeignKeyConstraints();
     }
 }

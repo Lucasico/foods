@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddCidadePessoaTable extends Migration
+class CreateFuncoesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class AddCidadePessoaTable extends Migration
      */
     public function up()
     {
-        Schema::table('pessoas',function (Blueprint $table){
-           $table->unsignedBigInteger('cidade_id')->unsigned()->nullable();
-           $table->foreign('cidade_id')->references('id')->on('cidades');
+        Schema::create('funcoes', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('nome',45)->nullable(false);
         });
     }
 
@@ -26,6 +26,6 @@ class AddCidadePessoaTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('funcoes');
     }
 }

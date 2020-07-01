@@ -15,14 +15,14 @@ class BuscarProprietarioController extends Controller
         try {
             $empresa_id = $empresa->id;
             $query = DB::table('users')
-                        ->select('pessoas.id','pessoas.nome','pessoas.telefone',
+                        ->select('users.id','users.nome','users.telefone',
                                  'users.email AS email','permissoes.nome AS funcao','cidades.nome AS cidade',
-                                 'users.situacao AS situacao')
-                        ->join('pessoas','users.pessoas_id','=','pessoas.id')
-                        ->join('permissoes','users.permissoes_id','=','permissoes.id')
-                        ->join('cidades','cidades.id','=','pessoas.cidade_id')
-                        ->where('pessoas.empresas_id',$empresa_id)
-                        ->where('pessoas.funcoes_id','!=',4)
+                                 'funcionarios.situacao AS situacao')
+                        ->join('funcionarios','users.id','=','funcionarios.user_id')
+                        ->join('permissoes','users.permissao_id','=','permissoes.id')
+                        ->join('cidades','cidades.id','=','users.cidade_id')
+                        ->where('funcionarios.empresa_id',$empresa_id)
+                        ->where('users.permissao_id','=',2)
 
                         ->paginate(10);
             return response()->json($query,200);
