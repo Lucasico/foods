@@ -112,6 +112,12 @@ Route ::prefix ( 'auth' ) -> group ( function () {
                 //exibirDadosProprietario
                 Route ::get ( '/exibir/{id}' , 'modulos\master\proprietarios\ProprietariosCrudController@exibirDadosProprietario' )
                     -> name ( 'exibirDadosProprietario' );
+                //routes para categorias em proprietario para cadastro de sub-categorias
+                Route::prefix('categoriaProdutos') -> group(function (){
+                    Route ::get('/lista','modulos\master\categoriaProdutos\CategoriaCrudController@index')->name('listaCategorias');
+                    Route ::get('/{id}','modulos\master\categoriaProdutos\CategoriaCrudController@show')->name('exibirCategoria');
+                    Route ::post('/filtrar','modulos\master\categoriaProdutos\BuscarCategoriaController@buscarCategoria')->name('buscarCategoria');
+                });
 
             } );
 
