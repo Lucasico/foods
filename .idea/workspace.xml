@@ -2,50 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4b7acae8-a989-4a59-bb97-aaba28b82aca" name="Default Changelist" comment="&quot;inserir tabelas com seus respectivos relacionamentos na modelagem: UF, CIDADE&quot;">
-      <change afterPath="$PROJECT_DIR$/app/Categorias.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Traits/Increment.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.rnd" beforeDir="false" afterPath="$PROJECT_DIR$/.rnd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Cidades.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Cidades.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Combos.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Composicao_produtos.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Composicoes.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Empresas.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Funcoes.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AutentificadorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AutentificadorController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/modulos/master/clientes/ListClienteContrller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/modulos/master/clientes/ListClienteContrller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/modulos/master/dashboard/DashboardMasterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/modulos/master/dashboard/DashboardMasterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/modulos/master/empresas/EmpresasCrudController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/modulos/master/empresas/EmpresasCrudController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/modulos/master/proprietarios/BuscarProprietarioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/modulos/master/proprietarios/BuscarProprietarioController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/modulos/master/proprietarios/ProprietariosCrudController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/modulos/master/proprietarios/ProprietariosCrudController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/VerificaCliente.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/VerificaCliente.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/VerificaFuncionario.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/VerificaFuncionario.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/VerificaMaster.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/VerificaMaster.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/VerificaProprietario.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/VerificaProprietario.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Permissoes.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Pessoas.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Produtos.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Tipos.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create__users__table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create__users__table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_10_133011_create_permissoes_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_10_133849_foreikey_permissao_in_user.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_11_181529_create_empresas_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_11_181908_create_funcoes_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_11_190321_create_pessoas_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_11_191225_foreikey_pessoa.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_11_192020_foreikey_pessoa_in_user.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_17_020232_create_tipos_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_17_020615_create_composicoes_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_17_021524_create_produtos_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_17_030926_create_composicao_produtos_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_17_152920_create_combos_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_05_04_135153_add_campos_tabela_empresas.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_05_25_221845_add_cidade_empresas_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_05_25_222444_add_cidade_pessoa_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_05_27_220132_modifiel__empresa.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_02_152814_add__situacao_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_30_012325_foreing_key_produtos.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_04_192744_update_pessoas_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/API/ValidaRequests.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/API/ValidaRequests.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Categorias.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Categorias.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_07_01_182503_situacao_funcionario.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -194,6 +154,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\lucas-pc\Desktop\foods\app\Http\Controllers\modulos\master\categoriaProdutos" />
       <recent name="C:\Users\lucas-pc\Desktop\foods\app\Traits" />
       <recent name="C:\Users\lucas-pc\Desktop\foods\app\Http\Controllers\modulos\master" />
       <recent name="C:\Users\lucas-pc\Desktop\foods\app\Http\Controllers" />
@@ -267,6 +228,8 @@
       <workItem from="1593558360150" duration="9292000" />
       <workItem from="1593571416082" duration="1152000" />
       <workItem from="1593615634763" duration="17675000" />
+      <workItem from="1593646355436" duration="1395000" />
+      <workItem from="1593703777074" duration="10463000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;inserir tabelas com seus respectivos relacionamentos na modelagem: UF, CIDADE&quot;">
       <created>1590450545567</created>
@@ -334,10 +297,10 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="339" y="172" width="672" height="677" key="run.anything.popup/0.0.1366.768@0.0.1366.768" timestamp="1593642598748" />
-    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1593520662553">
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1593708694878">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.0.1366.768@0.0.1366.768" timestamp="1593520662553" />
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.0.1366.768@0.0.1366.768" timestamp="1593708694878" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -354,12 +317,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/routes/api.php</url>
-          <line>129</line>
+          <line>141</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/routes/api.php</url>
-          <line>75</line>
+          <line>87</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">

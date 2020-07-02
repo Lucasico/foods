@@ -69,6 +69,18 @@ Route ::prefix ( 'auth' ) -> group ( function () {
 
             } );
 
+            //routes para categoriaProdutos
+            Route::prefix('categoriaProdutos') -> group(function (){
+
+                Route ::get('/lista','modulos\master\categoriaProdutos\CategoriaCrudController@index')->name('listaCategorias');
+                Route ::delete('/{categoria}','modulos\master\categoriaProdutos\CategoriaCrudController@delete')->name('excluirCategoria');
+                Route ::get('/{id}','modulos\master\categoriaProdutos\CategoriaCrudController@show')->name('exibirCategoria');
+                Route ::post('/novo','modulos\master\categoriaProdutos\CategoriaCrudController@create')->name('criarCategoria');
+                Route ::put('/{categoria}','modulos\master\categoriaProdutos\CategoriaCrudController@update')->name('atualizarCategoria');
+                Route ::put('/situacao/{categoria}','modulos\master\categoriaProdutos\CategoriaCrudController@desativarCategoria')->name('desativaSituacao');
+                Route ::post('/filtrar','modulos\master\categoriaProdutos\BuscarCategoriaController@buscarCategoria')->name('buscarCategoria');
+            });
+
             //routes de proprietarios
             Route ::prefix ( 'proprietario' ) -> group ( function () {
 

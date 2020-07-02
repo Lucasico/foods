@@ -106,6 +106,26 @@ class ValidaRequests
             return response ()->json ( $validacao->errors () );
         }
     }
+
+    public static function validaCategoriaProduto( Request $request){
+        $data = $request->all ();
+        $validacao = Validator::make($data , [
+          'nome' => 'required|string|unique:categorias'
+        ] );
+        if($validacao->fails () ){
+            return response()->json( $validacao->errors() );
+        }
+    }
+
+    public static function validaCategoriaProdutoAtualiza( Request $request){
+        $data = $request->all ();
+        $validacao = Validator::make($data , [
+            'nome' => 'required|string'
+        ] );
+        if($validacao->fails () ){
+            return response()->json( $validacao->errors() );
+        }
+    }
 }
 
 ?>
