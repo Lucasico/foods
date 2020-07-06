@@ -77,7 +77,7 @@ Route ::prefix ( 'auth' ) -> group ( function () {
                 Route ::get('/{id}','modulos\master\categoriaProdutos\CategoriaCrudController@show')->name('exibirCategoria');
                 Route ::post('/novo','modulos\master\categoriaProdutos\CategoriaCrudController@create')->name('criarCategoria');
                 Route ::put('/{categoria}','modulos\master\categoriaProdutos\CategoriaCrudController@update')->name('atualizarCategoria');
-                Route ::put('/situacao/{categoria}','modulos\master\categoriaProdutos\CategoriaCrudController@desativarCategoria')->name('desativaSituacao');
+                Route ::get('/situacao/{categoria}','modulos\master\categoriaProdutos\CategoriaCrudController@desativarCategoria')->name('desativaSituacao');
                 Route ::post('/filtrar','modulos\master\categoriaProdutos\BuscarCategoriaController@buscarCategoria')->name('buscarCategoria');
             });
 
