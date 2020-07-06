@@ -115,8 +115,13 @@ class CategoriaCrudController extends Controller
     //desativar Categoria
     public function desativarCategoria(Categorias $categoria){
         try{
-            $categoria->situacao = "Inativa";
-            if( $categoria->save() ){
+
+            $id = $categoria -> id;
+            $catInativa = Categorias ::find( $id );
+            $catInativa -> situacao = 'Inativa';
+            $catInativa -> save();
+
+            if( $catInativa->save() ){
                 return response()->json('Categoria posta como inativa',200);
             }
         }catch (\Exception $e){
