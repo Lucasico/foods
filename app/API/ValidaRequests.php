@@ -150,6 +150,26 @@ class ValidaRequests
         }
     }
 
+    public static function validaIgredienteCreate( Request $request){
+        $data = $request->all ();
+        $validacao = Validator::make($data , [
+            'nome_ingredientes' => 'required|string|unique:composicoes',
+        ] );
+        if($validacao->fails () ){
+            return response()->json( $validacao->errors() );
+        }
+    }
+
+    public static function validaIgredienteUpdate( Request $request){
+        $data = $request->all ();
+        $validacao = Validator::make($data , [
+            'nome_ingredientes' => 'required|string',
+        ] );
+        if($validacao->fails () ){
+            return response()->json( $validacao->errors() );
+        }
+    }
+
 }
 
 ?>

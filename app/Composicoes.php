@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Composicoes extends Model
 {
     protected $table = 'composicoes';
+    public $timestamps = false;
     protected $fillable = [
         'nome_ingredientes',
         'categoria_composicao'

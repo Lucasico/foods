@@ -150,6 +150,15 @@ Route ::prefix ( 'auth' ) -> group ( function () {
                     Route::post('/buscar','modulos\proprietario\produtos\subCategoria\BuscarSubCategoriaController@buscarSubCategoria')->name('buscarSubCategoria');
                 });
 
+                Route::prefix('ingredientes')->group(function (){
+                    Route::get('/listar','modulos\proprietario\produtos\ingredientes\ingredientesCrudController@index')->name('listarIngredientes');
+                    Route::post('/cadastrar','modulos\proprietario\produtos\ingredientes\ingredientesCrudController@Store')->name('cadastroIngredientes');
+                    Route::get('/{ingrediente}','modulos\proprietario\produtos\ingredientes\ingredientesCrudController@show')->name('exibirIngredientes');
+                    Route::put('/atualizar/{ingrediente}','modulos\proprietario\produtos\ingredientes\ingredientesCrudController@update')->name('atualizarIngrediente');
+                    Route::post('/buscar','modulos\proprietario\produtos\ingredientes\BuscarIngredienteController@buscarIngredientes')->name('buscarIgredientes');
+                    Route::delete('/excluir/{ingrediente}','modulos\proprietario\produtos\ingredientes\ingredientesCrudController@delete')->name('deletarIngrediente');
+                });
+
             });
 
             //route para cadastro de tipo
