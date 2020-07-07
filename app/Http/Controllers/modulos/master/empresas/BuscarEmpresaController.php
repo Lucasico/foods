@@ -57,7 +57,8 @@ class BuscarEmpresaController extends Controller
                 return Response()->json($query,200);
                 //busca se os dois existirem
             }else if(!is_null(Request()->input('buscar')) && !is_null(Request()->input('situacao'))){
-                $query = DB::table('empresas')->join('cidades','empresas.cidade_id','=','cidades.id')
+                $query = DB::table('empresas')
+                    ->join('cidades','empresas.cidade_id','=','cidades.id')
                     ->select('empresas.id','empresas.razao_social','empresas.cnpj','empresas.situacao','empresas.bairro','empresas.rua',
                         'empresas.cep','empresas.taxaEntrega','empresas.tempoEntrega','empresas.categoria','empresas.telefone',
                         'empresas.celular','empresas.email','empresas.instagram','empresas.numero','cidades.nome')

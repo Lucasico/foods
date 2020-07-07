@@ -126,6 +126,30 @@ class ValidaRequests
             return response()->json( $validacao->errors() );
         }
     }
+
+    public static function validaSubCategoriaCreate( Request $request){
+        $data = $request->all ();
+        $validacao = Validator::make($data , [
+            'nome' => 'required|string',
+            'categoria_id' => 'required',
+        ] );
+        if($validacao->fails () ){
+            return response()->json( $validacao->errors() );
+        }
+    }
+
+    public static function validaSubCategoriaUpdate( Request $request){
+        $data = $request->all ();
+        $validacao = Validator::make($data , [
+            'nome' => 'required|string',
+            'categoria_id' => 'required',
+            'situacao' => 'required'
+        ] );
+        if($validacao->fails () ){
+            return response()->json( $validacao->errors() );
+        }
+    }
+
 }
 
 ?>

@@ -112,12 +112,6 @@ Route ::prefix ( 'auth' ) -> group ( function () {
                 //exibirDadosProprietario
                 Route ::get ( '/exibir/{id}' , 'modulos\master\proprietarios\ProprietariosCrudController@exibirDadosProprietario' )
                     -> name ( 'exibirDadosProprietario' );
-                //routes para categorias em proprietario para cadastro de sub-categorias
-                Route::prefix('categoriaProdutos') -> group(function (){
-                    Route ::get('/lista','modulos\master\categoriaProdutos\CategoriaCrudController@index')->name('listaCategorias');
-                    Route ::get('/{id}','modulos\master\categoriaProdutos\CategoriaCrudController@show')->name('exibirCategoria');
-                    Route ::post('/filtrar','modulos\master\categoriaProdutos\BuscarCategoriaController@buscarCategoria')->name('buscarCategoria');
-                });
 
             } );
 
@@ -138,6 +132,26 @@ Route ::prefix ( 'auth' ) -> group ( function () {
 
         //Group routes proprietario
         Route ::middleware ( 'proprietario' ) -> group ( function () {
+
+            Route::prefix('produtos') -> group( function () {
+                //routes para categorias em proprietario para cadastro de sub-categorias
+                Route::prefix('categoriaProdutos') -> group(function (){
+                    Route ::get('/lista','modulos\master\categoriaProdutos\CategoriaCrudController@index')->name('listaCategoriasProp');
+                    Route ::get('/{id}','modulos\master\categoriaProdutos\CategoriaCrudController@show')->name('exibirCategoriaProp');
+                    Route ::post('/filtrar','modulos\master\categoriaProdutos\BuscarCategoriaController@buscarCategoria')->name('buscarCategoriaProp');
+                });
+
+                Route::prefix('subCategoria') ->group(function (){
+                    Route::get('/listar','modulos\proprietario\produtos\subCategoria\SubCategoriaCrudController@index')->name('listarSubCategorias');
+                    Route::post('/cadastrar','modulos\proprietario\produtos\subCategoria\SubCategoriaCrudController@Store')->name('cadastroSubCategoria');
+                    Route::get('/{id}','modulos\proprietario\produtos\subCategoria\SubCategoriaCrudController@show')->name('exibirSubCategoria');
+                    Route::put('/atualizar/{subCategoria}','modulos\proprietario\produtos\subCategoria\SubCategoriaCrudController@update')->name('atualizarSubCategoria');
+                    Route::get('/desativar/{subCategorias}','modulos\proprietario\produtos\subCategoria\SubCategoriaCrudController@desativarCategoria')->name('desativarSubCategoria');
+                    Route::post('/buscar','modulos\proprietario\produtos\subCategoria\BuscarSubCategoriaController@buscarSubCategoria')->name('buscarSubCategoria');
+                });
+
+            });
+
             //route para cadastro de tipo
             Route ::post ( '/cadTipoProduto' , 'modulos\proprietario\produtos\ProdutoCrudController@storeTiposProduto' );
             //route para cadastro de produto por empresas

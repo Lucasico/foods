@@ -69,7 +69,6 @@ class CategoriaCrudController extends Controller
             return response()->
             json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao exibir a categoria',1034));
         }
-
     }
 
     public function delete(Categorias $categoria){
