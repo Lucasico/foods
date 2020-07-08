@@ -127,7 +127,7 @@ class EmpresasCrudController extends Controller
     //atualizando uma empresa
     public function update( Request $request , $id )
     {
-        $testeRetorno = " Empresa Atualizado com sucesso!";
+
         $retorno = ValidaRequests ::validaAtualizaEmpresa( $request );
         if ( ! empty( $retorno ) ) {
             $arrayErros = $retorno -> original;
@@ -136,7 +136,7 @@ class EmpresasCrudController extends Controller
         try {
             $atualiza = Empresas ::where( 'id' , $id ) -> update( $request -> all() );
             if ( $atualiza ) {
-                return response() -> json( $testeRetorno , 200 );
+                return response() -> json( "empresa atualizada com sucesso" , 200 );
             } else {
                 return response() -> json( "Empresa não encontrada" , 200 );
             }
