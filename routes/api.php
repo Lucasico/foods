@@ -89,7 +89,7 @@ Route ::prefix ( 'auth' ) -> group ( function () {
                     -> name ( 'atualizarPessoaUsuario' );
 
                 //alterar Situação de proprietario
-                Route ::put ( '/situacao/{user}' , 'modulos\master\proprietarios\ProprietariosCrudController@alterSituacaoProprietario' )
+                Route ::get ( '/situacao/{user}' , 'modulos\master\proprietarios\ProprietariosCrudController@alterSituacaoProprietario' )
                     -> name ( 'alterarSituacaoProprietario' );
 
                 //route para excluir um proprietario
