@@ -170,6 +170,54 @@ class ValidaRequests
         }
     }
 
+    public static function validaUpdateEmpresaProprietario( Request $request)
+    {
+        $data = $request->all ();
+        $validacao = Validator::make ( $data , [
+            'razao_social' => 'string|required',
+            'bairro' => 'string|required',
+            'rua' =>'string|required',
+            'cep' => 'string|required',
+            'taxaEntrega'=> 'required|numeric',
+            'tempoEntrega'=> 'string|required',
+            'telefone' => 'string|required|min:8|max:11' ,
+            'celular' => 'string|required|min:8|max:16' ,
+            'email'=> 'string|required|email',
+            'instagram'=>'string|required',
+            'numero'=> 'string|required',
+        ] );
+        if ( $validacao->fails () ) {
+            return response ()->json ( $validacao->errors () );
+        }
+    }
+
+    public static function validaCadastroDeFuncionario(Request $request)
+    {
+        $data = $request->all ();
+        $validacao = Validator::make ( $data , [
+            'password' => 'required|string|confirmed|min:6|max:15' ,
+            'email' => 'required|string|email|unique:users' ,
+            'nome' => 'required|string',
+            'funcao_id' => 'required|numeric|min:3|max:3'
+        ] );
+        if ( $validacao->fails () ) {
+            return response ()->json ( $validacao->errors () );
+        }
+    }
+
+    public static function validaUpdateFuncionarioEmpresa(Request $request)
+    {
+        $data = $request->all ();
+        $validacao = Validator::make ( $data , [
+            'email' => 'required|string|email' ,
+            'nome' => 'required|string',
+            'situacao' => 'required|string'
+        ] );
+        if ( $validacao->fails () ) {
+            return response ()->json ( $validacao->errors () );
+        }
+    }
+
 }
 
 ?>

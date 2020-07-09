@@ -31,7 +31,8 @@ class User extends Authenticatable
         'telefone',
         'rua',
         'bairro',
-        'numero'
+        'numero',
+
     ];
     /**
      * The attributes that should be hidden for arrays.

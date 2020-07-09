@@ -79,7 +79,8 @@ class EmpresasCrudController extends Controller
                     'instagram' => $request -> instagram ,
                     'taxaEntrega' => $request -> taxaEntrega ,
                     'tempoEntrega' => $request -> tempoEntrega ,
-                    'numero' => $request -> numero
+                    'numero' => $request -> numero,
+                    'funcionamento' => 'S'
 
                 ] );
                 $empresa -> save();

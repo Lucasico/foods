@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4b7acae8-a989-4a59-bb97-aaba28b82aca" name="Default Changelist" comment="&quot;inserir tabelas com seus respectivos relacionamentos na modelagem: UF, CIDADE&quot;">
+      <change afterPath="$PROJECT_DIR$/app/API/BuscarEmpresa.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/API/ValidaRequests.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/API/ValidaRequests.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Empresas.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Empresas.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/modulos/master/empresas/EmpresasCrudController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/modulos/master/empresas/EmpresasCrudController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/modulos/master/proprietarios/ProprietariosCrudController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/modulos/master/proprietarios/ProprietariosCrudController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create__users__table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create__users__table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -139,7 +146,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/API" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -150,6 +157,9 @@
     <property name="settings.editor.selected.configurable" value="terminal" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\lucas-pc\Desktop\foods\app\API" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\lucas-pc\Desktop\foods\app\Http\Controllers\modulos\master\categoriaProdutos" />
       <recent name="C:\Users\lucas-pc\Desktop\foods\app\Traits" />
@@ -237,7 +247,11 @@
       <workItem from="1594140694868" duration="168000" />
       <workItem from="1594150322892" duration="3902000" />
       <workItem from="1594169550504" duration="1771000" />
-      <workItem from="1594172941128" duration="355000" />
+      <workItem from="1594172941128" duration="7365000" />
+      <workItem from="1594215252280" duration="9466000" />
+      <workItem from="1594228902646" duration="5584000" />
+      <workItem from="1594250085282" duration="10089000" />
+      <workItem from="1594261012628" duration="315000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;inserir tabelas com seus respectivos relacionamentos na modelagem: UF, CIDADE&quot;">
       <created>1590450545567</created>
@@ -265,18 +279,18 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="447" y="186" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.768@0.0.1366.768" timestamp="1590790618455" />
-    <state x="452" y="159" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1593521455130">
+    <state x="452" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1594215368110">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="452" y="159" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.768@0.0.1366.768" timestamp="1593521455130" />
+    <state x="452" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.768@0.0.1366.768" timestamp="1594215368110" />
     <state x="413" y="131" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1593480180446">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="413" y="131" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.768@0.0.1366.768" timestamp="1593480180446" />
-    <state x="413" y="139" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1594153220073">
+    <state x="413" y="139" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1594220478266">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="413" y="139" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.768@0.0.1366.768" timestamp="1594153220073" />
+    <state x="413" y="139" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.768@0.0.1366.768" timestamp="1594220478266" />
     <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1590450592185">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -285,10 +299,10 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="462" y="126" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1593096726959" />
-    <state x="465" y="107" key="NewPhpClassDialog" timestamp="1590790739832">
+    <state x="465" y="107" key="NewPhpClassDialog" timestamp="1594178389751">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="465" y="107" key="NewPhpClassDialog/0.0.1366.768@0.0.1366.768" timestamp="1590790739832" />
+    <state x="465" y="107" key="NewPhpClassDialog/0.0.1366.768@0.0.1366.768" timestamp="1594178389751" />
     <state x="517" y="307" key="NewPhpFileDialog" timestamp="1590790782679">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -325,13 +339,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/routes/api.php</url>
-          <line>170</line>
+          <line>202</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/routes/api.php</url>
           <line>87</line>
           <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/modulos/proprietario/funcionarios/FuncionariosController.php</url>
+          <line>4</line>
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/modulos/master/empresas/EmpresasCrudController.php</url>
@@ -344,7 +363,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/modulos/master/empresas/EmpresasCrudController.php</url>
-          <line>176</line>
+          <line>177</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\modulos\master\empresas\EmpresasCrudController" />
             <option name="methodName" value="delete" />
@@ -389,12 +408,39 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/modulos/master/empresas/EmpresasCrudController.php</url>
-          <line>127</line>
+          <line>128</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\modulos\master\empresas\EmpresasCrudController" />
             <option name="methodName" value="update" />
           </properties>
           <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php-line-method">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/modulos/proprietario/EmpresaController.php</url>
+          <line>74</line>
+          <properties>
+            <option name="className" value="\App\Http\Controllers\modulos\proprietario\EmpresaController" />
+            <option name="methodName" value="cadastrarFuncionario" />
+          </properties>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php-line-method">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/modulos/proprietario/produtos/subCategoria/SubCategoriaCrudController.php</url>
+          <line>106</line>
+          <properties>
+            <option name="className" value="\App\Http\Controllers\modulos\proprietario\produtos\subCategoria\SubCategoriaCrudController" />
+            <option name="methodName" value="desativarCategoria" />
+          </properties>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php-line-method">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/modulos/master/categoriaProdutos/CategoriaCrudController.php</url>
+          <line>89</line>
+          <properties>
+            <option name="className" value="\App\Http\Controllers\modulos\master\categoriaProdutos\CategoriaCrudController" />
+            <option name="methodName" value="update" />
+          </properties>
+          <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

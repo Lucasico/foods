@@ -161,6 +161,38 @@ Route ::prefix ( 'auth' ) -> group ( function () {
 
             });
 
+
+
+
+
+
+
+
+
+
+            Route::prefix('empresa')->group(function (){
+                Route::get('/exibir','modulos\proprietario\EmpresaController@exibirEmpresa')->name('mostrarEmpresaDoProprietario');
+                Route::get('/funcionamento','modulos\proprietario\EmpresaController@habilitarDesabilitarFuncionamento')->name('horarioFuncionamento');
+                Route::put('/atualizar','modulos\proprietario\EmpresaController@update')->name('atualizarEmpresaPatrao');
+                Route::post('/cadastrar/funcionario','modulos\proprietario\EmpresaController@cadastrarFuncionario')->name('cadastroFuncionario');
+                Route::get('/funcionarios','modulos\proprietario\funcionarios\FuncionariosController@funcionarioEmpresa')->name('teste');
+                Route::put('/funcionario/atualizar/{funcionario}','modulos\proprietario\funcionarios\FuncionariosController@updateFuncionario')->name('atualizarFuncionario');
+                Route::get('/funcionario/inativar/{user}','modulos\proprietario\funcionarios\FuncionariosController@desativarFuncionario')->name('inabilitarFuncionario');
+                Route::delete('/funcionario/excluir/{user}','modulos\proprietario\funcionarios\FuncionariosController@deleteFuncionario')->name('excluirFuncionario');
+            });
+
+
+
+
+
+
+
+
+
+
+
+
+
             //route para cadastro de tipo
             Route ::post ( '/cadTipoProduto' , 'modulos\proprietario\produtos\ProdutoCrudController@storeTiposProduto' );
             //route para cadastro de produto por empresas

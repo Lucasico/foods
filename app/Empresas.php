@@ -26,7 +26,8 @@ class Empresas extends Model
         'telefone',
         'email',
         'instagram',
-        'numero'
+        'numero',
+        'funcionamento'
     ];
 
     public function cidade()
