@@ -178,6 +178,7 @@ Route ::prefix ( 'auth' ) -> group ( function () {
                 Route::get('/funcionarios','modulos\proprietario\funcionarios\FuncionariosController@funcionarioEmpresa')->name('teste');
                 Route::put('/funcionario/atualizar/{funcionario}','modulos\proprietario\funcionarios\FuncionariosController@updateFuncionario')->name('atualizarFuncionario');
                 Route::get('/funcionario/inativar/{user}','modulos\proprietario\funcionarios\FuncionariosController@desativarFuncionario')->name('inabilitarFuncionario');
+                Route::get('/funcionario/exibir/{user}','modulos\proprietario\funcionarios\FuncionariosController@exibirFuncionario')->name('exibirFuncionario');
                 Route::delete('/funcionario/excluir/{user}','modulos\proprietario\funcionarios\FuncionariosController@deleteFuncionario')->name('excluirFuncionario');
             });
 

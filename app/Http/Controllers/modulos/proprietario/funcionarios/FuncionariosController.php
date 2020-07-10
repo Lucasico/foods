@@ -8,9 +8,8 @@ use Illuminate\Http\Request;
 use App\API\BuscarEmpresa;
 use App\API\ApiErros;
 use App\API\ValidaRequests;
-use Illuminate\Support\Facades\DB;
 use App\User;
-use App\Empresas;
+use Illuminate\Support\Facades\DB;
 
 
 class FuncionariosController extends Controller
@@ -31,9 +30,7 @@ class FuncionariosController extends Controller
             //para opção de produção
             return response()->json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao exibir os funcionarios',1055));
         }
-
     }
-
     public function updateFuncionario(User $funcionario, Request $request)
     {
         try{
@@ -88,6 +85,26 @@ class FuncionariosController extends Controller
             }
             //para opção de produção
             return response()->json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao deletar o funcionario',1058));
+        }
+
+    }
+    public function exibirFuncionario(User $user)
+    {
+        try{
+            $id = $user->id;
+            $funcionario = DB::table('users')
+                ->where('users.id',$id)
+                ->join('funcionarios','users.id','=','funcionarios.user_id')
+                ->join('permissoes','users.permissao_id','=','permissoes.id')
+                ->select('users.nome','users.email','funcionarios.situacao','permissoes.nome AS funcao')
+                ->get();
+            return response()->json($funcionario,200);
+        }catch (\Exception $e){
+            if(config('app.debug')){
+                return response()->json(ApiErros::erroMensageCadastroEmpresa($e->getMessage(),1059));
+            }
+            //para opção de produção
+            return response()->json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao exibir',1059));
         }
 
     }
