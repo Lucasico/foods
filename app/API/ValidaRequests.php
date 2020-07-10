@@ -209,7 +209,7 @@ class ValidaRequests
     {
         $data = $request->all ();
         $validacao = Validator::make ( $data , [
-            'email' => 'required|string|email|unique:users' ,
+            'email' => 'required|string|email' ,
             'nome' => 'required|string',
             'situacao' => 'required|string'
         ] );
