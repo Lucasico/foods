@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\modulos\proprietario\funcionarios;
 
+use App\Funcionarios;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\API\BuscarEmpresa;
@@ -18,19 +19,11 @@ class FuncionariosController extends Controller
     {
         try{
             $empresaId = BuscarEmpresa::BuscarEmpresa($request);
-            $empresa = Empresas::find($empresaId);
-            $usersIdsFuncionarios = $empresa->funcionario()->where('funcao_id',3)->select('user_id')->get();
-            foreach ($usersIdsFuncionarios as $user){
-                $funcionario[] = DB::table('users')
-                    ->where('users.id',$user->user_id)
-                    ->join('funcionarios','users.id','=','funcionarios.user_id')
-                    ->join('permissoes','users.permissao_id','=','permissoes.id')
-                    ->select('users.id','users.nome','users.email','permissoes.nome AS funcao','funcionarios.situacao')->paginate(10);
+            $todosFuncionarios = Funcionarios::where('empresa_id',$empresaId)->where('funcao_id',3)->get();
+            foreach ($todosFuncionarios as $func){
+                $DadosFuncionarios[] = User::find($func->user_id);
             }
-            foreach ($funcionario as $funcionarios){
-                $funcs[] = $funcionarios;
-            }
-            return response()->json($funcs,200);
+            return response()->json($DadosFuncionarios,200);
         }catch (\Exception $e){
             if(config('app.debug')){
                 return response()->json(ApiErros::erroMensageCadastroEmpresa($e->getMessage(),1055));
