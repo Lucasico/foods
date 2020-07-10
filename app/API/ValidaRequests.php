@@ -142,7 +142,7 @@ class ValidaRequests
         $data = $request->all ();
         $validacao = Validator::make($data , [
             'nome' => 'required|string',
-            'categoria_id' => 'required',
+            'categoria_id' => 'required|numeric',
             'situacao' => 'required'
         ] );
         if($validacao->fails () ){
