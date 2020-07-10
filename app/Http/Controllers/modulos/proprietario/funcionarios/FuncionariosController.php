@@ -91,7 +91,7 @@ class FuncionariosController extends Controller
                 ->join('funcionarios','users.id','=','funcionarios.user_id')
                 ->join('permissoes','users.permissao_id','=','permissoes.id')
                 ->select('users.nome','users.email','funcionarios.situacao','permissoes.nome AS funcao')
-                ->get();
+                ->first();
             return response()->json($funcionario,200);
         }catch (\Exception $e){
             if(config('app.debug')){
