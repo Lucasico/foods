@@ -134,7 +134,7 @@ class CategoriaCrudController extends Controller
         }
     }
 
-    //filtrar categoria
+
 
 
 }

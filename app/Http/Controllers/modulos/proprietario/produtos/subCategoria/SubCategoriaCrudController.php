@@ -43,7 +43,7 @@ class SubCategoriaCrudController extends Controller
     {
         try {
             $subCategorias = DB::table('sub_categorias')
-                    ->select('sub_categorias.nome','categorias.nome AS categorias','sub_categorias.situacao')
+                    ->select('sub_categorias.id','sub_categorias.nome','categorias.nome AS categorias','sub_categorias.situacao')
                     ->join('categorias','sub_categorias.categoria_id','=','categorias.id')
                     ->orderBy('categorias.nome','ASC')->get();
             return response()->json($subCategorias,200);

@@ -25,9 +25,12 @@ class FuncionariosController extends Controller
                     ->where('users.id',$user->user_id)
                     ->join('funcionarios','users.id','=','funcionarios.user_id')
                     ->join('permissoes','users.permissao_id','=','permissoes.id')
-                    ->select('users.id','users.nome','users.email','permissoes.nome AS funcao','funcionarios.situacao')->paginate(10);
+                    ->select('users.id','users.nome','users.email','permissoes.nome AS funcao','funcionarios.situacao')->get();
             }
-            return response()->json($teste,200);
+            foreach ($teste as $test){
+                $test1 = $test;
+            }
+            return response()->json($test1,200);
         }catch (\Exception $e){
             if(config('app.debug')){
                 return response()->json(ApiErros::erroMensageCadastroEmpresa($e->getMessage(),1055));
@@ -64,14 +67,6 @@ class FuncionariosController extends Controller
         }
 
     }
-
-
-
-    //falta ativa situacao do funcionario no update
-
-
-
-
     public function desativarFuncionario(User $user)
     {
         try{
@@ -87,7 +82,6 @@ class FuncionariosController extends Controller
         }
 
     }
-
     public function deleteFuncionario(User $user){
         try{
             if( $user->delete() ){

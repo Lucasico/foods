@@ -49,7 +49,7 @@ Route ::prefix ( 'auth' ) -> group ( function () {
                 Route ::get ( '/{empresas}' , 'modulos\master\empresas\EmpresasCrudController@updateSituacao' )
                     -> name ( 'atualizarSituacao' );
 
-                //excluindo uma empresa
+                //excluindo ucidadesDoEstadoma empresa
                 Route ::delete ( '/{id}' , 'modulos\master\empresas\EmpresasCrudController@delete' )
                     -> name ( 'excluirEmpresa' );
 
