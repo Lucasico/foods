@@ -21,16 +21,16 @@ class FuncionariosController extends Controller
             $empresa = Empresas::find($empresaId);
             $usersIdsFuncionarios = $empresa->funcionario()->where('funcao_id',3)->select('user_id')->get();
             foreach ($usersIdsFuncionarios as $user){
-                $teste[] = DB::table('users')
+                $funcionario[] = DB::table('users')
                     ->where('users.id',$user->user_id)
                     ->join('funcionarios','users.id','=','funcionarios.user_id')
                     ->join('permissoes','users.permissao_id','=','permissoes.id')
-                    ->select('users.id','users.nome','users.email','permissoes.nome AS funcao','funcionarios.situacao')->get();
+                    ->select('users.id','users.nome','users.email','permissoes.nome AS funcao','funcionarios.situacao')->paginate(10);
             }
-            foreach ($teste as $test){
-                $test1 = $test;
+            foreach ($funcionario as $funcionarios){
+                $funcs[] = $funcionarios;
             }
-            return response()->json($test1,200);
+            return response()->json($funcs,200);
         }catch (\Exception $e){
             if(config('app.debug')){
                 return response()->json(ApiErros::erroMensageCadastroEmpresa($e->getMessage(),1055));
