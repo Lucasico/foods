@@ -41,13 +41,7 @@ class FuncionariosController extends Controller
             }
             $usuario = $funcionario->update(['nome' => $request->nome, 'email' => $request->email]);
             $situacao = $funcionario->funcionario()->update(['situacao' =>$request->situacao]);
-
-            if($usuario && $situacao){
-                return response()->json('Funcionario atualizado com sucesso',200);
-            }else{
-                return response()->json('Não atualizado',200);
-            }
-
+            return response()->json('Funcionario atualizado com sucesso',200);
         }catch (\Exception $e){
             if(config('app.debug')){
                 return response()->json(ApiErros::erroMensageCadastroEmpresa($e->getMessage(),1056));
