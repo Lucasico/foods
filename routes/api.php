@@ -172,7 +172,7 @@ Route ::prefix ( 'auth' ) -> group ( function () {
 
             Route::prefix('empresa')->group(function (){
                 Route::get('/exibir','modulos\proprietario\EmpresaController@exibirEmpresa')->name('mostrarEmpresaDoProprietario');
-                Route::get('/funcionamento','modulos\proprietario\EmpresaController@habilitarDesabilitarFuncionamento')->name('horarioFuncionamento');
+                Route::post('/funcionamento','modulos\proprietario\EmpresaController@habilitarDesabilitarFuncionamento')->name('horarioFuncionamento');
                 Route::put('/atualizar','modulos\proprietario\EmpresaController@update')->name('atualizarEmpresaPatrao');
                 Route::post('/cadastrar/funcionario','modulos\proprietario\EmpresaController@cadastrarFuncionario')->name('cadastroFuncionario');
                 Route::get('/funcionarios','modulos\proprietario\funcionarios\FuncionariosController@funcionarioEmpresa')->name('teste');
