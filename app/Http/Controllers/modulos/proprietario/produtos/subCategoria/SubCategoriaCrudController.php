@@ -7,6 +7,7 @@ use App\Sub_categorias;
 use Illuminate\Http\Request;
 use App\API\ApiErros;
 use App\API\ValidaRequests;
+use App\API\BuscarEmpresa;
 use Illuminate\Support\Facades\DB;
 
 class SubCategoriaCrudController extends Controller
@@ -14,6 +15,7 @@ class SubCategoriaCrudController extends Controller
     public function store(Request $request)
     {
         try {
+            $empresa_id = BuscarEmpresa::BuscarEmpresa($request);
             $retorno = ValidaRequests ::validaSubCategoriaCreate( $request );
             if ( ! empty( $retorno ) ) {
                 $arrayErros = $retorno -> original;
@@ -22,7 +24,8 @@ class SubCategoriaCrudController extends Controller
             $subCategoria = new Sub_categorias([
                 'categoria_id' => $request->categoria_id,
                 'nome' => $request->nome,
-                'situacao' => 'S'
+                'situacao' => 'S',
+                'empresa_id' => $empresa_id
             ]);
 
             if( $subCategoria->save() ){
@@ -39,11 +42,13 @@ class SubCategoriaCrudController extends Controller
         }
     }
 
-    public function index()
+    public function index(Request $request)
     {
         try {
+            $id_empresa = BuscarEmpresa::BuscarEmpresa($request);
             $subCategorias = DB::table('sub_categorias')
                     ->select('sub_categorias.id','sub_categorias.nome','categorias.nome AS categorias','sub_categorias.situacao')
+                    ->where('sub_categorias.empresa_id','=',$id_empresa)
                     ->join('categorias','sub_categorias.categoria_id','=','categorias.id')
                     ->orderBy('categorias.nome','ASC')->get();
             return response()->json($subCategorias,200);

@@ -13,6 +13,7 @@ class Sub_categorias extends Model
         'categoria_id',
         'nome',
         'situacao',
+        'empresa_id'
     ];
 
     public function categoria()

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\modulos\proprietario\produtos\subCategoria;
 use App\API\ApiErros;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\API\BuscarEmpresa;
 use Illuminate\Support\Facades\DB;
 
 class BuscarSubCategoriaController extends Controller
@@ -12,13 +13,16 @@ class BuscarSubCategoriaController extends Controller
     public function buscarSubCategoria(Request $request)
     {
         try {
+
             if (is_null(Request()->input('buscar'))) {
                 return response()->json(["ErrosValida" => "campo de busca não preenchido, por favor tente novamente"], 200);
             }
             if (!is_null(Request()->input('buscar'))) {
+                $empresa_id = BuscarEmpresa::BuscarEmpresa($request);
                 $query = DB::table('sub_categorias')
                         ->join('categorias','sub_categorias.categoria_id','=','categorias.id')
                         ->select('sub_categorias.nome','categorias.nome AS categorias','sub_categorias.situacao')
+                        ->where('sub_categorias.empresa_id', '=',$empresa_id)
                         ->where(function ($query){
                             $query->Where('categorias.nome', 'like', '%' . Request()->input('buscar') . '%')
                                 ->orWhere('sub_categorias.situacao', 'like', '%' . Request()->input('buscar') . '%')
