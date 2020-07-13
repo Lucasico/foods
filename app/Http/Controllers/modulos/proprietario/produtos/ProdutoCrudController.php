@@ -142,11 +142,34 @@ class ProdutoCrudController extends Controller
         }
 
     }
-
     public function listarIngredientes()
     {
-        $ingredientes = Composicoes::all();
-        return response()->json($ingredientes,200);
+        try{
+            $ingredientes = Composicoes::all();
+            return response()->json($ingredientes,200);
+        }catch (\Exception $e){
+            if(config('app.debug')){
+                return response()
+                    ->json(ApiErros::erroMensageCadastroEmpresa($e->getMessage(),1064));
+            }
+            //para opção de produção
+            return response()->
+            json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao exibir os ingredientes',1064));
+        }
+
+    }
+
+    public function listagemDeProdutosSemSelect(Request $request)
+    {
+        $empresa_id = BuscarEmpresa::BuscarEmpresa($request);
+        $produtos = DB::table('produtos')
+                    ->select('id','nome')
+                    ->where('empresa_id','=',$empresa_id)
+                    ->where('situacao','=','A')
+                    ->where('tipo','=','S')
+                    ->orderBy('nome','ASC')
+                    ->get();
+        return response()->json($produtos,200);
     }
 }
 

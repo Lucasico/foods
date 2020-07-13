@@ -164,6 +164,7 @@ Route ::prefix ( 'auth' ) -> group ( function () {
                 Route::get('/adicionais/buscar','modulos\proprietario\produtos\ingredientes\BuscarIngredienteController@buscarIngredientes')->name('buscarAdicionais');
                 Route::get('/subcategorias/{categoria}','modulos\proprietario\produtos\ProdutoCrudController@subCategorias')->name('subCategorias');
                 Route::get('/ingredientes','modulos\proprietario\produtos\ProdutoCrudController@listarIngredientes')->name('ingredientes');
+                Route::get('/disponiveis','modulos\proprietario\produtos\ProdutoCrudController@listagemDeProdutosSemSelect')->name('produtosDisponiveis');
             });
             //routes para gerenciamento de empresa de proprietario
             Route::prefix('empresa')->group(function (){
