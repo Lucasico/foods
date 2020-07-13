@@ -159,15 +159,9 @@ Route ::prefix ( 'auth' ) -> group ( function () {
                 });
 
                 Route::post('/cadastrar','modulos\proprietario\produtos\ProdutoCrudController@create')->name('criandoProduto');
-
-
-
-
-
-
-
-
-
+                Route::post('/cadastrar/combo','modulos\proprietario\produtos\ProdutoCrudController@createCombo')->name('criandoCombo');
+                Route::get('/buscar','modulos\proprietario\produtos\ProdutoCrudController@listarProdutosDisponiveisParaCombo')->name('buscandoProdutoParaCombo');
+                Route::get('/adicionais/buscar','modulos\proprietario\produtos\ingredientes\BuscarIngredienteController@buscarIngredientes')->name('buscarAdicionais');
 
             });
             //routes para gerenciamento de empresa de proprietario

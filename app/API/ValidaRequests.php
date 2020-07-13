@@ -236,6 +236,24 @@ class ValidaRequests
         }
     }
 
+    public static function validaCadastroDeCombo(Request $request)
+    {
+        $data = $request->all ();
+        $validacao = Validator::make ( $data , [
+            'sub_categoria' => 'required|numeric' ,
+            'nome' => 'required|string',
+            'descricao'=>'required|string',
+            'preco'=>'required|numeric',
+            'tipo'=>'required',
+            'produtos'=>'required',
+            'valor'=>'required|numeric'
+
+        ] );
+        if ( $validacao->fails () ) {
+            return response ()->json ( $validacao->errors () );
+        }
+    }
+
 }
 
 ?>
