@@ -246,7 +246,7 @@ class ValidaRequests
             'preco'=>'required|numeric',
             'tipo'=>'required',
             'produtos'=>'required',
-            'valor'=>'required|numeric'
+           
 
         ] );
         if ( $validacao->fails () ) {
