@@ -8,6 +8,7 @@ class Produtos extends Model
 {
     use Uuids;
     public $incrementing = false;
+    public $timestamps = false;
     protected $table = 'produtos';
     protected $fillable = [
         'empresa_id',
@@ -21,6 +22,7 @@ class Produtos extends Model
         'descricao',
         'quantMinima',
         'quantEstoque',
+        'nome'
     ];
     //
     public function sub_categoria()
@@ -40,6 +42,7 @@ class Produtos extends Model
     //Muito pra Muito
     public function composicao()
     {
-        return $this->belongsToMany(Composicoes::class, 'composicao_produtos','produto_id','composicao_id');
+        return $this->belongsToMany(Composicoes::class, 'composicao_produtos','produto_id','composicao_id')
+            ->withPivot(['valor']);
     }
 }

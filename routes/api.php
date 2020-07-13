@@ -132,7 +132,6 @@ Route ::prefix ( 'auth' ) -> group ( function () {
 
         //Group routes proprietario
         Route ::middleware ( 'proprietario' ) -> group ( function () {
-
             Route::prefix('produtos') -> group( function () {
                 //routes para categorias em proprietario para cadastro de sub-categorias
                 Route::prefix('categoriaProdutos') -> group(function (){
@@ -140,7 +139,7 @@ Route ::prefix ( 'auth' ) -> group ( function () {
                     Route ::get('/{id}','modulos\master\categoriaProdutos\CategoriaCrudController@show')->name('exibirCategoriaProp');
                     Route ::post('/filtrar','modulos\master\categoriaProdutos\BuscarCategoriaController@buscarCategoria')->name('buscarCategoriaProp');
                 });
-
+                //routes para subcategoria de produtos
                 Route::prefix('subCategoria') ->group(function (){
                     Route::get('/listar','modulos\proprietario\produtos\subCategoria\SubCategoriaCrudController@index')->name('listarSubCategorias');
                     Route::post('/cadastrar','modulos\proprietario\produtos\subCategoria\SubCategoriaCrudController@Store')->name('cadastroSubCategoria');
@@ -149,7 +148,7 @@ Route ::prefix ( 'auth' ) -> group ( function () {
                     Route::get('/desativar/{subCategorias}','modulos\proprietario\produtos\subCategoria\SubCategoriaCrudController@desativarCategoria')->name('desativarSubCategoria');
                     Route::post('/buscar','modulos\proprietario\produtos\subCategoria\BuscarSubCategoriaController@buscarSubCategoria')->name('buscarSubCategoria');
                 });
-
+                //ingredientes ou adicionais de produto
                 Route::prefix('ingredientes')->group(function (){
                     Route::get('/listar','modulos\proprietario\produtos\ingredientes\ingredientesCrudController@index')->name('listarIngredientes');
                     Route::post('/cadastrar','modulos\proprietario\produtos\ingredientes\ingredientesCrudController@Store')->name('cadastroIngredientes');
@@ -159,17 +158,19 @@ Route ::prefix ( 'auth' ) -> group ( function () {
                     Route::delete('/excluir/{ingrediente}','modulos\proprietario\produtos\ingredientes\ingredientesCrudController@delete')->name('deletarIngrediente');
                 });
 
+                Route::post('/cadastrar','modulos\proprietario\produtos\ProdutoCrudController@create')->name('criandoProduto');
+
+
+
+
+
+
+
+
+
+
             });
-
-
-
-
-
-
-
-
-
-
+            //routes para gerenciamento de empresa de proprietario
             Route::prefix('empresa')->group(function (){
                 Route::get('/exibir','modulos\proprietario\EmpresaController@exibirEmpresa')->name('mostrarEmpresaDoProprietario');
                 Route::post('/funcionamento','modulos\proprietario\EmpresaController@habilitarDesabilitarFuncionamento')->name('horarioFuncionamento');
@@ -181,33 +182,6 @@ Route ::prefix ( 'auth' ) -> group ( function () {
                 Route::get('/funcionario/exibir/{user}','modulos\proprietario\funcionarios\FuncionariosController@exibirFuncionario')->name('exibirFuncionario');
                 Route::delete('/funcionario/excluir/{user}','modulos\proprietario\funcionarios\FuncionariosController@deleteFuncionario')->name('excluirFuncionario');
             });
-
-
-
-
-
-
-
-
-
-
-
-
-
-            //route para cadastro de tipo
-            Route ::post ( '/cadTipoProduto' , 'modulos\proprietario\produtos\ProdutoCrudController@storeTiposProduto' );
-            //route para cadastro de produto por empresas
-            Route ::post ( '/cadProdutoEmpresa' , 'modulos\proprietario\produtos\ProdutoCrudController@storeProdutoEmpresa' );
-            //route para lista de produtos por empresas
-            Route ::get ( '/listaProdutoEmpresa' , 'modulos\proprietario\produtos\ProdutoCrudController@index' );
-            //route para atualizar um produto por empresa
-            Route ::put ( '/atualizaProdutoEmpresa/{id}' , 'modulos\proprietario\produtos\ProdutoCrudController@updateProduto' );
-            //route para exibir um produto
-            Route ::get ( '/produtoEmpresa/{id}' , 'modulos\proprietario\produtos\ProdutoCrudController@showProduto' );
-            //route para excluir um produto
-            Route ::delete ( '/excluirProduto/{id}' , 'modulos\proprietario\produtos\ProdutoCrudController@deleteProduto' );
-            //route para inserir produto no combo
-            Route ::post ( '/comboProduto/{id}' , 'modulos\proprietario\produtos\produtoCrudController@createComboProdutos' );
 
         } );
 
