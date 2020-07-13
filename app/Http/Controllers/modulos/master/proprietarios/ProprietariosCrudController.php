@@ -76,7 +76,7 @@ class ProprietariosCrudController extends Controller
                 return response()->json(['ErrosValida' => $arrayErros],200);
             }
             $user = new User([
-                'permissao_id' => 3,
+                'permissao_id' => 2,
                 'cidade_id'=>$request->input('cidade_id'),
                 'email' =>$request->input('email'),
                 'password' =>bcrypt($request->input('password')),
