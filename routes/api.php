@@ -163,6 +163,7 @@ Route ::prefix ( 'auth' ) -> group ( function () {
                 Route::get('/buscar','modulos\proprietario\produtos\ProdutoCrudController@listarProdutosDisponiveisParaCombo')->name('buscandoProdutoParaCombo');
                 Route::get('/adicionais/buscar','modulos\proprietario\produtos\ingredientes\BuscarIngredienteController@buscarIngredientes')->name('buscarAdicionais');
                 Route::get('/subcategorias/{categoria}','modulos\proprietario\produtos\ProdutoCrudController@subCategorias')->name('subCategorias');
+                Route::get('/ingredientes','modulos\proprietario\produtos\ProdutoCrudController@listarIngredientes')->name('ingredientes');
             });
             //routes para gerenciamento de empresa de proprietario
             Route::prefix('empresa')->group(function (){
@@ -175,6 +176,7 @@ Route ::prefix ( 'auth' ) -> group ( function () {
                 Route::get('/funcionario/inativar/{user}','modulos\proprietario\funcionarios\FuncionariosController@desativarFuncionario')->name('inabilitarFuncionario');
                 Route::get('/funcionario/exibir/{user}','modulos\proprietario\funcionarios\FuncionariosController@exibirFuncionario')->name('exibirFuncionario');
                 Route::delete('/funcionario/excluir/{user}','modulos\proprietario\funcionarios\FuncionariosController@deleteFuncionario')->name('excluirFuncionario');
+
             });
 
         } );

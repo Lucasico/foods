@@ -119,7 +119,6 @@ class ProdutoCrudController extends Controller
             json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao filtrar os produtos',1062));
         }
     }
-
     public function subCategorias ( Categorias $categoria, Request $request )
     {
         try{
@@ -142,6 +141,12 @@ class ProdutoCrudController extends Controller
             json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao filtrar os produtos',1063));
         }
 
+    }
+
+    public function listarIngredientes()
+    {
+        $ingredientes = Composicoes::all();
+        return response()->json($ingredientes,200);
     }
 }
 
