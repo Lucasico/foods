@@ -162,7 +162,7 @@ Route ::prefix ( 'auth' ) -> group ( function () {
                 Route::post('/cadastrar/combo','modulos\proprietario\produtos\ProdutoCrudController@createCombo')->name('criandoCombo');
                 Route::get('/buscar','modulos\proprietario\produtos\ProdutoCrudController@listarProdutosDisponiveisParaCombo')->name('buscandoProdutoParaCombo');
                 Route::get('/adicionais/buscar','modulos\proprietario\produtos\ingredientes\BuscarIngredienteController@buscarIngredientes')->name('buscarAdicionais');
-
+                Route::get('/subcategorias/{categoria}','modulos\proprietario\produtos\ProdutoCrudController@subCategorias')->name('subCategorias');
             });
             //routes para gerenciamento de empresa de proprietario
             Route::prefix('empresa')->group(function (){

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\modulos\proprietario\produtos;
 use App\API\BuscarEmpresa;
 use App\API\ValidaRequests;
+use App\Categorias;
 use App\combos;
 use App\Composicoes;
 use App\Http\Controllers\Controller;
@@ -111,12 +112,36 @@ class ProdutoCrudController extends Controller
         }catch (\Exception $e){
             if(config('app.debug')){
                 return response()
-                    ->json(ApiErros::erroMensageCadastroEmpresa($e->getMessage(),1061));
+                    ->json(ApiErros::erroMensageCadastroEmpresa($e->getMessage(),1062));
             }
             //para opção de produção
             return response()->
-            json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao filtrar os produtos',1061));
+            json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao filtrar os produtos',1062));
         }
+    }
+
+    public function subCategorias ( Categorias $categoria, Request $request )
+    {
+        try{
+            $id_categoria = $categoria->id;
+            $empresa_id = BuscarEmpresa::BuscarEmpresa($request);
+            $sub_categorias = DB::table('sub_categorias')
+                ->select(  'id','nome')
+                ->where('sub_categorias.categoria_id','=' , $id_categoria)
+                ->where('sub_categorias.empresa_id','=',$empresa_id)
+                ->orderBy('sub_categorias.nome', 'ASC')
+                ->get();
+            return response () -> json ($sub_categorias  , 200 );
+        }catch (\Exception $e){
+            if(config('app.debug')){
+                return response()
+                    ->json(ApiErros::erroMensageCadastroEmpresa($e->getMessage(),1063));
+            }
+            //para opção de produção
+            return response()->
+            json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao filtrar os produtos',1063));
+        }
+
     }
 }
 
