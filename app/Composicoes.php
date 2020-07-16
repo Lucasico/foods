@@ -12,9 +12,11 @@ class Composicoes extends Model
         'nome_ingredientes',
         'categoria_composicao'
     ];
+
     public function produtos()
     {
         return $this->belongsToMany(Produtos::class, 'composicao_produtos','composicao_id','produto_id')
                 ->withPivot(['valor']);
     }
+
 }

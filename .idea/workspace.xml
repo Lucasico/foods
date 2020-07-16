@@ -3,7 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="4b7acae8-a989-4a59-bb97-aaba28b82aca" name="Default Changelist" comment="&quot;inserir tabelas com seus respectivos relacionamentos na modelagem: UF, CIDADE&quot;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/API/ValidaRequests.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/API/ValidaRequests.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Composicoes.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Composicoes.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/modulos/proprietario/produtos/ProdutoCrudController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/modulos/proprietario/produtos/ProdutoCrudController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Produtos.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Produtos.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,14 +154,14 @@
     <property name="settings.editor.selected.configurable" value="terminal" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\lucas-pc\Desktop\foods\app\API" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\lucas-pc\Desktop\foods\app\Http\Controllers\modulos\master\categoriaProdutos" />
       <recent name="C:\Users\lucas-pc\Desktop\foods\app\Traits" />
       <recent name="C:\Users\lucas-pc\Desktop\foods\app\Http\Controllers\modulos\master" />
       <recent name="C:\Users\lucas-pc\Desktop\foods\app\Http\Controllers" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\lucas-pc\Desktop\foods\app\API" />
     </key>
   </component>
   <component name="RunManager">
@@ -255,7 +259,10 @@
       <workItem from="1594473523746" duration="13000" />
       <workItem from="1594591116675" duration="13406000" />
       <workItem from="1594647161634" duration="5625000" />
-      <workItem from="1594656820296" duration="7478000" />
+      <workItem from="1594656820296" duration="7784000" />
+      <workItem from="1594746311185" duration="14671000" />
+      <workItem from="1594814635100" duration="23983000" />
+      <workItem from="1594902951244" duration="4721000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;inserir tabelas com seus respectivos relacionamentos na modelagem: UF, CIDADE&quot;">
       <created>1590450545567</created>
@@ -323,10 +330,10 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="339" y="172" width="672" height="677" key="run.anything.popup/0.0.1366.768@0.0.1366.768" timestamp="1593642598748" />
-    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1593708694878">
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1594750294250">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.0.1366.768@0.0.1366.768" timestamp="1593708694878" />
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.0.1366.768@0.0.1366.768" timestamp="1594750294250" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -458,6 +465,24 @@
             <option name="methodName" value="validaUpdateFuncionarioEmpresa" />
           </properties>
           <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php-line-method">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/modulos/proprietario/produtos/ProdutoCrudController.php</url>
+          <line>133</line>
+          <properties>
+            <option name="className" value="\App\Http\Controllers\modulos\proprietario\produtos\ProdutoCrudController" />
+            <option name="methodName" value="subCategorias" />
+          </properties>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php-line-method">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/modulos/proprietario/produtos/ProdutoCrudController.php</url>
+          <line>17</line>
+          <properties>
+            <option name="className" value="\App\Http\Controllers\modulos\proprietario\produtos\ProdutoCrudController" />
+            <option name="methodName" value="create" />
+          </properties>
+          <option name="timeStamp" value="20" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

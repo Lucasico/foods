@@ -227,8 +227,8 @@ class ValidaRequests
             'descricao'=>'required|string',
             'preco'=>'required|numeric',
             'tipo'=>'required',
-            'ingrediente'=>'numeric',
-            'valor'=>'required|numeric'
+            'ingrediente'=>'required',
+            'valor'=>'required'
 
         ] );
         if ( $validacao->fails () ) {
@@ -246,7 +246,43 @@ class ValidaRequests
             'preco'=>'required|numeric',
             'tipo'=>'required',
             'produtos'=>'required',
-           
+        ] );
+        if ( $validacao->fails () ) {
+            return response ()->json ( $validacao->errors () );
+        }
+    }
+
+    public static function validaUpdateDeProduto(Request $request)
+    {
+        $data = $request->all ();
+        $validacao = Validator::make ( $data , [
+            'sub_categoria' => 'required|numeric' ,
+            'nome' => 'required|string',
+            'descricao'=>'required|string',
+            'preco'=>'required|numeric',
+            'tipo'=>'required',
+            'ingrediente'=>'required',
+            'valor'=>'required',
+            'situacao'=>'required'
+
+        ] );
+        if ( $validacao->fails () ) {
+            return response ()->json ( $validacao->errors () );
+        }
+    }
+
+    public static function validaUpdateDeProdutoCombo(Request $request)
+    {
+        $data = $request->all ();
+        $validacao = Validator::make ( $data , [
+            'sub_categoria' => 'required|numeric' ,
+            'nome' => 'required|string',
+            'descricao'=>'required|string',
+            'preco'=>'required|numeric',
+            'tipo'=>'required',
+            'valor'=>'required',
+            'situacao'=>'required',
+            'produtos'=>'required'
 
         ] );
         if ( $validacao->fails () ) {

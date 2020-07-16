@@ -165,6 +165,11 @@ Route ::prefix ( 'auth' ) -> group ( function () {
                 Route::get('/subcategorias/{categoria}','modulos\proprietario\produtos\ProdutoCrudController@subCategorias')->name('subCategorias');
                 Route::get('/ingredientes','modulos\proprietario\produtos\ProdutoCrudController@listarIngredientes')->name('ingredientes');
                 Route::get('/disponiveis','modulos\proprietario\produtos\ProdutoCrudController@listagemDeProdutosSemSelect')->name('produtosDisponiveis');
+                Route::get('/cadastrados','modulos\proprietario\produtos\ProdutoCrudController@exibirProdutos')->name('cadastrados');
+                Route::get('/desativar/{produto}','modulos\proprietario\produtos\ProdutoCrudController@desativarProduto')->name('desativarProduto');
+                Route::get('/exibir/{produto}','modulos\proprietario\produtos\ProdutoCrudController@exibirProduto')->name('exibirProduto');
+                Route::post('/filtrar','modulos\proprietario\produtos\ProdutoCrudController@filtrarProduto')->name('filtrarProduto');
+                Route::put('/atualizar/{produto}','modulos\proprietario\produtos\ProdutoCrudController@editarProduto')->name('editarProduto');
             });
             //routes para gerenciamento de empresa de proprietario
             Route::prefix('empresa')->group(function (){

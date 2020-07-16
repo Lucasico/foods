@@ -45,4 +45,9 @@ class Produtos extends Model
         return $this->belongsToMany(Composicoes::class, 'composicao_produtos','produto_id','composicao_id')
             ->withPivot(['valor']);
     }
+    //combo
+    public function combo()
+    {
+        return $this->belongsToMany(Produtos::class, 'combos','combo_id','produto_id');
+    }
 }
