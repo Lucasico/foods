@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4b7acae8-a989-4a59-bb97-aaba28b82aca" name="Default Changelist" comment="&quot;inserir tabelas com seus respectivos relacionamentos na modelagem: UF, CIDADE&quot;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/API/ValidaRequests.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/API/ValidaRequests.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Composicoes.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Composicoes.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/modulos/proprietario/produtos/ProdutoCrudController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/modulos/proprietario/produtos/ProdutoCrudController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Produtos.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Produtos.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -262,7 +258,10 @@
       <workItem from="1594656820296" duration="7784000" />
       <workItem from="1594746311185" duration="14671000" />
       <workItem from="1594814635100" duration="23983000" />
-      <workItem from="1594902951244" duration="4721000" />
+      <workItem from="1594902951244" duration="5454000" />
+      <workItem from="1594915021148" duration="2874000" />
+      <workItem from="1594943160533" duration="6334000" />
+      <workItem from="1595000092009" duration="862000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;inserir tabelas com seus respectivos relacionamentos na modelagem: UF, CIDADE&quot;">
       <created>1590450545567</created>
@@ -468,7 +467,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/modulos/proprietario/produtos/ProdutoCrudController.php</url>
-          <line>133</line>
+          <line>134</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\modulos\proprietario\produtos\ProdutoCrudController" />
             <option name="methodName" value="subCategorias" />
@@ -483,6 +482,15 @@
             <option name="methodName" value="create" />
           </properties>
           <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php-line-method">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/modulos/proprietario/produtos/ProdutoCrudController.php</url>
+          <line>157</line>
+          <properties>
+            <option name="className" value="\App\Http\Controllers\modulos\proprietario\produtos\ProdutoCrudController" />
+            <option name="methodName" value="listarIngredientes" />
+          </properties>
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

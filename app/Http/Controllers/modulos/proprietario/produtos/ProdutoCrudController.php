@@ -18,6 +18,7 @@ class ProdutoCrudController extends Controller
     public function create(Request $request)
     {
         try {
+
             $auxIngrediente = $request->ingrediente;
             $auxValor = $request->valor;
             $contIngrediente = count($auxIngrediente);
@@ -200,7 +201,7 @@ class ProdutoCrudController extends Controller
             $produtos = Empresas::find($empresa_id)
                         ->produto()
                         ->select('id','sub_categoria_id','situacao','preco','tipo','nome','descricao')
-                        ->paginate(35);
+                        ->paginate(10);
             foreach ($produtos as $prod){
                 $produtos->sub_categoria_id = $prod->sub_categoria->categoria;
             }
