@@ -204,6 +204,7 @@ class ProdutoCrudController extends Controller
                         ->paginate(10);
             foreach ($produtos as $prod){
                 $produtos->sub_categoria_id = $prod->sub_categoria->categoria;
+                $produtos->composicao = $prod->composicao;
             }
             return response()->json($produtos,200);
         }catch (\Exception $e){
