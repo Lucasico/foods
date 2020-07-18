@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4b7acae8-a989-4a59-bb97-aaba28b82aca" name="Default Changelist" comment="&quot;inserir tabelas com seus respectivos relacionamentos na modelagem: UF, CIDADE&quot;">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/modulos/proprietario/produtos/ProdutoCrudController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/modulos/proprietario/produtos/ProdutoCrudController.php" afterDir="false" />
-    </list>
+    <list default="true" id="4b7acae8-a989-4a59-bb97-aaba28b82aca" name="Default Changelist" comment="&quot;inserir tabelas com seus respectivos relacionamentos na modelagem: UF, CIDADE&quot;" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -263,7 +260,7 @@
       <workItem from="1594943160533" duration="6334000" />
       <workItem from="1595000092009" duration="5426000" />
       <workItem from="1595017509754" duration="7869000" />
-      <workItem from="1595080049148" duration="4098000" />
+      <workItem from="1595080049148" duration="4564000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;inserir tabelas com seus respectivos relacionamentos na modelagem: UF, CIDADE&quot;">
       <created>1590450545567</created>
