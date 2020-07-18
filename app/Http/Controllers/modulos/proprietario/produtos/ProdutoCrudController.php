@@ -346,6 +346,7 @@ class ProdutoCrudController extends Controller
     }
     public function editarProduto(Request $request, Produtos $produto)
     {
+
         try{
             if($produto->tipo == 'S' || $produto->tipo == 's'){
                 $retorno = ValidaRequests::validaUpdateDeProduto($request);
@@ -371,10 +372,11 @@ class ProdutoCrudController extends Controller
                     ]);
                     if( $produto->update() && !is_null($request->ingrediente)){
                         $product = Produtos::find($produto->id);
+                        DB::table('composicao_produtos')->where('produto_id','=',$produto->id)->delete();
                         for ($i = 0; $i < $contIngrediente; $i++){
                             $composicao = Composicoes::find($request->ingrediente[$i])
                                 ->produtos()
-                                ->updateExistingPivot($product,['valor' => $request->valor[$i]]);
+                                ->attach($product,['valor' => $request->valor[$i]]);
                         }
                     }
                     return response()->json('Produto atualizado com sucesso',200);
@@ -424,6 +426,5 @@ class ProdutoCrudController extends Controller
             json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao alterar o produto',1067));
         }
     }
-
 }
 
