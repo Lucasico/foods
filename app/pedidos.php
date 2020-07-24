@@ -4,7 +4,7 @@ namespace App;
 
 use App\Traits\Increment;
 use Illuminate\Database\Eloquent\Model;
-
+use \Carbon\Carbon;
 class pedidos extends Model
 {
     use Increment;
@@ -14,7 +14,7 @@ class pedidos extends Model
         'situacao_pedido_id',
         'forma_pagamento_id',
         'user_id',
-        'observacao',
+        'observacoes',
     ];
 
     public function item_pedido()
@@ -36,5 +36,6 @@ class pedidos extends Model
     {
         return $this->belongsTo(User::class);
     }
-    //
+
+
 }

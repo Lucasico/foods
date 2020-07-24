@@ -31,5 +31,6 @@ class AuthServiceProvider extends ServiceProvider
         //add rotas necessarias para autentificação
         Passport::routes();
         Passport::tokensExpireIn(Carbon::now()->addSeconds(60));
+
     }
 }

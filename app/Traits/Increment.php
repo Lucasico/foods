@@ -2,7 +2,7 @@
 namespace App\Traits;
 use Illuminate\Support\Facades\DB;
 use Ramsey\Uuid\Uuid;
-
+use Carbon\Carbon;
 trait Increment
 {
     public static function boot() {

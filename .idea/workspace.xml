@@ -2,7 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4b7acae8-a989-4a59-bb97-aaba28b82aca" name="Default Changelist" comment="&quot;inserir tabelas com seus respectivos relacionamentos na modelagem: UF, CIDADE&quot;">
+      <change afterPath="$PROJECT_DIR$/app/API/BuscarIdPedidosEmpresa.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/API/ApiErros.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/API/ApiErros.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/API/ValidaRequests.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/API/ValidaRequests.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/modulos/pedidos/PedidosController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/modulos/pedidos/PedidosController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/modulos/proprietario/produtos/ProdutoCrudController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/modulos/proprietario/produtos/ProdutoCrudController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Item_pedidos.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Item_pedidos.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Traits/Increment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Traits/Increment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/pedidos.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/pedidos.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,7 +158,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="terminal" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -263,6 +275,17 @@
       <workItem from="1595000092009" duration="5426000" />
       <workItem from="1595017509754" duration="7869000" />
       <workItem from="1595080049148" duration="6246000" />
+      <workItem from="1595158939275" duration="3334000" />
+      <workItem from="1595163978083" duration="39303000" />
+      <workItem from="1595248880039" duration="12909000" />
+      <workItem from="1595274088086" duration="624000" />
+      <workItem from="1595276336521" duration="4425000" />
+      <workItem from="1595288608139" duration="11848000" />
+      <workItem from="1595334262952" duration="18530000" />
+      <workItem from="1595372095906" duration="2545000" />
+      <workItem from="1595424044716" duration="13041000" />
+      <workItem from="1595447877546" duration="9470000" />
+      <workItem from="1595595322365" duration="5911000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;inserir tabelas com seus respectivos relacionamentos na modelagem: UF, CIDADE&quot;">
       <created>1590450545567</created>
@@ -298,10 +321,10 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="413" y="131" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.768@0.0.1366.768" timestamp="1593480180446" />
-    <state x="413" y="139" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1594658480414">
+    <state x="413" y="139" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1595595934041">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="413" y="139" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.768@0.0.1366.768" timestamp="1594658480414" />
+    <state x="413" y="139" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.768@0.0.1366.768" timestamp="1595595934041" />
     <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1590450592185">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -310,18 +333,18 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="462" y="126" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1593096726959" />
-    <state x="465" y="107" key="NewPhpClassDialog" timestamp="1594178389751">
+    <state x="465" y="107" key="NewPhpClassDialog" timestamp="1595297257442">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="465" y="107" key="NewPhpClassDialog/0.0.1366.768@0.0.1366.768" timestamp="1594178389751" />
+    <state x="465" y="107" key="NewPhpClassDialog/0.0.1366.768@0.0.1366.768" timestamp="1595297257442" />
     <state x="517" y="307" key="NewPhpFileDialog" timestamp="1590790782679">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="517" y="307" key="NewPhpFileDialog/0.0.1366.768@0.0.1366.768" timestamp="1590790782679" />
-    <state x="184" y="29" key="SettingsEditor" timestamp="1590687781068">
+    <state x="184" y="29" key="SettingsEditor" timestamp="1595198741170">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="184" y="29" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1590687781068" />
+    <state x="184" y="29" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1595198741170" />
     <state x="452" y="192" key="com.jetbrains.php.test.PhpNewTestDialog" timestamp="1591378882540">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -459,7 +482,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/API/ValidaRequests.php</url>
-          <line>207</line>
+          <line>193</line>
           <properties>
             <option name="className" value="\App\API\ValidaRequests" />
             <option name="methodName" value="validaUpdateFuncionarioEmpresa" />

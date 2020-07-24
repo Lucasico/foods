@@ -346,10 +346,9 @@ class ProdutoCrudController extends Controller
     }
     public function editarProduto(Request $request, Produtos $produto)
     {
-
         try{
             if($produto->tipo == 'S' || $produto->tipo == 's'){
-                $retorno = ValidaRequests::validaUpdateDeProduto($request);
+                $retorno = ValidaRequests::validaUpdateDeProdutoSimples($request);
                 if(!empty($retorno)){
                     $arrayErros = $retorno->original;
                     return response()->json(['ErrosValida' => $arrayErros],200);
@@ -384,7 +383,6 @@ class ProdutoCrudController extends Controller
                     return response()->json('Quantidade de ingredintes diverge da quantidade de preços',400);
                 }
             }else{
-                //esta com erro
                 $retorno = ValidaRequests::validaUpdateDeProdutoCombo($request);
                 if(!empty($retorno)){
                     $arrayErros = $retorno->original;
@@ -412,7 +410,7 @@ class ProdutoCrudController extends Controller
                             $combo->save();
                         }
                     }
-                    return response()->json('Combo Cadastrado com sucesso',200);
+                    return response()->json('Combo atualizado com sucesso',200);
                 }
 
             }

@@ -25,7 +25,6 @@ class ValidaRequests
         ] );
         if ( $validacao->fails () ) return response ()->json ( $validacao->errors () );
     }
-
     public static function validaAtualizaEmpresa ( Request $request )
     {
         $data = $request->all ();
@@ -45,7 +44,6 @@ class ValidaRequests
             return response ()->json ( $validacao->errors () );
         }
     }
-
     public static function validaCadastroDotipoProprietario ( Request $request )
     {
         $data = $request->all ();
@@ -59,7 +57,6 @@ class ValidaRequests
             return response ()->json ( $validacao->errors () );
         }
     }
-
     public static function validaCadastroDePessoa ( Request $request )
     {
         $data = $request->all ();
@@ -79,7 +76,6 @@ class ValidaRequests
             return response ()->json ( $validacao->errors () );
         }
     }
-
     public static function validaAtualizaPessoa ( Request $request )
     {
         $data = $request->all ();
@@ -94,7 +90,6 @@ class ValidaRequests
             return response ()->json ( $validacao->errors () );
         }
     }
-
     public static function validaAtualizacaoUserProprietario ( Request $request )
     {
         $data = $request->all ();
@@ -106,7 +101,6 @@ class ValidaRequests
             return response ()->json ( $validacao->errors () );
         }
     }
-
     public static function validaCategoriaProduto( Request $request){
         $data = $request->all ();
         $validacao = Validator::make($data , [
@@ -116,7 +110,6 @@ class ValidaRequests
             return response()->json( $validacao->errors() );
         }
     }
-
     public static function validaCategoriaProdutoAtualiza( Request $request){
         $data = $request->all ();
         $validacao = Validator::make($data , [
@@ -126,7 +119,6 @@ class ValidaRequests
             return response()->json( $validacao->errors() );
         }
     }
-
     public static function validaSubCategoriaCreate( Request $request){
         $data = $request->all ();
         $validacao = Validator::make($data , [
@@ -137,7 +129,6 @@ class ValidaRequests
             return response()->json( $validacao->errors() );
         }
     }
-
     public static function validaSubCategoriaUpdate( Request $request){
         $data = $request->all ();
         $validacao = Validator::make($data , [
@@ -149,7 +140,6 @@ class ValidaRequests
             return response()->json( $validacao->errors() );
         }
     }
-
     public static function validaIgredienteCreate( Request $request){
         $data = $request->all ();
         $validacao = Validator::make($data , [
@@ -159,7 +149,6 @@ class ValidaRequests
             return response()->json( $validacao->errors() );
         }
     }
-
     public static function validaIgredienteUpdate( Request $request){
         $data = $request->all ();
         $validacao = Validator::make($data , [
@@ -169,7 +158,6 @@ class ValidaRequests
             return response()->json( $validacao->errors() );
         }
     }
-
     public static function validaUpdateEmpresaProprietario( Request $request)
     {
         $data = $request->all ();
@@ -190,7 +178,6 @@ class ValidaRequests
             return response ()->json ( $validacao->errors () );
         }
     }
-
     public static function validaCadastroDeFuncionario(Request $request)
     {
         $data = $request->all ();
@@ -204,7 +191,6 @@ class ValidaRequests
             return response ()->json ( $validacao->errors () );
         }
     }
-
     public static function validaUpdateFuncionarioEmpresa(Request $request)
     {
         $data = $request->all ();
@@ -217,7 +203,6 @@ class ValidaRequests
             return response ()->json ( $validacao->errors () );
         }
     }
-
     public static function validaCadastroDeProduto(Request $request)
     {
         $data = $request->all ();
@@ -227,15 +212,14 @@ class ValidaRequests
             'descricao'=>'required|string',
             'preco'=>'required|numeric',
             'tipo'=>'required',
-            'ingrediente'=>'required',
-            'valor'=>'required'
+            'ingrediente'=>'',
+            'valor'=>''
 
         ] );
         if ( $validacao->fails () ) {
             return response ()->json ( $validacao->errors () );
         }
     }
-
     public static function validaCadastroDeCombo(Request $request)
     {
         $data = $request->all ();
@@ -251,8 +235,7 @@ class ValidaRequests
             return response ()->json ( $validacao->errors () );
         }
     }
-
-    public static function validaUpdateDeProduto(Request $request)
+    public static function validaUpdateDeProdutoSimples(Request $request)
     {
         $data = $request->all ();
         $validacao = Validator::make ( $data , [
@@ -270,7 +253,6 @@ class ValidaRequests
             return response ()->json ( $validacao->errors () );
         }
     }
-
     public static function validaUpdateDeProdutoCombo(Request $request)
     {
         $data = $request->all ();
@@ -280,10 +262,30 @@ class ValidaRequests
             'descricao'=>'required|string',
             'preco'=>'required|numeric',
             'tipo'=>'required',
-            'valor'=>'required',
-            'situacao'=>'required',
             'produtos'=>'required'
+        ] );
+        if ( $validacao->fails () ) {
+            return response ()->json ( $validacao->errors () );
+        }
+    }
 
+    public static function validaCreatePedido(Request $request)
+    {
+        $data = $request->all ();
+        $validacao = Validator::make ( $data , [
+            'forma_pagamento' => 'required|numeric',
+            'observacoes' => 'string',
+        ] );
+        if ( $validacao->fails () ) {
+            return response ()->json ( $validacao->errors () );
+        }
+    }
+
+    public static function validaAtualizarStatusPedido(Request $request)
+    {
+        $data = $request->all ();
+        $validacao = Validator::make ( $data , [
+            'situacaoPedido' => 'required|numeric|min:1|max:7',
         ] );
         if ( $validacao->fails () ) {
             return response ()->json ( $validacao->errors () );

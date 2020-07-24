@@ -182,7 +182,15 @@ Route ::prefix ( 'auth' ) -> group ( function () {
                 Route::get('/funcionario/inativar/{user}','modulos\proprietario\funcionarios\FuncionariosController@desativarFuncionario')->name('inabilitarFuncionario');
                 Route::get('/funcionario/exibir/{user}','modulos\proprietario\funcionarios\FuncionariosController@exibirFuncionario')->name('exibirFuncionario');
                 Route::delete('/funcionario/excluir/{user}','modulos\proprietario\funcionarios\FuncionariosController@deleteFuncionario')->name('excluirFuncionario');
-
+                Route::prefix('pedidos')->group(function (){
+                    Route::get('/emAndamento','modulos\pedidos\PedidosController@listaPedidosEmAndamento')->name('emAndamento');
+                    Route::get('/finalizados','modulos\pedidos\PedidosController@listaPedidosFinalizados')->name('finalizados');
+                    Route::get('/situacoes','modulos\pedidos\PedidosController@situacoesPedidos')->name('situacoesPedidos');
+                    Route::get('/atualizar/{pedido}','modulos\pedidos\PedidosController@alterarSituacaoPedido')->name('alterarSituacaoPedido');
+                    Route::get('/{pedido}','modulos\pedidos\PedidosController@visualizarPedidoCompleto')->name('visualizarPedidoCompleto');
+                    //error nesta rota
+                    //   Route::get('/count/cancelados','modulos\pedidos\PedidosController@countPedidosCancelados')->name('countPedidosCancelados');
+                });
             });
 
         } );
@@ -195,7 +203,9 @@ Route ::prefix ( 'auth' ) -> group ( function () {
 
         //Group route para cliente
         Route ::middleware ( 'cliente' ) -> group ( function () {
-            // Route::get('itens', 'EmularController@index');
+            Route::prefix('CestaDeProdutos')->group(function (){
+                Route::post('/adicionarItems','modulos\pedidos\PedidosController@criarPedido')->name('criarPedido');
+            });
         } );
     } );
 
