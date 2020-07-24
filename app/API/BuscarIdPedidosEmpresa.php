@@ -28,8 +28,7 @@ class BuscarIdPedidosEmpresa
                     'pedidos.created_at',
                     'pedidos.updated_at',
                     'pedidos.observacoes',
-                    'situacao_pedidos.nome as situacao',
-
+                    'situacao_pedidos.nome as situacao'
             )->distinct()->orderBy('pedidos.created_at', 'ASC')->paginate(10);
             return ($idPedidosComRepeticoes);
         }catch (\Exception $e){

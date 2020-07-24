@@ -190,6 +190,7 @@ Route ::prefix ( 'auth' ) -> group ( function () {
                     Route::get('/{pedido}','modulos\pedidos\PedidosController@visualizarPedidoCompleto')->name('visualizarPedidoCompleto');
                     //error nesta rota
                     //   Route::get('/count/cancelados','modulos\pedidos\PedidosController@countPedidosCancelados')->name('countPedidosCancelados');
+                    Route::post('/buscar','modulos\pedidos\PedidosFiltrarController@filtrarPedidos')->name('filtrarPedidos');
                 });
             });
 
