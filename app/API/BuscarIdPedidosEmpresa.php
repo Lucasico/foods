@@ -23,16 +23,16 @@ class BuscarIdPedidosEmpresa
                 ->where('pedidos.situacao_pedido_id','>=',$situacaoInicial)
                 ->where('pedidos.situacao_pedido_id','<=',$situacaoFinal)
                 ->select ('pedidos.*',
-                //    'pedidos.codigo',
-             //       'users.nome AS cliente',
+                    //    'pedidos.codigo',
+                    //       'users.nome AS cliente',
                     DB::raw("CONCAT(users.bairro,', ',users.rua,', ',users.numero) AS endereco"),
                     'formas_pagamentos.nome AS formaPagamento'
-               //     'pedidos.created_at',
+                //     'pedidos.created_at',
                 //    'pedidos.updated_at',
                 //    'pedidos.observacoes',
-               //     'situacao_pedidos.nome as situacao'
+                //     'situacao_pedidos.nome as situacao'
 
-            )->distinct()->orderBy('pedidos.created_at', 'ASC')->paginate(10);
+                )->distinct()->orderBy('pedidos.created_at', 'ASC')->paginate(10);
             return ($idPedidosComRepeticoes);
         }catch (\Exception $e){
             if(config('app.debug')){

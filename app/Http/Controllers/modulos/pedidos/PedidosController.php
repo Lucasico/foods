@@ -109,16 +109,23 @@ class PedidosController extends Controller
     }
     public function listaPedidosEmAndamento(Request $request)
     {
+        $teste = null;
         $pedidos = BuscarIdPedidosEmpresa::buscarPedido($request,1,4);
         foreach ($pedidos as $pedido){
             $teste[] = $this->visualizarPedidoCompleto($pedido->id);
         }
+        $pedido->teste = $teste;
         return response()->json($teste,200);
     }
     public function listaPedidosFinalizados(Request $request)
     {
+        $teste = null;
         $pedidos = BuscarIdPedidosEmpresa::buscarPedido($request,5,7);
-        return response()->json($pedidos,200);
+        foreach ($pedidos as $pedido){
+            $teste[] = $this->visualizarPedidoCompleto($pedido->id);
+        }
+        $pedido->teste = $teste;
+        return response()->json($teste,200);
     }
     public function situacoesPedidos(){
         try{
@@ -164,9 +171,9 @@ class PedidosController extends Controller
     {
         try{
             $pedido = pedidos::find($ped);
-            $pedido->itens  = $pedido->item_pedido()->get();
-            $pedido->forma_pagamento_id = $pedido->forma_pagamento;
-            $pedido->user_id = $pedido->user;
+            $pedido->forma_pagamento;
+            $pedido->user;
+            $pedido->itens = $pedido->item_pedido()->get();
             foreach ($pedido->itens as $item){
                 $pedido->itens->produto_id = $item->produto->select('nome');
             }

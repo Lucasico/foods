@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/API/BuscarIdPedidosEmpresa.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/API/BuscarIdPedidosEmpresa.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/modulos/pedidos/PedidosController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/modulos/pedidos/PedidosController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -280,7 +279,7 @@
       <workItem from="1595633922722" duration="915000" />
       <workItem from="1595719041977" duration="13614000" />
       <workItem from="1595779965578" duration="1824000" />
-      <workItem from="1595788214319" duration="2540000" />
+      <workItem from="1595788214319" duration="8401000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;inserir tabelas com seus respectivos relacionamentos na modelagem: UF, CIDADE&quot;">
       <created>1590450545567</created>
@@ -375,6 +374,11 @@
           <url>file://$PROJECT_DIR$/app/Http/Controllers/modulos/proprietario/funcionarios/FuncionariosController.php</url>
           <line>4</line>
           <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/modulos/pedidos/PedidosController.php</url>
+          <line>2</line>
+          <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/modulos/master/empresas/EmpresasCrudController.php</url>
