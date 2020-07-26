@@ -2,6 +2,7 @@
 
 
 namespace App\API;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -29,6 +30,7 @@ class BuscarIdPedidosEmpresa
                     'pedidos.updated_at',
                     'pedidos.observacoes',
                     'situacao_pedidos.nome as situacao'
+
             )->distinct()->orderBy('pedidos.created_at', 'ASC')->paginate(10);
             return ($idPedidosComRepeticoes);
         }catch (\Exception $e){

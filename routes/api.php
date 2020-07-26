@@ -9,13 +9,10 @@ Route ::middleware ( 'auth:api' ) -> get ( '/user' , function ( Request $request
 } );
 
 Route ::prefix ( 'auth' ) -> group ( function () {
-
     Route ::get ( 'invalido' , 'AutentificadorController@invalido' ) -> name ( "invalido" );
     Route ::post ( 'registro' , 'AutentificadorController@registro' ) -> name('registroAux');
     Route ::get ( 'index' , 'AutentificadorController@index' );
     Route ::post ( 'login' , 'AutentificadorController@login' );
-
-
     Route ::middleware ( 'auth:api' ) -> group ( function () {
         Route ::post ( 'logout' , 'AutentificadorController@logout' );
         //Group routes mastes
@@ -188,12 +185,11 @@ Route ::prefix ( 'auth' ) -> group ( function () {
                     Route::get('/situacoes','modulos\pedidos\PedidosController@situacoesPedidos')->name('situacoesPedidos');
                     Route::get('/atualizar/{pedido}','modulos\pedidos\PedidosController@alterarSituacaoPedido')->name('alterarSituacaoPedido');
                     Route::get('/{pedido}','modulos\pedidos\PedidosController@visualizarPedidoCompleto')->name('visualizarPedidoCompleto');
-                    //error nesta rota
-                    //   Route::get('/count/cancelados','modulos\pedidos\PedidosController@countPedidosCancelados')->name('countPedidosCancelados');
                     Route::post('/buscar','modulos\pedidos\PedidosFiltrarController@filtrarPedidos')->name('filtrarPedidos');
+                    Route::get('/cancelar/{pedido}','modulos\pedidos\PedidosController@cancelarPedido')->name('cancelarPedido');
+                    Route::get('/naCozinha/{pedido}','modulos\pedidos\PedidosController@aceitarPedido')->name('aceitarPedido');
                 });
             });
-
         } );
 
         //Group routes "funcionario"

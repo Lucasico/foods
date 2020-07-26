@@ -5,7 +5,6 @@ namespace App\Http\Controllers\modulos\pedidos;
 use App\API\ApiErros;
 use App\API\BuscarEmpresa;
 use App\API\BuscarIdPedidosEmpresa;
-use App\Empresas;
 use App\Http\Controllers\Controller;
 use App\Item_pedidos;
 use App\pedidos;
@@ -14,8 +13,6 @@ use App\Situacao_pedidos;
 use Illuminate\Http\Request;
 use App\API\ValidaRequests;
 use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
-
 
 class PedidosController extends Controller
 {
@@ -168,10 +165,6 @@ class PedidosController extends Controller
             foreach ($pedido->itens as $item){
                 $pedido->itens->produto_id = $item->produto->select('nome');
             }
-            //pegando dados 1
-            $pedido->user_id = $pedido->user()->get();
-            $pedido->situacao_pedido_id = $pedido->situacao_pedido()->get();
-            $pedido->forma_pagamento_id = $pedido->forma_pagamento()->get();
             //calcular valor total do pedido ao exibi-lo
             $valor = 0;
             foreach ($pedido->itens as $item){
@@ -187,7 +180,6 @@ class PedidosController extends Controller
             return (ApiErros::erroMensageCadastroEmpresa('Houve um erro ao exibir as situacoes dos pedidos',1073));
         }
     }
-
     //error neste controller
     public function countPedidosCancelados(Request $request)
     {
@@ -201,4 +193,37 @@ class PedidosController extends Controller
             ->distinct()->orderBy('pedidos.created_at', 'ASC')->paginate(10);
         return response()->json($idPedidosComRepeticoes,200);
     }
+    public function aceitarPedido(pedidos $pedido){
+        DB::beginTransaction();
+        try{
+            if ( $pedido->update(['situacao_pedido_id' => 2]) ){
+                DB::commit();
+                return response()->json('O pedido: ' . $pedido->codigo .' foi para a cozinha',200);
+            }
+        }catch (\Exception $e){
+            DB::rollBack();
+            if(config('app.debug')){
+                return (ApiErros::erroMensageCadastroEmpresa($e->getMessage(),1074));
+            }
+            //para opção de produção
+            return (ApiErros::erroMensageCadastroEmpresa('Houve um erro ao colocar o pedido na cozinha',1074));
+        }
+    }
+    public function cancelarPedido(pedidos $pedido){
+        DB::beginTransaction();
+        try{
+            if ( $pedido->update(['situacao_pedido_id' => 6]) ){
+                DB::commit();
+                return response()->json('O pedido: ' . $pedido->codigo .' foi cancelado',200);
+            }
+        }catch (\Exception $e){
+            DB::rollBack();
+            if(config('app.debug')){
+                return (ApiErros::erroMensageCadastroEmpresa($e->getMessage(),1075));
+            }
+            //para opção de produção
+            return (ApiErros::erroMensageCadastroEmpresa('Houve um erro ao cancelar pedido',1075));
+        }
+    }
+
 }
