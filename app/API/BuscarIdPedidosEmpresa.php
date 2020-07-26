@@ -2,6 +2,7 @@
 
 
 namespace App\API;
+use App\pedidos;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -21,15 +22,15 @@ class BuscarIdPedidosEmpresa
                 ->join('situacao_pedidos','pedidos.situacao_pedido_id','=','situacao_pedidos.id')
                 ->where('pedidos.situacao_pedido_id','>=',$situacaoInicial)
                 ->where('pedidos.situacao_pedido_id','<=',$situacaoFinal)
-                ->select ('pedidos.id',
-                    'pedidos.codigo',
-                    'users.nome AS cliente',
+                ->select ('pedidos.*',
+                //    'pedidos.codigo',
+             //       'users.nome AS cliente',
                     DB::raw("CONCAT(users.bairro,', ',users.rua,', ',users.numero) AS endereco"),
-                    'formas_pagamentos.nome AS formaPagamento',
-                    'pedidos.created_at',
-                    'pedidos.updated_at',
-                    'pedidos.observacoes',
-                    'situacao_pedidos.nome as situacao'
+                    'formas_pagamentos.nome AS formaPagamento'
+               //     'pedidos.created_at',
+                //    'pedidos.updated_at',
+                //    'pedidos.observacoes',
+               //     'situacao_pedidos.nome as situacao'
 
             )->distinct()->orderBy('pedidos.created_at', 'ASC')->paginate(10);
             return ($idPedidosComRepeticoes);

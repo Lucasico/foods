@@ -110,7 +110,10 @@ class PedidosController extends Controller
     public function listaPedidosEmAndamento(Request $request)
     {
         $pedidos = BuscarIdPedidosEmpresa::buscarPedido($request,1,4);
-        return response()->json($pedidos,200);
+        foreach ($pedidos as $pedido){
+            $teste[] = $this->visualizarPedidoCompleto($pedido->id);
+        }
+        return response()->json($teste,200);
     }
     public function listaPedidosFinalizados(Request $request)
     {
@@ -157,11 +160,13 @@ class PedidosController extends Controller
         }
 
     }
-    public function visualizarPedidoCompleto(pedidos $pedido)
+    public function visualizarPedidoCompleto($ped)
     {
         try{
-            //pegando dados 2
+            $pedido = pedidos::find($ped);
             $pedido->itens  = $pedido->item_pedido()->get();
+            $pedido->forma_pagamento_id = $pedido->forma_pagamento;
+            $pedido->user_id = $pedido->user;
             foreach ($pedido->itens as $item){
                 $pedido->itens->produto_id = $item->produto->select('nome');
             }
@@ -171,7 +176,7 @@ class PedidosController extends Controller
                 $valor = $item->valor + $valor;
             }
             $pedido->valorTotalPedido = $valor;
-            return response()->json($pedido,200);
+            return($pedido);
         }catch (\Exception $e){
             if(config('app.debug')){
                 return (ApiErros::erroMensageCadastroEmpresa($e->getMessage(),1073));
