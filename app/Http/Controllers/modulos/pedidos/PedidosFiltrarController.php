@@ -7,16 +7,15 @@ use Illuminate\Http\Request;
 use App\API\BuscarEmpresa;
 use App\API\ApiErros;
 use Illuminate\Support\Facades\DB;
-use Mockery\Exception;
 
 class PedidosFiltrarController extends Controller
 {
-    public function filtrarPedidos(Request $request)
+    public function filtrarPedidos(Request $request, $situacaoInicial, $situacaoFinal)
     {
         try{
             //aberto e situacao
             if (is_null(Request()->input('buscar')) && is_null(Request()->input('situacao'))) {
-                return response()->json(["ErrosValida" => "Nenhum campo de busca preenchido, por favor tente novamente"], 200);
+                return ("Nenhum campo de busca preenchido, por favor tente novamente");
             }
             //busca apenas se buscar existir
             if (!is_null(Request()->input('buscar')) && is_null(Request()->input('situacao'))) {
@@ -28,15 +27,17 @@ class PedidosFiltrarController extends Controller
                     ->join('users','pedidos.user_id','=','users.id')
                     ->join('formas_pagamentos','pedidos.forma_pagamento_id','=','formas_pagamentos.id')
                     ->join('situacao_pedidos','pedidos.situacao_pedido_id','=','situacao_pedidos.id')
-                    ->select ('pedidos.id',
-                        'pedidos.codigo',
-                        'users.nome AS cliente',
-                        DB::raw("CONCAT(users.bairro,', ',users.rua,', ',users.numero) AS endereco"),
-                        'formas_pagamentos.nome AS formaPagamento',
-                        'pedidos.created_at',
-                        'pedidos.updated_at',
-                        'pedidos.observacoes',
-                        'situacao_pedidos.nome as situacao')
+                    ->where('pedidos.situacao_pedido_id','>=',$situacaoInicial)
+                    ->where('pedidos.situacao_pedido_id','<=',$situacaoFinal)
+                    ->select ('pedidos.*')
+                      //  'pedidos.codigo',
+                      //  'users.nome AS cliente',
+                     //   DB::raw("CONCAT(users.bairro,', ',users.rua,', ',users.numero) AS endereco"),
+                     //   'formas_pagamentos.nome AS formaPagamento',
+                      //  'pedidos.created_at',
+                      //  'pedidos.updated_at',
+                      //  'pedidos.observacoes',
+                      //  'situacao_pedidos.nome as situacao')
                     ->when(Request()->input('buscar'), function ($query) {
                         $query->where('formas_pagamentos.nome', 'like', '%' . Request()->input('buscar') . '%')
                             ->orWhere('pedidos.codigo', 'like', '%' . Request()->input('buscar') . '%')
@@ -48,9 +49,9 @@ class PedidosFiltrarController extends Controller
                     })
                     ->distinct()->orderBy('pedidos.created_at', 'ASC')->paginate(10);
                 if ($query->isEmpty()) {
-                    return response()->json(["ErrosValida" => "Nenhum pedido encontrado!"], 200);
+                    return ("Nenhum pedido encontrado!");
                 }
-                return response()->json($query, 200);
+                return ($query);
                 //busca se os dois existirem
             }else if(!is_null(Request()->input('buscar')) && !is_null(Request()->input('situacao'))){
                 $empresaId = BuscarEmpresa::BuscarEmpresa($request);
@@ -61,15 +62,17 @@ class PedidosFiltrarController extends Controller
                     ->join('users','pedidos.user_id','=','users.id')
                     ->join('formas_pagamentos','pedidos.forma_pagamento_id','=','formas_pagamentos.id')
                     ->join('situacao_pedidos','pedidos.situacao_pedido_id','=','situacao_pedidos.id')
-                    ->select ('pedidos.id',
-                        'pedidos.codigo',
-                        'users.nome AS cliente',
-                        DB::raw("CONCAT(users.bairro,', ',users.rua,', ',users.numero) AS endereco"),
-                        'formas_pagamentos.nome AS formaPagamento',
-                        'pedidos.created_at',
-                        'pedidos.updated_at',
-                        'pedidos.observacoes',
-                        'situacao_pedidos.nome as situacao')
+                    ->where('pedidos.situacao_pedido_id','>=',$situacaoInicial)
+                    ->where('pedidos.situacao_pedido_id','<=',$situacaoFinal)
+                    ->select ('pedidos.*')
+                       // 'pedidos.codigo',
+                      //  'users.nome AS cliente',
+                   //     DB::raw("CONCAT(users.bairro,', ',users.rua,', ',users.numero) AS endereco"),
+                     //   'formas_pagamentos.nome AS formaPagamento',
+                     //   'pedidos.created_at',
+                     //   'pedidos.updated_at',
+                     //   'pedidos.observacoes',
+                     //   'situacao_pedidos.nome as situacao')
                     ->where('pedidos.situacao_pedido_id',Request()->input('situacao'))
                     ->where(function ($query){
                         $query->where('formas_pagamentos.nome', 'like', '%' . Request()->input('buscar') . '%')
@@ -82,9 +85,9 @@ class PedidosFiltrarController extends Controller
                     })
                     ->distinct()->orderBy('pedidos.created_at', 'ASC')->paginate(10);
                 if ($query->isEmpty()) {
-                    return response()->json(["ErrosValida" => "Nenhum pedido encontrado!"], 200);
+                    return( "Nenhum pedido encontrado!");
                 }
-                return response()->json($query, 200);
+                return($query);
             }else if(is_null(Request()->input('buscar')) && !is_null(Request()->input('situacao'))){
                 $empresaId = BuscarEmpresa::BuscarEmpresa($request);
                 $query = DB::table('produtos')
@@ -94,23 +97,25 @@ class PedidosFiltrarController extends Controller
                     ->join('users','pedidos.user_id','=','users.id')
                     ->join('formas_pagamentos','pedidos.forma_pagamento_id','=','formas_pagamentos.id')
                     ->join('situacao_pedidos','pedidos.situacao_pedido_id','=','situacao_pedidos.id')
-                    ->select ('pedidos.id',
-                        'pedidos.codigo',
-                        'users.nome AS cliente',
-                        DB::raw("CONCAT(users.bairro,', ',users.rua,', ',users.numero) AS endereco"),
-                        'formas_pagamentos.nome AS formaPagamento',
-                        'pedidos.created_at',
-                        'pedidos.updated_at',
-                        'pedidos.observacoes',
-                        'situacao_pedidos.nome as situacao')
+                    ->where('pedidos.situacao_pedido_id','>=',$situacaoInicial)
+                    ->where('pedidos.situacao_pedido_id','<=',$situacaoFinal)
+                    ->select ('pedidos.*')
+                     //   'pedidos.codigo',
+                     //   'users.nome AS cliente',
+                     //   DB::raw("CONCAT(users.bairro,', ',users.rua,', ',users.numero) AS endereco")
+                     //   'formas_pagamentos.nome AS formaPagamento',
+                    //    'pedidos.created_at',
+                    //    'pedidos.updated_at',
+                    //    'pedidos.observacoes',
+                    //    'situacao_pedidos.nome as situacao')
                     ->when(Request()->input('situacao'),function ($query){
                         $query->where('pedidos.situacao_pedido_id',Request()->input('situacao'));
                     })
                     ->distinct()->orderBy('pedidos.created_at', 'ASC')->paginate(10);
                 if ($query->isEmpty()) {
-                    return response()->json(["ErrosValida" => "Nenhum pedido encontrado!"], 200);
+                    return("Nenhum pedido encontrado!");
                 }
-                return response()->json($query, 200);
+                return($query);
             }
         }catch (Exception $e){
             if(config('app.debug')){

@@ -10,6 +10,7 @@ use App\Item_pedidos;
 use App\pedidos;
 use App\Produtos;
 use App\Situacao_pedidos;
+use http\Env\Response;
 use Illuminate\Http\Request;
 use App\API\ValidaRequests;
 use Illuminate\Support\Facades\DB;
@@ -127,6 +128,36 @@ class PedidosController extends Controller
         $pedido->teste = $teste;
         return response()->json($teste,200);
     }
+    public function filterOpenOrders(Request $request)
+    {
+        $listOrders = null;
+        $order = new PedidosFiltrarController();
+        $orders = $order->filtrarPedidos($request,'1','4');
+        $typeOrdersData = gettype($orders);
+        if($typeOrdersData == 'object') {
+            foreach ($orders as $ordere) {
+                $listOrders[] = $this->visualizarPedidoCompleto($ordere->id);
+            }
+            $orders->teste = $listOrders;
+            return response()->json($listOrders,200);
+        }
+        return response()->json($orders,200);
+    }
+    public function filterFinalizedOrders(Request $request)
+    {
+        $listOrders = null;
+        $order = new PedidosFiltrarController();
+        $orders = $order->filtrarPedidos($request,'5','7');
+        $typeOrdersData = gettype($orders);
+        if($typeOrdersData == 'object') {
+            foreach ($orders as $ordere) {
+                $listOrders[] = $this->visualizarPedidoCompleto($ordere->id);
+            }
+            $orders->teste = $listOrders;
+            return response()->json($listOrders,200);
+        }
+        return response()->json($orders,200);
+    }
     public function situacoesPedidos(){
         try{
             $situacoesPedidos = Situacao_pedidos::get();
@@ -189,7 +220,7 @@ class PedidosController extends Controller
                 return (ApiErros::erroMensageCadastroEmpresa($e->getMessage(),1073));
             }
             //para opção de produção
-            return (ApiErros::erroMensageCadastroEmpresa('Houve um erro ao exibir as situacoes dos pedidos',1073));
+            return (ApiErros::erroMensageCadastroEmpresa('Houve um erro ao exibir os pedidos',1073));
         }
     }
     //error neste controller

@@ -183,9 +183,10 @@ Route ::prefix ( 'auth' ) -> group ( function () {
                     Route::get('/emAndamento','modulos\pedidos\PedidosController@listaPedidosEmAndamento')->name('emAndamento');
                     Route::get('/finalizados','modulos\pedidos\PedidosController@listaPedidosFinalizados')->name('finalizados');
                     Route::get('/situacoes','modulos\pedidos\PedidosController@situacoesPedidos')->name('situacoesPedidos');
-                    Route::get('/atualizar/{pedido}','modulos\pedidos\PedidosController@alterarSituacaoPedido')->name('alterarSituacaoPedido');
+                    Route::put('/atualizar/{pedido}','modulos\pedidos\PedidosController@alterarSituacaoPedido')->name('alterarSituacaoPedido');
                     Route::get('/{ped}','modulos\pedidos\PedidosController@visualizarPedidoCompleto')->name('visualizarPedidoCompleto');
-                    Route::post('/buscar','modulos\pedidos\PedidosFiltrarController@filtrarPedidos')->name('filtrarPedidos');
+                    Route::post('/emAndamento/buscar','modulos\pedidos\PedidosController@filterOpenOrders')->name('filtrarPedidosAbertos');
+                    Route::post('/finalizados/buscar','modulos\pedidos\PedidosController@filterFinalizedOrders')->name('filtrarPedidosFinalizados');
                     Route::get('/cancelar/{pedido}','modulos\pedidos\PedidosController@cancelarPedido')->name('cancelarPedido');
                     Route::get('/naCozinha/{pedido}','modulos\pedidos\PedidosController@aceitarPedido')->name('aceitarPedido');
                 });

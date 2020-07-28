@@ -25,8 +25,8 @@ class BuscarIdPedidosEmpresa
                 ->select ('pedidos.*',
                     //    'pedidos.codigo',
                     //       'users.nome AS cliente',
-                    DB::raw("CONCAT(users.bairro,', ',users.rua,', ',users.numero) AS endereco"),
-                    'formas_pagamentos.nome AS formaPagamento'
+               //     DB::raw("CONCAT(users.bairro,', ',users.rua,', ',users.numero) AS endereco"),
+               //     'formas_pagamentos.nome AS formaPagamento'
                 //     'pedidos.created_at',
                 //    'pedidos.updated_at',
                 //    'pedidos.observacoes',
