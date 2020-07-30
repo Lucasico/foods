@@ -10,7 +10,7 @@ use App\Item_pedidos;
 use App\pedidos;
 use App\Produtos;
 use App\Situacao_pedidos;
-use http\Env\Response;
+use App\Events\NewPedido;
 use Illuminate\Http\Request;
 use App\API\ValidaRequests;
 use Illuminate\Support\Facades\DB;
@@ -28,6 +28,9 @@ class PedidosController extends Controller
             }
             $pedido = $this->processarPedido($calcularValorUnitario, $produtos, $quantidadeItens, $controleAddItens, $request);
             if( $pedido === 'pedidoRealizadoComSucesso'){
+                $empresaRecebePedido = Produtos::find($produtos[0]);
+                $idEmpresa = $empresaRecebePedido->empresa_id;
+                event(new NewPedido('novoPedido',$idEmpresa));
                 return response()->json('Pedido realizado com sucesso',200);
             }
         }catch (\Exception $e){

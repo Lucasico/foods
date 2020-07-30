@@ -2,11 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4b7acae8-a989-4a59-bb97-aaba28b82aca" name="Default Changelist" comment="&quot;inserir tabelas com seus respectivos relacionamentos na modelagem: UF, CIDADE&quot;">
+      <change beforePath="$PROJECT_DIR$/.idea/foods.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/foods.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/API/BuscarIdPedidosEmpresa.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/API/BuscarIdPedidosEmpresa.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/modulos/pedidos/PedidosController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/modulos/pedidos/PedidosController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/modulos/pedidos/PedidosFiltrarController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/modulos/pedidos/PedidosFiltrarController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/broadcasting.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/broadcasting.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,6 +134,23 @@
       <path value="$PROJECT_DIR$/vendor/symfony/mime" />
       <path value="$PROJECT_DIR$/vendor/symfony/routing" />
       <path value="$PROJECT_DIR$/vendor/phpmailer/phpmailer" />
+      <path value="$PROJECT_DIR$/vendor/cboden/ratchet" />
+      <path value="$PROJECT_DIR$/vendor/ratchet/rfc6455" />
+      <path value="$PROJECT_DIR$/vendor/react/socket" />
+      <path value="$PROJECT_DIR$/vendor/react/stream" />
+      <path value="$PROJECT_DIR$/vendor/react/promise-stream" />
+      <path value="$PROJECT_DIR$/vendor/react/promise-timer" />
+      <path value="$PROJECT_DIR$/vendor/react/http-client" />
+      <path value="$PROJECT_DIR$/vendor/react/promise" />
+      <path value="$PROJECT_DIR$/vendor/react/dns" />
+      <path value="$PROJECT_DIR$/vendor/react/event-loop" />
+      <path value="$PROJECT_DIR$/vendor/react/cache" />
+      <path value="$PROJECT_DIR$/vendor/pusher/pusher-php-server" />
+      <path value="$PROJECT_DIR$/vendor/ringcentral/psr7" />
+      <path value="$PROJECT_DIR$/vendor/beyondcode/laravel-websockets" />
+      <path value="$PROJECT_DIR$/vendor/evenement/evenement" />
+      <path value="$PROJECT_DIR$/vendor/clue/buzz-react" />
+      <path value="$PROJECT_DIR$/vendor/paragonie/sodium_compat" />
     </include_path>
   </component>
   <component name="ProjectId" id="1cNiQ7Nc5TJWEBdiiHyvTTnVut4" />
@@ -142,7 +162,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/API" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -153,14 +173,14 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\lucas-pc\Desktop\foods\app\API" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\lucas-pc\Desktop\foods\app\Http\Controllers\modulos\master\categoriaProdutos" />
       <recent name="C:\Users\lucas-pc\Desktop\foods\app\Traits" />
       <recent name="C:\Users\lucas-pc\Desktop\foods\app\Http\Controllers\modulos\master" />
       <recent name="C:\Users\lucas-pc\Desktop\foods\app\Http\Controllers" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\lucas-pc\Desktop\foods\app\API" />
     </key>
   </component>
   <component name="RunManager">
@@ -284,7 +304,12 @@
       <workItem from="1595788214319" duration="8401000" />
       <workItem from="1595807841705" duration="668000" />
       <workItem from="1595851658887" duration="6734000" />
-      <workItem from="1595965396368" duration="39000" />
+      <workItem from="1595965396368" duration="708000" />
+      <workItem from="1595988450444" duration="821000" />
+      <workItem from="1596033808656" duration="56000" />
+      <workItem from="1596033883240" duration="28000" />
+      <workItem from="1596124293725" duration="6449000" />
+      <workItem from="1596139584930" duration="3300000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;inserir tabelas com seus respectivos relacionamentos na modelagem: UF, CIDADE&quot;">
       <created>1590450545567</created>
@@ -324,14 +349,18 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="413" y="139" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.768@0.0.1366.768" timestamp="1595606094396" />
+    <state x="741" y="0" key="#guzzle/Dockerfile" timestamp="1596033894602">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="741" y="0" key="#guzzle/Dockerfile/0.0.1366.768@0.0.1366.768" timestamp="1596033894602" />
     <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1590450592185">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1590450592185" />
-    <state x="462" y="126" key="FileChooserDialogImpl" timestamp="1593096726959">
+    <state x="462" y="126" key="FileChooserDialogImpl" timestamp="1596033908512">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="462" y="126" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1593096726959" />
+    <state x="462" y="126" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1596033908512" />
     <state x="465" y="107" key="NewPhpClassDialog" timestamp="1595297257442">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -348,10 +377,10 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="452" y="192" key="com.jetbrains.php.test.PhpNewTestDialog/0.0.1366.768@0.0.1366.768" timestamp="1591378882540" />
-    <state x="339" y="172" width="672" height="677" key="run.anything.popup" timestamp="1593642598748">
+    <state x="339" y="172" width="672" height="677" key="run.anything.popup" timestamp="1596128755376">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="339" y="172" width="672" height="677" key="run.anything.popup/0.0.1366.768@0.0.1366.768" timestamp="1593642598748" />
+    <state x="339" y="172" width="672" height="677" key="run.anything.popup/0.0.1366.768@0.0.1366.768" timestamp="1596128755376" />
     <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1595732934817">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -519,6 +548,15 @@
             <option name="methodName" value="listarIngredientes" />
           </properties>
           <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php-line-method">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/modulos/pedidos/PedidosController.php</url>
+          <line>241</line>
+          <properties>
+            <option name="className" value="\App\Http\Controllers\modulos\pedidos\PedidosController" />
+            <option name="methodName" value="aceitarPedido" />
+          </properties>
+          <option name="timeStamp" value="23" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
