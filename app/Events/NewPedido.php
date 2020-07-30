@@ -42,7 +42,7 @@ class NewPedido implements ShouldBroadcast
 //        if($empresaId = $this->empresa){
 //            return new Channel('newPedidoEmpresa-'.$this->empresa);
 //        }
-        return new Channel('newPedidoEmpresa-'.$this->empresa);
+        return new Channel('newPedidoEmpresa');
 
     }
 }
