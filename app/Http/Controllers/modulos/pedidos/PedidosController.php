@@ -30,7 +30,7 @@ class PedidosController extends Controller
             if( $pedido === 'pedidoRealizadoComSucesso'){
                 $empresaRecebePedido = Produtos::find($produtos[0]);
                 $idEmpresa = $empresaRecebePedido->empresa_id;
-                event(new NewPedido('novoPedido',$idEmpresa));
+                event(new NewPedido('novoPedidoTeste',$idEmpresa));
                 return response()->json('Pedido realizado com sucesso',200);
             }
         }catch (\Exception $e){
