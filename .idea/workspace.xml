@@ -2,9 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4b7acae8-a989-4a59-bb97-aaba28b82aca" name="Default Changelist" comment="&quot;inserir tabelas com seus respectivos relacionamentos na modelagem: UF, CIDADE&quot;">
+      <change afterPath="$PROJECT_DIR$/app/WebSockets/WebServer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/WebSockets/WebSocket.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Events/NewPedido.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Events/NewPedido.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/modulos/pedidos/PedidosController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/modulos/pedidos/PedidosController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/broadcasting.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/broadcasting.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/BroadcastServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/BroadcastServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.php" beforeDir="false" afterPath="$PROJECT_DIR$/server.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -307,7 +312,15 @@
       <workItem from="1596139584930" duration="3300000" />
       <workItem from="1596147920009" duration="3182000" />
       <workItem from="1596159712794" duration="1913000" />
-      <workItem from="1596167128141" duration="183000" />
+      <workItem from="1596167128141" duration="1389000" />
+      <workItem from="1596205040642" duration="283000" />
+      <workItem from="1596225503246" duration="2168000" />
+      <workItem from="1596284297670" duration="76000" />
+      <workItem from="1596317020966" duration="10577000" />
+      <workItem from="1596332589350" duration="131000" />
+      <workItem from="1596370735566" duration="1493000" />
+      <workItem from="1596377137016" duration="96000" />
+      <workItem from="1596492696261" duration="913000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;inserir tabelas com seus respectivos relacionamentos na modelagem: UF, CIDADE&quot;">
       <created>1590450545567</created>
@@ -335,10 +348,10 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="447" y="186" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.768@0.0.1366.768" timestamp="1590790618455" />
-    <state x="452" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1594215368110">
+    <state x="452" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1596325922100">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="452" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.768@0.0.1366.768" timestamp="1594215368110" />
+    <state x="452" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.768@0.0.1366.768" timestamp="1596325922100" />
     <state x="413" y="131" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1593480180446">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -355,18 +368,18 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1590450592185" />
-    <state x="462" y="126" key="FileChooserDialogImpl" timestamp="1596033908512">
+    <state x="462" y="126" key="FileChooserDialogImpl" timestamp="1596377222732">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="462" y="126" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1596033908512" />
-    <state x="465" y="107" key="NewPhpClassDialog" timestamp="1595297257442">
+    <state x="462" y="126" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1596377222732" />
+    <state x="465" y="107" key="NewPhpClassDialog" timestamp="1596325546949">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="465" y="107" key="NewPhpClassDialog/0.0.1366.768@0.0.1366.768" timestamp="1595297257442" />
-    <state x="517" y="307" key="NewPhpFileDialog" timestamp="1590790782679">
+    <state x="465" y="107" key="NewPhpClassDialog/0.0.1366.768@0.0.1366.768" timestamp="1596325546949" />
+    <state x="517" y="307" key="NewPhpFileDialog" timestamp="1596325665859">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="517" y="307" key="NewPhpFileDialog/0.0.1366.768@0.0.1366.768" timestamp="1590790782679" />
+    <state x="517" y="307" key="NewPhpFileDialog/0.0.1366.768@0.0.1366.768" timestamp="1596325665859" />
     <state x="184" y="29" key="SettingsEditor" timestamp="1595198741170">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -549,7 +562,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/modulos/pedidos/PedidosController.php</url>
-          <line>241</line>
+          <line>247</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\modulos\pedidos\PedidosController" />
             <option name="methodName" value="aceitarPedido" />

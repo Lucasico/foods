@@ -14,6 +14,7 @@ use App\Events\NewPedido;
 use Illuminate\Http\Request;
 use App\API\ValidaRequests;
 use Illuminate\Support\Facades\DB;
+use App\WebSockets\WebSocket;
 
 class PedidosController extends Controller
 {
@@ -30,7 +31,12 @@ class PedidosController extends Controller
             if( $pedido === 'pedidoRealizadoComSucesso'){
                 $empresaRecebePedido = Produtos::find($produtos[0]);
                 $idEmpresa = $empresaRecebePedido->empresa_id;
-                event(new NewPedido('novoPedidoTeste',$idEmpresa));
+
+
+                //$webSocket = new WebSocket();
+                //$webSocket->onMessage();
+
+
                 return response()->json('Pedido realizado com sucesso',200);
             }
         }catch (\Exception $e){
