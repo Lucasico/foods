@@ -12,6 +12,11 @@ class WebSocket implements MessageComponentInterface
     /**
      * WebSocket constructor.
      */
+    public function getClients()
+    {
+        return $this->clients;
+    }
+
     public function __construct()
     {
         // Iniciamos a coleção que irá armazenar os clientes conectados
@@ -37,8 +42,8 @@ class WebSocket implements MessageComponentInterface
     public function onMessage(ConnectionInterface $from, $data)
     {
         // Convertendo os dados recebidos para vetor e adicionando a data
-        $data = json_decode($data);
-        $data->date = date('d/m/Y H:i:s');
+        $data = array("idEmpresa" =>$data,"date"=>date('d/m/Y H:i:s'));
+        //$data->date = date('d/m/Y H:i:s');
         // Passando pelos clientes conectados e enviando a mensagem
         // para cada um deles
         foreach ($this->clients as $client) {

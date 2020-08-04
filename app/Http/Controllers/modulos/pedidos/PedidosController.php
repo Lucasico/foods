@@ -14,7 +14,7 @@ use App\Events\NewPedido;
 use Illuminate\Http\Request;
 use App\API\ValidaRequests;
 use Illuminate\Support\Facades\DB;
-use App\WebSockets\WebSocket;
+use App\WebSockets\Websocket_client;
 
 class PedidosController extends Controller
 {
@@ -31,14 +31,17 @@ class PedidosController extends Controller
             if( $pedido === 'pedidoRealizadoComSucesso'){
                 $empresaRecebePedido = Produtos::find($produtos[0]);
                 $idEmpresa = $empresaRecebePedido->empresa_id;
+                
+                if( $sp = Websocket_client::websocket_open('localhost', 1000,'',$errstr, 15) ) {
+                  Websocket_client::websocket_write($sp, $idEmpresa);
+                  echo "Server responed with: '" . Websocket_client::websocket_read($sp,$errstr) ."'\n";
+                }else {
+                  echo "Failed to connect to server\n";
+                  echo "Server responed with: $errstr\n";
+                }
 
-
-                //$webSocket = new WebSocket();
-                //$webSocket->onMessage();
-
-
-                return response()->json('Pedido realizado com sucesso',200);
-            }
+                return response()->json("pedido cadastrado", 200);
+            } 
         }catch (\Exception $e){
             if(config('app.debug')){
                 return response()
@@ -46,9 +49,10 @@ class PedidosController extends Controller
             }
             //para opção de produção
             return response()->
-            json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao buscar itens',1068));
+            json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao buscar itens', 1068));
         }
     }
+
     public function calcularValorUnitario(Produtos $produtos, $quantidade)
     {
         $produtos->composicao = $produtos->composicao()->get();
