@@ -42,7 +42,7 @@ class WebSocket implements MessageComponentInterface
     public function onMessage(ConnectionInterface $from, $data)
     {
         // Convertendo os dados recebidos para vetor e adicionando a data
-        $data = array("idEmpresa" =>$data,"date"=>date('d/m/Y H:i:s'));
+        $data = array("codigoPedido" =>$data,"date"=>date('d/m/Y H:i:s'));
         //$data->date = date('d/m/Y H:i:s');
         // Passando pelos clientes conectados e enviando a mensagem
         // para cada um deles

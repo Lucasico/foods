@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4b7acae8-a989-4a59-bb97-aaba28b82aca" name="Default Changelist" comment="&quot;inserir tabelas com seus respectivos relacionamentos na modelagem: UF, CIDADE&quot;">
-      <change beforePath="$PROJECT_DIR$/.idea/foods.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/foods.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebServer.php" beforeDir="false" afterPath="$PROJECT_DIR$/WebServer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/API/BuscarIdPedidosEmpresa.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/API/BuscarIdPedidosEmpresa.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AutentificadorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AutentificadorController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/modulos/pedidos/PedidosController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/modulos/pedidos/PedidosController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/WebSockets/Websocket_client.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/WebSockets/Websocket_client.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/WebSockets/WebSocket.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/WebSockets/WebSocket.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -326,6 +321,8 @@
       <workItem from="1596492696261" duration="913000" />
       <workItem from="1596648924157" duration="33000" />
       <workItem from="1596648959098" duration="4441000" />
+      <workItem from="1596653577009" duration="977000" />
+      <workItem from="1596662677801" duration="539000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;inserir tabelas com seus respectivos relacionamentos na modelagem: UF, CIDADE&quot;">
       <created>1590450545567</created>
@@ -567,12 +564,21 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/modulos/pedidos/PedidosController.php</url>
-          <line>245</line>
+          <line>246</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\modulos\pedidos\PedidosController" />
             <option name="methodName" value="aceitarPedido" />
           </properties>
           <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php-line-method">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/modulos/pedidos/PedidosController.php</url>
+          <line>185</line>
+          <properties>
+            <option name="className" value="\App\Http\Controllers\modulos\pedidos\PedidosController" />
+            <option name="methodName" value="alterarSituacaoPedido" />
+          </properties>
+          <option name="timeStamp" value="24" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
