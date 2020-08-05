@@ -1,6 +1,6 @@
 <?php
 /**
- * 
+ *
  */
 namespace App\WebSockets;
 class Websocket_client{
@@ -152,11 +152,11 @@ public static function websocket_write($sp,$data,$final=true){
   $header=chr(($final?0x80:0) | 0x02); // 0x02 binary
 
   // Mask 0x80 | payload length (0-125)
-  if(strlen($data)<126) 
+  if(strlen($data)<126)
     $header.=chr(0x80 | strlen($data));
-  elseif (strlen($data)<0xFFFF) 
+  elseif (strlen($data)<0xFFFF)
     $header.=chr(0x80 | 126) . pack("n",strlen($data));
-  else 
+  else
     $header.=chr(0x80 | 127) . pack("N",0) . pack("N",strlen($data));
 
   // Add mask
@@ -166,7 +166,6 @@ public static function websocket_write($sp,$data,$final=true){
   // Mask application data.
   for($i = 0; $i < strlen($data); $i++)
     $data[$i]=chr(ord($data[$i]) ^ ord($mask[$i % 4]));
-   
   return fwrite($sp, $header.$data);
 }
 

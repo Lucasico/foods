@@ -6,12 +6,9 @@ use Ratchet\Server\IoServer;
 use Ratchet\WebSocket\WsServer;
 
 use App\WebSockets\WebSocket;
-
 // Incluindo biblioteca e classe do chat
 //require 'class/WebSocket.php';
 // Iniciando conexão
-
-
         $server = IoServer::factory(
             new HttpServer(
                 new WsServer(
@@ -21,5 +18,5 @@ use App\WebSockets\WebSocket;
             1000
         );
         $server->run();
- 
+
 

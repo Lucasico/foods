@@ -32,7 +32,7 @@ class BuscarIdPedidosEmpresa
                 //    'pedidos.observacoes',
                 //     'situacao_pedidos.nome as situacao'
 
-                )->distinct()->orderBy('pedidos.created_at', 'ASC')->paginate(10);
+                )->distinct()->orderBy('pedidos.created_at', 'ASC')->get();
             return ($idPedidosComRepeticoes);
         }catch (\Exception $e){
             if(config('app.debug')){

@@ -79,6 +79,7 @@ class AutentificadorController extends Controller
         }
         //criando token de validação de usuario
         $user = $request -> user ();
+        $user->funcionario;
         $token = $user -> createToken ( 'Token de acesso' ) -> accessToken;
         //retornando token de acesso com a devida confirmação
         return response () -> json ( [

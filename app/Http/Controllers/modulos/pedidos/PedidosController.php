@@ -10,7 +10,6 @@ use App\Item_pedidos;
 use App\pedidos;
 use App\Produtos;
 use App\Situacao_pedidos;
-use App\Events\NewPedido;
 use Illuminate\Http\Request;
 use App\API\ValidaRequests;
 use Illuminate\Support\Facades\DB;
@@ -28,10 +27,10 @@ class PedidosController extends Controller
                 $quantidadeItens[] = $item['quantidade'];
             }
             $pedido = $this->processarPedido($calcularValorUnitario, $produtos, $quantidadeItens, $controleAddItens, $request);
-            if( $pedido === 'pedidoRealizadoComSucesso'){
+            if( $pedido[0] === 'pedidoRealizadoComSucesso'){
                 $empresaRecebePedido = Produtos::find($produtos[0]);
                 $idEmpresa = $empresaRecebePedido->empresa_id;
-                
+                $codigoPedido = $pedido[1];
                 if( $sp = Websocket_client::websocket_open('localhost', 1000,'',$errstr, 15) ) {
                   Websocket_client::websocket_write($sp, $idEmpresa);
                   echo "Server responed with: '" . Websocket_client::websocket_read($sp,$errstr) ."'\n";
@@ -41,7 +40,7 @@ class PedidosController extends Controller
                 }
 
                 return response()->json("pedido cadastrado", 200);
-            } 
+            }
         }catch (\Exception $e){
             if(config('app.debug')){
                 return response()
@@ -52,7 +51,6 @@ class PedidosController extends Controller
             json(ApiErros::erroMensageCadastroEmpresa('Houve um erro ao buscar itens', 1068));
         }
     }
-
     public function calcularValorUnitario(Produtos $produtos, $quantidade)
     {
         $produtos->composicao = $produtos->composicao()->get();
@@ -109,7 +107,7 @@ class PedidosController extends Controller
                     ]);
                 }
                 DB::commit();
-                return 'pedidoRealizadoComSucesso';
+                return ['pedidoRealizadoComSucesso',$pedido->codigo];
         }catch (\Exception $e){
             DB::rollBack();
             if(config('app.debug')){
