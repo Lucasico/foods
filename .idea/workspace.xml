@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4b7acae8-a989-4a59-bb97-aaba28b82aca" name="Default Changelist" comment="&quot;inserir tabelas com seus respectivos relacionamentos na modelagem: UF, CIDADE&quot;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/modulos/pedidos/PedidosController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/modulos/pedidos/PedidosController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/WebSockets/WebSocket.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/WebSockets/WebSocket.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -323,6 +322,7 @@
       <workItem from="1596648959098" duration="4441000" />
       <workItem from="1596653577009" duration="977000" />
       <workItem from="1596662677801" duration="539000" />
+      <workItem from="1596835292077" duration="1453000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;inserir tabelas com seus respectivos relacionamentos na modelagem: UF, CIDADE&quot;">
       <created>1590450545567</created>
