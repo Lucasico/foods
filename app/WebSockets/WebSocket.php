@@ -45,7 +45,7 @@ class WebSocket implements MessageComponentInterface
         // para cada um deles
         //$data = array($data);
         //echo $data;
-        $data = array("pedidoId" => $data);
+        //$data = array("pedidoId" => $data);
         foreach ($this->clients as $client) {
             $client->send(json_encode($data));
         }
