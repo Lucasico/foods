@@ -47,7 +47,8 @@ class WebSocket implements MessageComponentInterface
         //echo $data;
         //$data = array("pedidoId" => $data);
         foreach ($this->clients as $client) {
-            $client->send(json_encode($data));
+
+            $client->send($data);
         }
         echo "Cliente {$from->resourceId} enviou uma mensagem" . PHP_EOL;
     }
