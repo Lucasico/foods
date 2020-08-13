@@ -190,7 +190,6 @@ public static function websocket_write($sp,$data,$final=true){
  \*============================================================================*/
 public static function websocket_read($sp,&$error_string=NULL){
   $data="";
-
   do{
     // Read header
     $header=fread($sp,2);
@@ -266,7 +265,6 @@ public static function websocket_read($sp,&$error_string=NULL){
       continue;
 
   }while(!$final);
-
   return $data;
 }
 }

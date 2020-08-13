@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\WebSockets;
 use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
@@ -44,9 +43,9 @@ class WebSocket implements MessageComponentInterface
         // Convertendo os dados recebidos para vetor e adicionando a data
         // Passando pelos clientes conectados e enviando a mensagem
         // para cada um deles
-
         //$data = array($data);
-        //$dara = array("codigoPedido" => $data)
+        //echo $data;
+        $data = array("pedidoId" => $data);
         foreach ($this->clients as $client) {
             $client->send(json_encode($data));
         }

@@ -29,11 +29,11 @@ class PedidosController extends Controller
             $pedido = $this->processarPedido($calcularValorUnitario, $produtos, $quantidadeItens, $controleAddItens, $request);
             if( $pedido[0] === 'pedidoRealizadoComSucesso'){
                 $empresaRecebePedido = Produtos::find($produtos[0]);
+                $codigoPedido = $pedido[1];
+                $pedido = pedidos::where('id',$codigoPedido->id)->first();
                 $idEmpresa = $empresaRecebePedido->empresa_id;
-                $codigoPedido = (String)$pedido[1];
-
                 if( $sp = Websocket_client::websocket_open('localhost', 1000,'',$errstr, 15) ) {
-                  Websocket_client::websocket_write($sp, $codigoPedido);
+                  Websocket_client::websocket_write($sp, $pedido->id);
                   echo "Server responed with: '" . Websocket_client::websocket_read($sp,$errstr) ."'\n";
                 }else {
                   echo "Failed to connect to server\n";
@@ -108,7 +108,7 @@ class PedidosController extends Controller
                     ]);
                 }
                 DB::commit();
-                return ['pedidoRealizadoComSucesso',$pedido->codigo];
+                return ['pedidoRealizadoComSucesso',$pedido];
         }catch (\Exception $e){
             DB::rollBack();
             if(config('app.debug')){
