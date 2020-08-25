@@ -48,7 +48,7 @@ class ProdutoCrudController extends Controller
                     }
                 }
 
-                return response()->json(['Produto cadastrado com sucesso'][$produto->id],200);
+                return response()->json(["mensagem" => 'Produto cadastrado com sucesso',"id" => $produto->id],200);
             }else{
                 return response()->json('Quantidade de ingredintes diverge da quantidade de preços',400);
             }
@@ -88,7 +88,7 @@ class ProdutoCrudController extends Controller
                     $combo->save();
                 }
             }
-            return response()->json(['Combo Cadastrado com sucesso'][$produto->id],200);
+            return response()->json(["mensagem" => 'Combo Cadastrado com sucesso',"id" => $produto->id],200);
         }catch (\Exception $e){
             if(config('app.debug')){
                 return response()->json(ApiErros::erroMensageCadastroEmpresa($e->getMessage(),1061));
