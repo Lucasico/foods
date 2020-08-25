@@ -21,9 +21,9 @@ class CreateProdutosTable extends Migration
             $table->char('situacao',1)->nullable(false);
             $table->double('preco')->nullable(false);
             $table->char('tipo',1)->nullable(false);
-            $table->char('pertence_estoque',1)->nullable(false);
+            //$table->char('pertence_estoque',1)->nullable(false);
             $table->string('tamanho',45)->nullable(false);
-            $table->string('unidade_compra',20)->nullable(false);
+            //$table->string('unidade_compra',20)->nullable(false);
             $table->text('descricao')->nullable(false);
             $table->integer('quantMinima')->nullable(true);
             $table->integer('quantEstoque')->nullable(true);

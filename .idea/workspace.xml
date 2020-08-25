@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4b7acae8-a989-4a59-bb97-aaba28b82aca" name="Default Changelist" comment="&quot;inserir tabelas com seus respectivos relacionamentos na modelagem: UF, CIDADE&quot;" />
+    <list default="true" id="4b7acae8-a989-4a59-bb97-aaba28b82aca" name="Default Changelist" comment="&quot;inserir tabelas com seus respectivos relacionamentos na modelagem: UF, CIDADE&quot;">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/modulos/proprietario/produtos/ProdutoCrudController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/modulos/proprietario/produtos/ProdutoCrudController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_28_163807_create_produtos_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_28_163807_create_produtos_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_07_13_001443_update_produto_pertence_estoque_unid_compra.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_07_13_001443_update_produto_pertence_estoque_unid_compra.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -164,7 +169,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="terminal" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -183,6 +188,7 @@
       <method v="2" />
     </configuration>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -328,6 +334,9 @@
       <workItem from="1597448394776" duration="44000" />
       <workItem from="1597454148590" duration="39000" />
       <workItem from="1597456301720" duration="33000" />
+      <workItem from="1597503815658" duration="690000" />
+      <workItem from="1597776418106" duration="134000" />
+      <workItem from="1598397275253" duration="155000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;inserir tabelas com seus respectivos relacionamentos na modelagem: UF, CIDADE&quot;">
       <created>1590450545567</created>
@@ -339,8 +348,11 @@
     <option name="localTasksCounter" value="2" />
     <servers />
   </component>
+  <component name="TerminalProjectNonSharedOptionsProvider">
+    <option name="shellPath" value="C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" />
+  </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="&quot;inserir tabelas com seus respectivos relacionamentos na modelagem: UF, CIDADE&quot;" />
@@ -375,10 +387,11 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1590450592185" />
-    <state x="462" y="126" key="FileChooserDialogImpl" timestamp="1596648954607">
+    <state x="462" y="126" key="FileChooserDialogImpl" timestamp="1597776552763">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="462" y="126" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1596648954607" />
+    <state x="462" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1597504447400" />
+    <state x="462" y="126" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1597776552763" />
     <state x="465" y="107" key="NewPhpClassDialog" timestamp="1596325546949">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -387,9 +400,10 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="517" y="307" key="NewPhpFileDialog/0.0.1366.768@0.0.1366.768" timestamp="1596325665859" />
-    <state x="184" y="29" key="SettingsEditor" timestamp="1595198741170">
-      <screen x="0" y="0" width="1366" height="768" />
+    <state x="184" y="17" key="SettingsEditor" timestamp="1597504493215">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state x="184" y="17" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1597504493215" />
     <state x="184" y="29" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1595198741170" />
     <state x="452" y="192" key="com.jetbrains.php.test.PhpNewTestDialog" timestamp="1591378882540">
       <screen x="0" y="0" width="1366" height="768" />

@@ -47,7 +47,8 @@ class ProdutoCrudController extends Controller
                             ->attach($product,['valor' => $request->valor[$i]]);
                     }
                 }
-                return response()->json('Produto Cadastrado com sucesso',200);
+
+                return response()->json([$produto->id, 'Produto cadastrado com sucesso'],200);
             }else{
                 return response()->json('Quantidade de ingredintes diverge da quantidade de preços',400);
             }
@@ -87,7 +88,7 @@ class ProdutoCrudController extends Controller
                     $combo->save();
                 }
             }
-            return response()->json('Combo Cadastrado com sucesso',200);
+            return response()->json([$produto->id,'Combo Cadastrado com sucesso'],200);
         }catch (\Exception $e){
             if(config('app.debug')){
                 return response()->json(ApiErros::erroMensageCadastroEmpresa($e->getMessage(),1061));
@@ -99,7 +100,6 @@ class ProdutoCrudController extends Controller
     public function listarProdutosDisponiveisParaCombo(Request $request)
     {
         try {
-
             if (is_null(Request()->input('buscar'))) {
                 return response()->json(["ErrosValida" => "campo de busca não preenchido, por favor tente novamente"], 200);
             }
