@@ -4,8 +4,6 @@
     <list default="true" id="4b7acae8-a989-4a59-bb97-aaba28b82aca" name="Default Changelist" comment="&quot;inserir tabelas com seus respectivos relacionamentos na modelagem: UF, CIDADE&quot;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/modulos/proprietario/produtos/ProdutoCrudController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/modulos/proprietario/produtos/ProdutoCrudController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_28_163807_create_produtos_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_28_163807_create_produtos_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_07_13_001443_update_produto_pertence_estoque_unid_compra.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_07_13_001443_update_produto_pertence_estoque_unid_compra.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -336,7 +334,7 @@
       <workItem from="1597456301720" duration="33000" />
       <workItem from="1597503815658" duration="690000" />
       <workItem from="1597776418106" duration="134000" />
-      <workItem from="1598397275253" duration="155000" />
+      <workItem from="1598397275253" duration="741000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;inserir tabelas com seus respectivos relacionamentos na modelagem: UF, CIDADE&quot;">
       <created>1590450545567</created>
